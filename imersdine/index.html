@@ -147,30 +147,58 @@
                 <p class="text-muted text-lg">Masalah yang sering dihadapi pebisnis F&B dan Solusi yang kami tawarkan.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="bg-red-50 p-8 rounded-3xl border border-red-100">
+            <!-- Diubah jadi flex-col (Atas Bawah) dan max-w-4xl agar proporsional -->
+            <div class="flex flex-col gap-8 max-w-4xl mx-auto">
+                
+                <!-- BOX MASALAH (ATAS) -->
+                <div class="bg-red-50 p-8 md:p-10 rounded-3xl border border-red-100 shadow-sm">
                     <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6">
                         <i data-lucide="x-circle" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-4">Masalah Saat Ini</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start"><i data-lucide="minus" class="w-5 h-5 text-red-500 mr-2 shrink-0 mt-0.5"></i> Biaya langganan aplikasi Kasir/POS yang mahal tiap bulan.</li>
-                        <li class="flex items-start"><i data-lucide="minus" class="w-5 h-5 text-red-500 mr-2 shrink-0 mt-0.5"></i> Ribet bayar server/hosting puluhan ribu per bulan.</li>
-                        <li class="flex items-start"><i data-lucide="minus" class="w-5 h-5 text-red-500 mr-2 shrink-0 mt-0.5"></i> Menu masih pakai PDF atau kertas fisik yang susah di-update.</li>
+                    <h3 class="text-2xl font-display font-bold mb-6">Masalah Saat Ini</h3>
+                    <ul class="space-y-4 text-gray-700 md:text-lg">
+                        <li class="flex items-start">
+                            <i data-lucide="minus" class="w-6 h-6 text-red-500 mr-3 shrink-0 mt-0.5"></i> 
+                            <span>Biaya langganan aplikasi Kasir/POS yang mahal tiap bulan.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="minus" class="w-6 h-6 text-red-500 mr-3 shrink-0 mt-0.5"></i> 
+                            <span>Ribet bayar server/hosting puluhan ribu per bulan.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="minus" class="w-6 h-6 text-red-500 mr-3 shrink-0 mt-0.5"></i> 
+                            <span>Menu masih pakai PDF atau kertas fisik yang susah di-update.</span>
+                        </li>
                     </ul>
                 </div>
                 
-                <div class="bg-green-50 p-8 rounded-3xl border border-green-100">
-                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                <!-- BOX SOLUSI (BAWAH) -->
+                <div class="bg-green-50 p-8 md:p-10 rounded-3xl border border-green-100 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-5">
+                         <i data-lucide="check-circle" class="w-40 h-40 text-green-600"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-4">Solusi iMersDine</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-2 shrink-0 mt-0.5"></i> <strong>Tanpa Langganan.</strong> Bayar sekali untuk file aplikasinya.</li>
-                        <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-2 shrink-0 mt-0.5"></i> <strong>Gratis Hosting.</strong> Database pakai Google Sheets, Frontend pakai Vercel (Gratis 100%).</li>
-                        <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-2 shrink-0 mt-0.5"></i> <strong>Menu Digital Realtime.</strong> Pelanggan order lewat HP, pesanan masuk ke Dashboard Kasir.</li>
-                    </ul>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-6">Solusi iMersDine</h3>
+                        <ul class="space-y-4 text-gray-700 md:text-lg">
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-6 h-6 text-green-500 mr-3 shrink-0 mt-0.5"></i> 
+                                <span><strong>Tanpa Langganan.</strong> Bayar sekali untuk file aplikasinya.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-6 h-6 text-green-500 mr-3 shrink-0 mt-0.5"></i> 
+                                <span><strong>Gratis Hosting.</strong> Database pakai Google Sheets, Frontend pakai Vercel (Gratis 100%).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-6 h-6 text-green-500 mr-3 shrink-0 mt-0.5"></i> 
+                                <span><strong>Menu Digital Realtime.</strong> Pelanggan order lewat HP, pesanan masuk ke Dashboard Kasir.</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </section>
