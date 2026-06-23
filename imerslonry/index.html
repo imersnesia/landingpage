@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iMersLonry - Mesin Cuan Bisnis Laundry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a',
+                        primary: '#f97316',
+                        secondary: '#3b82f6',
+                        accent: '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Tambahan untuk area aman bawah di mobile (iOS/Android) */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 1rem);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden pb-16 md:pb-0">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel py-4 transition-all duration-300">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-soap text-primary text-2xl"></i>
+                <span class="text-xl font-bold tracking-tight">iMers<span class="text-primary">Lonry</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#peluang" class="hover:text-primary transition">Peluang Cuan</a>
+                <a href="#keunggulan" class="hover:text-primary transition">Keunggulan</a>
+                <a href="#lisensi" class="hover:text-primary transition">Info Lisensi</a>
+            </div>
+            <a href="#beli" class="bg-primary hover:bg-orange-600 text-white px-5 py-2 rounded-full font-semibold transition text-sm shadow-lg shadow-orange-500/30">
+                Ambil Kesempatan
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -z-10"></div>
+        
+        <div class="container mx-auto px-6 text-center z-10 relative">
+            <div class="inline-block bg-orange-500/10 border border-orange-500/20 text-orange-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+                🔥 Peluang Bisnis Digital 2026
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Miliki iMersLonry Apps,<br>Web-App Kasir Laundry Pintar.
+                <span class="block mt-2 gradient-text pb-2">Jual Lagi, Nikmati Cuannya!</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+                Sistem POS super ngebut yang terintegrasi langsung dengan Database Google Sheets & WhatsApp Gateway. Kami yang coding dari nol, Anda yang pegang lisensi <b>Reseller Rights</b>-nya untuk cetak omset berkali-kali!
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#beli" class="bg-primary hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 glow-effect">
+                    <i class="fa-solid fa-cart-shopping"></i> Ambil Sekarang - Rp 69.000
+                </a>
+                <a href="#lisensi" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 border border-white/10">
+                    <i class="fa-solid fa-book-open"></i> Pelajari Cara Kerjanya
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points & Opportunity Section -->
+    <section id="peluang" class="py-20 bg-slate-900/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Peluang Emas Untuk Anda,<br>Freelancer & Digital Marketer!</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-red-500/10 text-red-400 rounded-xl flex items-center justify-center shrink-0 text-2xl">
+                            😩
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Capek Jualan Produk Margin Tipis?</h3>
+                            <p class="text-gray-400 leading-relaxed">Jualan e-book atau template untungnya receh. Sekali beli iMersLonry Apps, Anda bisa buka jasa setup dengan nilai ratusan ribu per klien laundry.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center shrink-0 text-2xl">
+                            💻
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Buka Jasa IT Tapi Gak Jago Ngoding?</h3>
+                            <p class="text-gray-400 leading-relaxed">Gak perlu repot pusing kode. Sistem POS iMersLonry sudah matang, anti-lemot, dan siap dipasang ke akun Google klien Anda dalam hitungan menit.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-green-500/10 text-green-400 rounded-xl flex items-center justify-center shrink-0 text-2xl">
+                            💸
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Langganan Software Bulanan Bikin Boncos?</h3>
+                            <p class="text-gray-400 leading-relaxed">Software di luar sana narik biaya ratusan ribu tiap bulan. Tawarkan iMersLonry ke owner UMKM yang cukup bayar sekali putus ke Anda!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mockup Dashboard Sederhana -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-700 shadow-2xl relative transform hover:scale-105 transition duration-500">
+                    <div class="absolute -top-4 -right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Simulasi Hasil</div>
+                    <div class="flex items-center gap-2 mb-6 border-b border-slate-700 pb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-slate-800 p-4 rounded-xl">
+                            <div class="text-sm text-gray-400 mb-1">Total Pemasukan Jasa</div>
+                            <div class="text-2xl font-bold text-green-400">Rp 1.250.000</div>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-xl">
+                            <div class="text-sm text-gray-400 mb-1">Klien Laundry Baru</div>
+                            <div class="text-2xl font-bold text-blue-400">12 Nota</div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="h-8 bg-slate-800 rounded w-full"></div>
+                        <div class="h-8 bg-slate-800 rounded w-5/6"></div>
+                        <div class="h-8 bg-slate-800 rounded w-4/6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="keunggulan" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Senjata Utama Tanpa Biaya Server</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Sistem dibangun se-efisien mungkin menggunakan infrastruktur gratis dari Google. Anda dan klien tidak perlu pusing mikirin biaya hosting bulanan!</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition duration-300">
+                    <div class="w-12 h-12 bg-green-500/20 text-green-400 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-table"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Database Google Sheets</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Selamat tinggal biaya sewa server SQL! Semua transaksi, pengeluaran, dan data pelanggan langsung tersimpan rapi ke akun Google Sheets secara Real-Time.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition duration-300">
+                    <div class="w-12 h-12 bg-yellow-500/20 text-yellow-400 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Performa Super Cepat</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Dibangun dengan arsitektur Web-App modern. Aplikasi sangat responsif dan kencang saat kasir input data tanpa perlu loading halaman berulang kali.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition duration-300">
+                    <div class="w-12 h-12 bg-green-500/20 text-green-400 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WhatsApp API Gateway</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Kirim e-Nota struk dan notifikasi otomatis saat cucian selesai langsung ke WA pelanggan. Terintegrasi mulus dengan Fonnte & WAPlus.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition duration-300">
+                    <div class="w-12 h-12 bg-red-500/20 text-red-400 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Laporan PDF Laba Rugi</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Gak perlu rekap manual lagi. Sistem otomatis hitung omset per layanan dikurangi pengeluaran harian, siap diekspor jadi PDF cantik.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition duration-300">
+                    <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Portal Lacak Status QR</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Struk thermal otomatis cetak QR Code. Pelanggan cukup scan untuk masuk ke Landing Page toko dan lacak cuciannya sendiri dari rumah.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition duration-300">
+                    <div class="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-Cabang & Multi-Role</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Support manajemen banyak cabang sekaligus. Hak akses jelas: Owner (Pusat), Admin, dan Kasir (Hanya bisa proses data cabangnya saja).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- License Section -->
+    <section id="lisensi" class="py-20 bg-slate-900/50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2">
+                    <div class="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold mb-4 tracking-wider uppercase">
+                        LISENSI RESELLER RIGHTS
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Aturan Main & Cara Anda Mencetak Uang</h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Dengan investasi super miring ini, Anda memegang hak komersial yang luas. Bebas jadikan source code ini sebagai "Mesin ATM" digital Anda.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Bebas Jual Ulang iMersLonry Apps</h4>
+                                <p class="text-sm text-gray-400">Jual mentahan lisensi aplikasi ini ke orang lain berkali-kali. Untung 100% masuk ke rekening Anda tanpa perlu setor royalti ke kami.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-start">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Buka "Jasa Bikin Web Kasir"</h4>
+                                <p class="text-sm text-gray-400">Tawarkan paket "Terima Beres" ke UMKM Laundry. Pasangkan ke Google Drive mereka, patok harga jasa Rp 500rb - Rp 1,5 Juta per toko!</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-start bg-red-500/5 p-4 rounded-xl border border-red-500/10">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-xmark text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-red-300 mb-1">Dilarang "Re-branding" (Klaim Kepemilikan)</h4>
+                                <p class="text-sm text-gray-400">Anda bebas mengubah nama toko, logo, dan identitas bisnis KLIEN di pengaturan aplikasi. Namun, mohon untuk TIDAK menghapus hak cipta "iMersLonry" di footer/kredit sistem inti. Anda menjual jasa setup, bukan menjual aplikasi ini seolah-olah karya pribadi Anda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Box -->
+                <div class="lg:w-1/2 w-full">
+                    <div class="glass-panel p-8 rounded-2xl border-primary/30 shadow-[0_0_30px_rgba(249,115,22,0.15)] relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full -z-10"></div>
+                        <h3 class="text-xl font-bold mb-6 text-center border-b border-slate-700 pb-4">Simulasi Potensi Cuan Anda</h3>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-400">Modal Beli iMersLonry Apps</span>
+                                <span class="text-red-400 font-mono">- Rp 69.000</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-300">Jual Jasa Setup ke 1 Laundry</span>
+                                <span class="text-green-400 font-mono">+ Rp 500.000</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-300">Jual Jasa Setup ke 2 Laundry</span>
+                                <span class="text-green-400 font-mono">+ Rp 500.000</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-300">Jual Mentahan ke 3 Orang (@100rb)</span>
+                                <span class="text-green-400 font-mono">+ Rp 300.000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-slate-700 pt-4 flex justify-between items-center">
+                            <span class="font-bold text-lg">Total Profit Bersih</span>
+                            <span class="text-2xl font-bold text-primary font-mono">Rp 1.231.000</span>
+                        </div>
+                        <p class="text-xs text-center text-gray-500 mt-4 italic">*Itu hanya simulasi santai. Di lapangan, langit adalah batasnya!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / CTA Section -->
+    <section id="beli" class="py-24 relative overflow-hidden">
+         <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] -z-10"></div>
+        
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="glass-panel rounded-3xl p-8 md:p-12 text-center border border-slate-700 relative z-10 shadow-2xl">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                    PROMO TERBATAS
+                </div>
+                
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Investasi Sekali,<br><span class="gradient-text">Cuan Berkali-kali!</span></h2>
+                <p class="text-gray-400 mb-8 max-w-xl mx-auto">Sistem ini dirancang praktis untuk membantu kelancaran operasional laundry sehari-hari. Kami ingin teknologi ini bisa dijangkau oleh siapa saja yang ingin serius mengembangkan bisnisnya, itulah mengapa kami memberikan penawaran ini.</p>
+                
+                <div class="mb-8">
+                    <div class="text-gray-500 line-through text-lg mb-2">Harga Normal: Rp 1.500.000</div>
+                    <div class="flex items-start justify-center gap-1">
+                        <span class="text-2xl font-bold mt-2 text-primary">Rp</span>
+                        <span class="text-6xl font-black text-white tracking-tight">69.000</span>
+                    </div>
+                    <div class="text-accent font-semibold mt-2 text-sm bg-accent/10 inline-block px-3 py-1 rounded-full">
+                        BELI SEKALI, JUAL BERKALI KALI
+                    </div>
+                </div>
+                
+                <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-10 text-left">
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-check text-sm"></i>
+                        </div>
+                        <span class="text-sm font-medium">File iMersLonry Apps UI (HTML/JS)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-check text-sm"></i>
+                        </div>
+                        <span class="text-sm font-medium">File Backend (Google Apps Script)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-check text-sm"></i>
+                        </div>
+                        <span class="text-sm font-medium">Lisensi Reseller Rights Penuh</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-check text-sm"></i>
+                        </div>
+                        <span class="text-sm font-medium">Bebas Jual Jasa Setup ke Klien</span>
+                    </div>
+                </div>
+
+                <a href="#" class="inline-block w-full sm:w-auto bg-primary hover:bg-orange-600 text-white px-10 py-5 rounded-xl font-bold text-xl transition glow-effect transform hover:scale-105 duration-300">
+                    <i class="fa-solid fa-cart-shopping mr-2"></i> Beli iMersLonry Apps Sekarang
+                </a>
+                <div class="mt-4 text-sm text-gray-500 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-lock"></i> Transaksi Aman & Instan Download
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-slate-900/50">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Tanya Jawab Seputar Produk</h2>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <details class="group bg-slate-800 rounded-xl border border-slate-700 cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-gray-200">
+                        <span>Apakah saya perlu sewa Hosting & Domain bulanan?</span>
+                        <span class="transition group-open:rotate-180 text-primary">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-400 p-5 pt-0 text-sm leading-relaxed border-t border-slate-700 mt-2">
+                        <strong>TIDAK PERLU!</strong> Aplikasi ini dibangun menggunakan infrastruktur Google (Google Sheets sebagai Database dan Google Apps Script sebagai API Server). Semuanya gratis dan menempel pada akun Google Anda/klien. Anda cukup deploy HTML-nya di Vercel/Netlify (Gratis) atau simpan di lokal komputer kasir.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 2 -->
+                <details class="group bg-slate-800 rounded-xl border border-slate-700 cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-gray-200">
+                        <span>Saya gak jago ngoding, apakah cara setup-nya susah?</span>
+                        <span class="transition group-open:rotate-180 text-primary">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-400 p-5 pt-0 text-sm leading-relaxed border-t border-slate-700 mt-2">
+                        Sangat gampang! Cukup buat Spreadsheet baru, buka menu Extensions > Apps Script, lalu Paste-kan kode Backend yang kami berikan. Setelah itu Deploy dan dapatkan link API-nya. Masukkan link API tersebut ke file HTML-nya. Selesai!
+                    </div>
+                </details>
+
+                <!-- FAQ Item 3 -->
+                <details class="group bg-slate-800 rounded-xl border border-slate-700 cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-gray-200">
+                        <span>Apa maksudnya dilarang Re-Brand?</span>
+                        <span class="transition group-open:rotate-180 text-primary">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-400 p-5 pt-0 text-sm leading-relaxed border-t border-slate-700 mt-2">
+                        Anda sangat diperbolehkan mengganti Nama Toko, Alamat, Logo, dan tema warna di menu Pengaturan agar sesuai dengan identitas bisnis klien Anda (itu hak klien). Yang dilarang adalah melakukan "Re-branding" total atau mengklaim bahwa aplikasi ini buatan Anda sendiri dari nol. Harap tetap menjaga tulisan "Powered by iMersLonry" di footer sebagai bentuk penghargaan kepada tim developer.
+                    </div>
+                </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="group bg-slate-800 rounded-xl border border-slate-700 cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-gray-200">
+                        <span>Apakah aplikasi ini berat jika dijalankan di HP Kasir?</span>
+                        <span class="transition group-open:rotate-180 text-primary">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-400 p-5 pt-0 text-sm leading-relaxed border-t border-slate-700 mt-2">
+                        Sangat ringan! Aplikasi ini dibangun dengan teknologi modern yang tidak membebani perangkat. Asalkan ada koneksi internet, kasir bisa menginput transaksi dan mencetak struk thermal dengan mulus langsung dari browser HP, Tablet, atau Laptop.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-8 text-center border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-center gap-2 mb-4 opacity-70">
+                <i class="fa-solid fa-soap text-primary text-xl"></i>
+                <span class="text-lg font-bold tracking-tight">iMers<span class="text-primary">Lonry</span></span>
+            </div>
+            <p class="text-sm text-gray-500 mb-2">© 2026 iMersLonry Developer Team. Hak Cipta Dilindungi.</p>
+            <p class="text-xs text-gray-600 max-w-lg mx-auto mb-6 md:mb-0">Halaman ini adalah halaman penjualan Lisensi iMersLonry Apps B2B, bukan aplikasi kasir utama.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navbar -->
+    <div class="fixed bottom-0 left-0 w-full glass-panel border-t border-slate-700/50 z-[60] md:hidden">
+        <div class="flex justify-around items-center px-2 py-3 pb-safe">
+            <a href="#" class="flex flex-col items-center gap-1 group">
+                <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center mb-0.5">
+                    <i class="fa-solid fa-house text-blue-400 text-lg group-hover:-translate-y-1 transition duration-300"></i>
+                </div>
+                <span class="text-[10px] text-gray-400 font-medium">Home</span>
+            </a>
+            
+            <a href="#peluang" class="flex flex-col items-center gap-1 group">
+                <div class="w-8 h-8 rounded-full bg-yellow-500/10 flex items-center justify-center mb-0.5">
+                    <i class="fa-solid fa-fire text-yellow-400 text-lg group-hover:-translate-y-1 transition duration-300"></i>
+                </div>
+                <span class="text-[10px] text-gray-400 font-medium">Peluang</span>
+            </a>
+
+            <a href="#keunggulan" class="flex flex-col items-center gap-1 group">
+                <div class="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center mb-0.5">
+                    <i class="fa-solid fa-star text-green-400 text-lg group-hover:-translate-y-1 transition duration-300"></i>
+                </div>
+                <span class="text-[10px] text-gray-400 font-medium">Fitur</span>
+            </a>
+
+            <a href="#beli" class="flex flex-col items-center gap-1 group relative">
+                <div class="absolute top-0 right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+                <div class="absolute top-0 right-1 w-3 h-3 bg-red-500 rounded-full border border-slate-900"></div>
+                <div class="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center mb-0.5">
+                    <i class="fa-solid fa-cart-shopping text-orange-400 text-lg group-hover:-translate-y-1 transition duration-300"></i>
+                </div>
+                <span class="text-[10px] text-gray-200 font-bold">Beli</span>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
