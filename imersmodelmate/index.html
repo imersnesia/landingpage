@@ -856,6 +856,16 @@
       font-size: 22px;
     }
 
+
+
+    .mobile-bottom-nav {
+      display: none;
+    }
+
+    .mobile-bottom-nav a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     @media (max-width: 980px) {
       .hero-grid, .split, .pricing-wrap { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -882,6 +892,88 @@
     }
 
     @media (max-width: 700px) {
+
+      body { padding-bottom: 96px; }
+      .mobile-menu { display: none; }
+      .price-mini {
+        font-size: 13px;
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: rgba(246,198,107,.1);
+        border: 1px solid rgba(246,198,107,.22);
+      }
+      .mobile-bottom-nav {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
+        z-index: 90;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+        padding: 10px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(16,18,35,.88), rgba(7,8,18,.92));
+        border: 1px solid rgba(255,255,255,.16);
+        box-shadow: 0 24px 70px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.12);
+        backdrop-filter: blur(22px);
+      }
+      .mobile-bottom-nav::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(120deg, rgba(246,198,107,.72), rgba(155,92,255,.55), rgba(22,217,227,.48), rgba(255,107,157,.5));
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+      .mobile-bottom-nav a {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        min-height: 58px;
+        border-radius: 20px;
+        color: rgba(248,250,252,.78);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: -.02em;
+        transition: .25s ease;
+      }
+      .mobile-bottom-nav a:hover,
+      .mobile-bottom-nav a.active {
+        color: var(--text);
+        background: rgba(255,255,255,.075);
+        transform: translateY(-2px);
+      }
+      .mobile-bottom-nav .nav-icon {
+        width: 31px;
+        height: 31px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+        box-shadow: 0 12px 28px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.34);
+      }
+      .mobile-bottom-nav a:nth-child(1) .nav-icon { background: linear-gradient(135deg, #ffe0a3, #ff9f43); color: #171009; }
+      .mobile-bottom-nav a:nth-child(2) .nav-icon { background: linear-gradient(135deg, #9b5cff, #ff6b9d); color: #fff; }
+      .mobile-bottom-nav a:nth-child(3) .nav-icon { background: linear-gradient(135deg, #16d9e3, #7c3aed); color: #fff; }
+      .mobile-bottom-nav a:nth-child(4) .nav-icon { background: linear-gradient(135deg, #f6c66b, #ff6b9d); color: #190b12; }
+      .mobile-bottom-nav a:nth-child(5) .nav-icon { background: linear-gradient(135deg, #22c55e, #06b6d4); color: #06120e; }
+      .mobile-bottom-nav span:last-child {
+        max-width: 52px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
       .container { width: min(100% - 28px, var(--max)); }
       .nav-inner { height: 72px; }
       .nav-cta .btn { display: none; }
@@ -1212,12 +1304,32 @@
     </div>
   </footer>
 
+
+
+  <nav class="mobile-bottom-nav" aria-label="Navigasi cepat mobile">
+    <a href="#top" class="active"><span class="nav-icon">⌂</span><span>Home</span></a>
+    <a href="#fitur"><span class="nav-icon">✦</span><span>Fitur</span></a>
+    <a href="#campaign"><span class="nav-icon">⚡</span><span>Kit</span></a>
+    <a href="#harga"><span class="nav-icon">◆</span><span>Harga</span></a>
+    <a href="#faq"><span class="nav-icon">?</span><span>FAQ</span></a>
+  </nav>
+
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     menuBtn?.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks?.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+
+
+    const bottomNavLinks = document.querySelectorAll('.mobile-bottom-nav a');
+    bottomNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        bottomNavLinks.forEach(item => item.classList.remove('active'));
+        link.classList.add('active');
+      });
     });
 
     document.querySelectorAll('a[href="#"]').forEach(anchor => {
