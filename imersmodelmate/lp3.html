@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iMers ModelMate - AI Character Studio Premium</title>
+  <meta name="description" content="iMers ModelMate membantu UMKM menciptakan model AI, maskot brand, customer avatar, virtual influencer, explainer character, dan campaign kit dalam format JSON prompt siap pakai." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070812;
+      --bg-2: #0c1020;
+      --surface: rgba(255,255,255,.075);
+      --surface-2: rgba(255,255,255,.115);
+      --line: rgba(255,255,255,.14);
+      --line-strong: rgba(255,255,255,.23);
+      --text: #f8fafc;
+      --muted: #b8c0d4;
+      --soft: #7c859f;
+      --gold: #f6c66b;
+      --gold-2: #ff9f43;
+      --violet: #9b5cff;
+      --cyan: #16d9e3;
+      --rose: #ff6b9d;
+      --dark-gold: #7a4d12;
+      --shadow: 0 28px 90px rgba(0,0,0,.45);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(155,92,255,.34), transparent 30%),
+        radial-gradient(circle at 88% 12%, rgba(246,198,107,.27), transparent 26%),
+        radial-gradient(circle at 42% 44%, rgba(22,217,227,.12), transparent 26%),
+        linear-gradient(180deg, #060713 0%, #0b0e1f 42%, #080914 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: radial-gradient(circle at 50% 18%, black, transparent 68%);
+      opacity: .45;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,.04) 50%, transparent 100%);
+      mix-blend-mode: screen;
+      opacity: .35;
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .premium-border {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .premium-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(246,198,107,.78), rgba(155,92,255,.42), rgba(22,217,227,.35), rgba(255,255,255,.16));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 7, 19, .72);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.4), transparent 18%),
+        linear-gradient(135deg, var(--gold), var(--gold-2) 42%, var(--violet));
+      box-shadow: 0 16px 45px rgba(246,198,107,.22);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      color: #141013;
+      letter-spacing: -.08em;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      letter-spacing: -.03em;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.09);
+      padding: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: .25s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .price-mini {
+      display: none;
+      color: var(--gold);
+      font-weight: 900;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      color: #15100a;
+      font-weight: 900;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      border-radius: 999px;
+      padding: 14px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #ffe0a3, #f6b84e 45%, #ff8b35);
+      box-shadow: 0 18px 50px rgba(246,198,107,.25), inset 0 1px 0 rgba(255,255,255,.55);
+      transition: transform .25s ease, box-shadow .25s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 24px 70px rgba(246,198,107,.32); }
+    .btn.secondary {
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .btn.secondary:hover { background: rgba(255,255,255,.12); }
+
+    .hero {
+      position: relative;
+      padding: 86px 0 62px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(246,198,107,.1);
+      border: 1px solid rgba(246,198,107,.2);
+      color: #ffe0a3;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 7px rgba(246,198,107,.12);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -.055em;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(45px, 6vw, 86px);
+      line-height: .94;
+      max-width: 860px;
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(120deg, #fff 0%, #ffe0a3 26%, #f6b84e 48%, #c8a2ff 73%, #78f6ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero p.lead {
+      font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 24px 0 0;
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .trust-pill {
+      color: #dbe3f4;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .hero-card {
+      min-height: 610px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.055)),
+        radial-gradient(circle at 50% 0%, rgba(246,198,107,.22), transparent 30%),
+        rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.13);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: -45% -20% auto auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(246,198,107,.24);
+      filter: blur(55px);
+    }
+
+    .app-window {
+      position: relative;
+      height: 100%;
+      min-height: 560px;
+      border-radius: 28px;
+      background: rgba(7,8,18,.72);
+      border: 1px solid rgba(255,255,255,.13);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .window-top {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+    }
+
+    .dots { display: flex; gap: 7px; }
+    .dots i { width: 10px; height: 10px; border-radius: 50%; display: block; background: rgba(255,255,255,.2); }
+    .dots i:nth-child(1) { background: #ff6b6b; }
+    .dots i:nth-child(2) { background: #ffd166; }
+    .dots i:nth-child(3) { background: #06d6a0; }
+
+    .window-badge {
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 900;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(246,198,107,.1);
+      border: 1px solid rgba(246,198,107,.18);
+    }
+
+    .dashboard {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .tabs-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .tab-preview {
+      min-height: 64px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12px;
+      gap: 4px;
+    }
+
+    .tab-preview.active {
+      background: linear-gradient(135deg, rgba(246,198,107,.18), rgba(155,92,255,.14));
+      border-color: rgba(246,198,107,.3);
+    }
+
+    .tab-preview span { font-size: 10px; color: var(--soft); font-weight: 900; text-transform: uppercase; letter-spacing: .07em; }
+    .tab-preview strong { font-size: 12px; line-height: 1.3; }
+
+    .json-preview {
+      border-radius: 22px;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.09);
+      padding: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .json-preview pre {
+      margin: 0;
+      color: #dbeafe;
+      font-size: 12px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .json-preview em { color: #f6c66b; font-style: normal; }
+    .json-preview b { color: #78f6ff; font-weight: 700; }
+
+    .floating-card {
+      position: absolute;
+      right: 16px;
+      bottom: 18px;
+      width: min(320px, calc(100% - 32px));
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.065));
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 16px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.4);
+      backdrop-filter: blur(14px);
+    }
+
+    .floating-card small {
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .floating-card h3 { font-size: 21px; margin-top: 8px; }
+    .floating-card p { margin: 8px 0 0; color: var(--muted); line-height: 1.6; font-size: 13px; }
+
+    section { padding: 72px 0; }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 36px;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1.04;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+      margin: 16px 0 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.055));
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 24px;
+      min-height: 310px;
+      position: relative;
+      overflow: hidden;
+      transition: .28s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(246,198,107,.32);
+      box-shadow: 0 26px 80px rgba(0,0,0,.28);
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: rgba(246,198,107,.14);
+      filter: blur(18px);
+      transition: .28s ease;
+    }
+
+    .feature-card:nth-child(2)::after { background: rgba(155,92,255,.16); }
+    .feature-card:nth-child(3)::after { background: rgba(22,217,227,.14); }
+    .feature-card:nth-child(4)::after { background: rgba(255,107,157,.14); }
+    .feature-card:nth-child(5)::after { background: rgba(246,198,107,.12); }
+    .feature-card:nth-child(6)::after { background: rgba(155,92,255,.18); }
+
+    .feature-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(246,198,107,.13);
+      border: 1px solid rgba(246,198,107,.2);
+      color: var(--gold);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .feature-card h3 {
+      font-size: 22px;
+      letter-spacing: -.04em;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0 0 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mini-list span {
+      color: #dce5f7;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .mini-list span::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--violet));
+      flex: 0 0 auto;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .lux-card {
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .kit-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .kit-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.065);
+      border: 1px solid rgba(255,255,255,.09);
+    }
+
+    .kit-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(246,198,107,.2), rgba(155,92,255,.18));
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-weight: 900;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .kit-item strong { display: block; margin-bottom: 4px; }
+    .kit-item span { display: block; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .kit-tag { color: var(--gold); font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; }
+
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: .86fr 1.14fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .price-card {
+      border-radius: 38px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 30% 0%, rgba(246,198,107,.28), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      border: 1px solid rgba(246,198,107,.26);
+      box-shadow: 0 34px 110px rgba(0,0,0,.48), 0 0 0 1px rgba(246,198,107,.08) inset;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card::before {
+      content: "PREMIUM ACCESS";
+      position: absolute;
+      top: 24px;
+      right: -58px;
+      transform: rotate(35deg);
+      background: linear-gradient(135deg, #ffe0a3, #f6b84e);
+      color: #171009;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      padding: 9px 70px;
+      box-shadow: 0 12px 35px rgba(246,198,107,.25);
+    }
+
+    .price-label {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(246,198,107,.1);
+      border: 1px solid rgba(246,198,107,.18);
+      margin-bottom: 24px;
+    }
+
+    .price-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -.045em;
+      margin-bottom: 10px;
+    }
+
+    .price-desc {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .price {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(44px, 6vw, 68px);
+      font-weight: 900;
+      letter-spacing: -.07em;
+      line-height: .92;
+      margin: 10px 0 8px;
+    }
+
+    .price span {
+      font-size: 22px;
+      letter-spacing: -.03em;
+      color: var(--gold);
+      vertical-align: top;
+      margin-right: 4px;
+    }
+
+    .price-sub {
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 26px;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .check-list div {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #e7eefc;
+      line-height: 1.55;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .check-list div::before {
+      content: "✓";
+      color: #18100a;
+      background: linear-gradient(135deg, #ffe0a3, #f6b84e);
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 900;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .included {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.065);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .included strong { display: block; font-family: 'Poppins', sans-serif; letter-spacing: -.03em; margin-bottom: 7px; }
+    .included p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0; }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step-card {
+      border-radius: 24px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 22px;
+      min-height: 220px;
+    }
+
+    .step-card strong {
+      color: var(--gold);
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .step-card h3 { font-size: 18px; margin-bottom: 10px; }
+    .step-card p { color: var(--muted); margin: 0; line-height: 1.65; font-size: 14px; }
+
+    .faq {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      border-radius: 22px;
+      background: rgba(255,255,255,.065);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 20px 22px;
+      font-weight: 900;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 900;
+    }
+    details[open] summary::after { content: "−"; }
+    details p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      padding: 0 22px 22px;
+    }
+
+    .final-cta {
+      padding: 34px;
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(246,198,107,.3), transparent 30%),
+        radial-gradient(circle at 85% 0%, rgba(155,92,255,.22), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.13);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .final-cta h2 { max-width: 850px; margin: 0 auto; }
+    .final-cta p { max-width: 760px; margin: 18px auto 28px; color: var(--muted); line-height: 1.8; font-size: 17px; }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--soft);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .mobile-menu {
+      display: none;
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      font-size: 22px;
+    }
+
+
+
+    .mobile-bottom-nav {
+      display: none;
+    }
+
+    .mobile-bottom-nav a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .split, .pricing-wrap { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .how-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-card { min-height: auto; }
+      .app-window { min-height: 520px; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 86px;
+        border-radius: 24px;
+        padding: 12px;
+        background: rgba(7,8,18,.96);
+        backdrop-filter: blur(18px);
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { text-align: center; }
+      .mobile-menu { display: block; }
+      .price-mini { display: block; }
+    }
+
+    @media (max-width: 700px) {
+
+      body { padding-bottom: 96px; }
+      .mobile-menu { display: none; }
+      .price-mini {
+        font-size: 13px;
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: rgba(246,198,107,.1);
+        border: 1px solid rgba(246,198,107,.22);
+      }
+      .mobile-bottom-nav {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
+        z-index: 90;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+        padding: 10px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(16,18,35,.88), rgba(7,8,18,.92));
+        border: 1px solid rgba(255,255,255,.16);
+        box-shadow: 0 24px 70px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.12);
+        backdrop-filter: blur(22px);
+      }
+      .mobile-bottom-nav::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(120deg, rgba(246,198,107,.72), rgba(155,92,255,.55), rgba(22,217,227,.48), rgba(255,107,157,.5));
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+      .mobile-bottom-nav a {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        min-height: 58px;
+        border-radius: 20px;
+        color: rgba(248,250,252,.78);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: -.02em;
+        transition: .25s ease;
+      }
+      .mobile-bottom-nav a:hover,
+      .mobile-bottom-nav a.active {
+        color: var(--text);
+        background: rgba(255,255,255,.075);
+        transform: translateY(-2px);
+      }
+      .mobile-bottom-nav .nav-icon {
+        width: 31px;
+        height: 31px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+        box-shadow: 0 12px 28px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.34);
+      }
+      .mobile-bottom-nav a:nth-child(1) .nav-icon { background: linear-gradient(135deg, #ffe0a3, #ff9f43); color: #171009; }
+      .mobile-bottom-nav a:nth-child(2) .nav-icon { background: linear-gradient(135deg, #9b5cff, #ff6b9d); color: #fff; }
+      .mobile-bottom-nav a:nth-child(3) .nav-icon { background: linear-gradient(135deg, #16d9e3, #7c3aed); color: #fff; }
+      .mobile-bottom-nav a:nth-child(4) .nav-icon { background: linear-gradient(135deg, #f6c66b, #ff6b9d); color: #190b12; }
+      .mobile-bottom-nav a:nth-child(5) .nav-icon { background: linear-gradient(135deg, #22c55e, #06b6d4); color: #06120e; }
+      .mobile-bottom-nav span:last-child {
+        max-width: 52px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .container { width: min(100% - 28px, var(--max)); }
+      .nav-inner { height: 72px; }
+      .nav-cta .btn { display: none; }
+      .hero { padding-top: 56px; }
+      .hero-actions .btn { width: 100%; }
+      .trust-row { display: grid; grid-template-columns: 1fr 1fr; }
+      .features-grid, .how-grid, .included-grid { grid-template-columns: 1fr; }
+      .tabs-preview { grid-template-columns: 1fr 1fr; }
+      .floating-card { position: relative; right: auto; bottom: auto; width: 100%; margin-top: 12px; }
+      .app-window { min-height: auto; }
+      .price-card { padding: 26px; border-radius: 30px; }
+      .kit-item { grid-template-columns: auto 1fr; }
+      .kit-tag { grid-column: 2; }
+      section { padding: 54px 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="iMers ModelMate">
+        <div class="brand-mark">MM</div>
+        <div class="brand-text">
+          <strong>iMers ModelMate</strong>
+          <span>AI Character Studio</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#fitur">6 Fitur</a>
+        <a href="#campaign">Campaign Kit</a>
+        <a href="#harga">Harga</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="nav-cta">
+        <div class="price-mini">Rp999.999</div>
+        <a class="btn" href="#harga">Ambil Premium</a>
+        <button class="mobile-menu" id="menuBtn" aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="pulse-dot"></span> Premium AI Character Studio untuk UMKM</div>
+          <h1>Ciptakan <span class="gradient-text">karakter AI</span> yang siap jadi wajah brand & campaign jualan.</h1>
+          <p class="lead">iMers ModelMate membantu kamu membuat model AI, maskot brand, customer avatar, virtual influencer, karakter edukator, sampai campaign kit lengkap dalam format JSON prompt siap pakai.</p>
+          <div class="hero-actions">
+            <a href="#harga" class="btn">Dapatkan Semua Fitur</a>
+            <a href="#fitur" class="btn secondary">Lihat 6 Fitur Premium</a>
+          </div>
+          <div class="trust-row">
+            <span class="trust-pill">JSON Prompt Terpisah</span>
+            <span class="trust-pill">Untuk Image Generator</span>
+            <span class="trust-pill">Tanpa Sewa Model</span>
+            <span class="trust-pill">Siap Campaign</span>
+          </div>
+        </div>
+
+        <div class="hero-card premium-border" aria-label="Preview aplikasi iMers ModelMate">
+          <div class="app-window">
+            <div class="window-top">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <div class="window-badge">6-IN-1 AI STUDIO</div>
+            </div>
+            <div class="dashboard">
+              <div class="tabs-preview">
+                <div class="tab-preview active"><span>01</span><strong>Model Produk AI</strong></div>
+                <div class="tab-preview"><span>02</span><strong>Brand Mascot</strong></div>
+                <div class="tab-preview"><span>03</span><strong>Customer Avatar</strong></div>
+                <div class="tab-preview"><span>04</span><strong>Virtual Influencer</strong></div>
+                <div class="tab-preview"><span>05</span><strong>Explainer Character</strong></div>
+                <div class="tab-preview active"><span>06</span><strong>Campaign Kit</strong></div>
+              </div>
+              <div class="json-preview">
+<pre>{
+  <em>"brand"</em>: <b>"iMers ModelMate"</b>,
+  <em>"generator_type"</em>: <b>"AI Character Campaign Kit"</b>,
+  <em>"character_source"</em>: {
+    <em>"character_name"</em>: <b>"Aisha Zahra"</b>,
+    <em>"role"</em>: <b>"Virtual Brand Ambassador"</b>
+  },
+  <em>"campaign_outputs"</em>: {
+    <em>"visual_prompts"</em>: <b>"3 scene prompts"</b>,
+    <em>"caption"</em>: <b>"premium soft-selling copy"</b>,
+    <em>"video_script"</em>: <b>"30-60 sec script"</b>,
+    <em>"carousel_outline"</em>: <b>"5 slide flow"</b>
+  }
+}</pre>
+              </div>
+            </div>
+            <div class="floating-card premium-border">
+              <small>Output siap pakai</small>
+              <h3>Karakter + Prompt + Copy + Campaign</h3>
+              <p>Bukan cuma bikin visual karakter, tapi juga menyiapkan ide konten dan campaign kit untuk dipakai promosi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fitur">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">6 Fitur Premium</div>
+          <h2>Satu studio untuk semua kebutuhan karakter marketing brand kamu.</h2>
+          <p>Dari karakter model manusia, maskot, avatar pembeli, influencer virtual, karakter edukasi, sampai campaign kit. Semua dibuat dengan output JSON prompt yang rapi dan terpisah.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-num">01</div>
+            <h3>Model Produk AI</h3>
+            <p>Ciptakan model atau talent manusia virtual yang membawakan produk dan brand kamu dengan gaya visual profesional.</p>
+            <div class="mini-list">
+              <span>Model campaign produk</span>
+              <span>Prompt EN + ID</span>
+              <span>Negative prompt</span>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-num">02</div>
+            <h3>Brand Mascot</h3>
+            <p>Bikin maskot brand original untuk logo, sticker, packaging, konten promosi, website, dan identitas visual brand.</p>
+            <div class="mini-list">
+              <span>Hewan, robot, benda hidup</span>
+              <span>Sticker & packaging style</span>
+              <span>Original mascot direction</span>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-num">03</div>
+            <h3>Customer Avatar</h3>
+            <p>Bangun persona calon pembeli ideal lengkap dengan pain point, desire, objection, buying trigger, dan angle marketing.</p>
+            <div class="mini-list">
+              <span>Buyer persona detail</span>
+              <span>Marketing strategy</span>
+              <span>Ad hooks & content ideas</span>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-num">04</div>
+            <h3>Virtual Influencer</h3>
+            <p>Ciptakan influencer AI original yang konsisten, punya nama, niche, tone bicara, bio, content pillar, dan visual identity.</p>
+            <div class="mini-list">
+              <span>Brand ambassador AI</span>
+              <span>Bio & content system</span>
+              <span>Consistency prompt</span>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-num">05</div>
+            <h3>Explainer Character</h3>
+            <p>Buat karakter edukator untuk menjelaskan produk, fitur, tutorial, FAQ, problem-solution, atau konten edukasi brand.</p>
+            <div class="mini-list">
+              <span>Script video pendek</span>
+              <span>Carousel outline</span>
+              <span>Explanation system</span>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-num">06</div>
+            <h3>Campaign Kit</h3>
+            <p>Ubah karakter yang sudah dibuat menjadi paket campaign lengkap: visual scene, caption, ad copy, script, carousel, dan CTA.</p>
+            <div class="mini-list">
+              <span>Multi-scene visual prompts</span>
+              <span>Ad copy & caption</span>
+              <span>Landing page section</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="campaign">
+      <div class="container split">
+        <div class="lux-card premium-border">
+          <div class="section-kicker">Kenapa beda?</div>
+          <h2>Bukan cuma prompt generator. Ini alur kerja karakter sampai campaign.</h2>
+          <p style="color: var(--muted); line-height: 1.8; font-size: 16px; margin-top: 16px;">Banyak tools cuma bantu bikin satu gambar. iMers ModelMate dirancang untuk membantu brand membangun aset karakter yang bisa dipakai berulang dan langsung diturunkan ke kebutuhan promosi.</p>
+          <div class="check-list">
+            <div>Mulai dari karakter, bukan hanya produk.</div>
+            <div>Output JSON prompt terpisah per karakter atau kit.</div>
+            <div>Bisa dipakai untuk konten, iklan, landing page, dan campaign.</div>
+            <div>Setiap fitur punya struktur output sendiri, jadi lebih rapi.</div>
+          </div>
+        </div>
+
+        <div class="kit-stack">
+          <div class="kit-item premium-border">
+            <div class="kit-icon">1</div>
+            <div><strong>Buat karakter</strong><span>Model AI, maskot, avatar, influencer, atau explainer sesuai brand.</span></div>
+            <div class="kit-tag">Create</div>
+          </div>
+          <div class="kit-item premium-border">
+            <div class="kit-icon">2</div>
+            <div><strong>Ambil JSON prompt</strong><span>Setiap karakter punya prompt EN, prompt ID, negative prompt, dan arahan visual.</span></div>
+            <div class="kit-tag">Prompt</div>
+          </div>
+          <div class="kit-item premium-border">
+            <div class="kit-icon">3</div>
+            <div><strong>Jaga konsistensi</strong><span>Pakai consistency note agar wajah, outfit, vibe, dan role karakter tetap sama.</span></div>
+            <div class="kit-tag">Consistent</div>
+          </div>
+          <div class="kit-item premium-border">
+            <div class="kit-icon">4</div>
+            <div><strong>Turunkan jadi campaign</strong><span>Campaign Kit mengubah karakter menjadi caption, ad copy, video script, carousel, dan visual scene.</span></div>
+            <div class="kit-tag">Scale</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga">
+      <div class="container pricing-wrap">
+        <div class="section-head" style="margin-bottom:0">
+          <div class="section-kicker">Harga Premium</div>
+          <h2>Semua fitur iMers ModelMate dalam satu akses premium.</h2>
+          <p>Cocok buat UMKM, seller online, content creator, digital marketer, agency kecil, dan brand lokal yang ingin punya aset karakter visual lebih profesional.</p>
+        </div>
+
+        <div class="price-card premium-border">
+          <div class="price-label">Paket Premium Semua Fitur</div>
+          <div class="price-title">iMers ModelMate Premium</div>
+          <div class="price-desc">Akses ke 6 generator utama untuk menciptakan karakter, prompt, dan campaign kit brand.</div>
+          <div class="price"><span>Rp</span>999.999</div>
+          <div class="price-sub">Sekali bayar untuk paket premium fitur lengkap.</div>
+
+          <div class="check-list">
+            <div>Model Produk AI Generator</div>
+            <div>Brand Mascot Generator</div>
+            <div>Customer Avatar Generator</div>
+            <div>Virtual Influencer Generator</div>
+            <div>Explainer Character Generator</div>
+            <div>Character Campaign Kit Generator</div>
+          </div>
+
+          <a href="https://chat.whatsapp.com/LWR3aWcIYAN0LRKLm0692j" class="btn" style="width:100%; margin-top: 4px;">Ambil Paket Premium Sekarang</a>
+          <p style="color: var(--soft); font-size: 12px; line-height: 1.6; margin: 16px 0 0; text-align:center;">Ganti link tombol ini dengan checkout / WhatsApp / halaman pembayaran kamu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Yang kamu dapatkan</div>
+          <h2>Output yang lebih siap dipakai untuk produksi konten.</h2>
+        </div>
+        <div class="included-grid">
+          <div class="included"><strong>JSON Prompt Rapi</strong><p>Setiap hasil dibuat dalam format JSON yang gampang disalin dan dipakai ulang.</p></div>
+          <div class="included"><strong>Prompt Bahasa Inggris</strong><p>Cocok untuk AI image generator yang lebih optimal dengan prompt English.</p></div>
+          <div class="included"><strong>Prompt Bahasa Indonesia</strong><p>User UMKM tetap mudah memahami konsep, visual, dan arah campaign.</p></div>
+          <div class="included"><strong>Negative Prompt</strong><p>Membantu mengurangi hasil gambar cacat, random text, wajah aneh, atau visual tidak rapi.</p></div>
+          <div class="included"><strong>Copywriting Campaign</strong><p>Caption, hook, ad copy, script video pendek, carousel outline, dan CTA.</p></div>
+          <div class="included"><strong>Consistency Notes</strong><p>Catatan agar karakter tetap konsisten saat dipakai untuk konten berikutnya.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Cara kerja</div>
+          <h2>Dari imajinasi brand jadi aset campaign.</h2>
+        </div>
+        <div class="how-grid">
+          <div class="step-card premium-border"><strong>01</strong><h3>Pilih generator</h3><p>Pilih mau buat model AI, maskot, avatar, influencer, explainer, atau campaign kit.</p></div>
+          <div class="step-card premium-border"><strong>02</strong><h3>Isi detail brand</h3><p>Masukkan produk, target market, vibe, warna brand, dan imajinasi karakter.</p></div>
+          <div class="step-card premium-border"><strong>03</strong><h3>Generate JSON</h3><p>Sistem menyusun prompt, copy, scene, dan strategi sesuai fitur yang dipilih.</p></div>
+          <div class="step-card premium-border"><strong>04</strong><h3>Copy & pakai</h3><p>Salin output ke AI image generator, konten promosi, landing page, atau iklan.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container split">
+        <div class="section-head" style="margin-bottom:0">
+          <div class="section-kicker">FAQ</div>
+          <h2>Pertanyaan yang sering muncul.</h2>
+          <p>Landing page ini sudah diarahkan ke positioning baru: iMers ModelMate sebagai AI Character Studio lengkap, bukan cuma generator produk.</p>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Apakah ini langsung generate gambar?</summary>
+            <p>Versi ini diposisikan sebagai JSON prompt generator. Output-nya bisa dipakai di AI image generator favorit kamu untuk membuat visual karakter dan campaign.</p>
+          </details>
+          <details>
+            <summary>Apakah semua fitur masuk harga premium?</summary>
+            <p>Ya. Kartu harga menampilkan paket premium Rp999.999 untuk semua fitur: Model Produk AI, Brand Mascot, Customer Avatar, Virtual Influencer, Explainer Character, dan Campaign Kit.</p>
+          </details>
+          <details>
+            <summary>Apa bedanya dengan generator gambar biasa?</summary>
+            <p>Fokusnya bukan hanya menghasilkan satu visual. iMers ModelMate membantu membuat struktur karakter, identitas visual, prompt, copywriting, script, carousel, dan campaign kit.</p>
+          </details>
+          <details>
+            <summary>Apakah bisa untuk UMKM?</summary>
+            <p>Bisa. Bahasa, form, dan alurnya dirancang supaya mudah dipakai oleh UMKM, seller online, brand lokal, content creator, dan digital marketer.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="final-cta premium-border">
+          <div class="section-kicker">Final CTA</div>
+          <h2>Bangun wajah brand kamu dengan karakter AI yang lebih niat, konsisten, dan siap promosi.</h2>
+          <p>Mulai dari model produk, maskot, customer avatar, virtual influencer, explainer, sampai campaign kit. Semua dalam satu studio premium.</p>
+          <a class="btn" href="#harga">Ambil iMers ModelMate Premium</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 iMers ModelMate. AI Character Studio for modern brands.</div>
+      <div>Model AI • Mascot • Avatar • Influencer • Explainer • Campaign Kit</div>
+    </div>
+  </footer>
+
+
+
+  <nav class="mobile-bottom-nav" aria-label="Navigasi cepat mobile">
+    <a href="#top" class="active"><span class="nav-icon">⌂</span><span>Home</span></a>
+    <a href="#fitur"><span class="nav-icon">✦</span><span>Fitur</span></a>
+    <a href="#campaign"><span class="nav-icon">⚡</span><span>Kit</span></a>
+    <a href="#harga"><span class="nav-icon">◆</span><span>Harga</span></a>
+    <a href="#faq"><span class="nav-icon">?</span><span>FAQ</span></a>
+  </nav>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+
+
+    const bottomNavLinks = document.querySelectorAll('.mobile-bottom-nav a');
+    bottomNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        bottomNavLinks.forEach(item => item.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('a[href="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (event) => {
+        event.preventDefault();
+        alert('Ganti tombol ini dengan link checkout, WhatsApp, atau halaman pembayaran kamu.');
+      });
+    });
+  </script>
+</body>
+</html>
