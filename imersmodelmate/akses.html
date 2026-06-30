@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Halaman akses resmi iMers ModelMate - AI Product Talent Model Studio untuk membuat prompt foto produk premium dan copywriting iklan secara instan." />
+  <meta name="theme-color" content="#08080a" />
+  <title>Akses iMers ModelMate - AI Product Talent Model Studio</title>
+  <style>
+    :root {
+      --bg: #070708;
+      --bg-2: #0c0c10;
+      --card: rgba(20, 20, 25, .76);
+      --card-2: rgba(255,255,255,.055);
+      --text: #fff7e9;
+      --muted: #bcb4a8;
+      --soft: #e5d8c3;
+      --line: rgba(255,255,255,.13);
+      --line-gold: rgba(245, 189, 107, .35);
+      --gold: #f5bd6b;
+      --gold-2: #e58b12;
+      --orange: #ff9f1a;
+      --green: #72e3a6;
+      --blue: #78b7ff;
+      --purple: #b98cff;
+      --pink: #ff8ec7;
+      --red: #ff6b6b;
+      --radius: 28px;
+      --shadow: 0 24px 80px rgba(0,0,0,.5);
+      --max: 1160px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --serif: Georgia, 'Times New Roman', serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 12%, rgba(229,139,18,.28), transparent 26%),
+        radial-gradient(circle at 82% 15%, rgba(245,189,107,.14), transparent 28%),
+        radial-gradient(circle at 55% 78%, rgba(120,183,255,.08), transparent 26%),
+        linear-gradient(180deg, #070708 0%, #09090b 48%, #050506 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), transparent 74%);
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: auto -8% -34% -8%;
+      height: 56%;
+      pointer-events: none;
+      z-index: -1;
+      background: radial-gradient(circle at center, rgba(245,189,107,.13), transparent 65%);
+      filter: blur(6px);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7,7,8,.76);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-logo-img {
+      display: block;
+      height: 46px;
+      width: auto;
+      max-width: 250px;
+      object-fit: contain;
+      object-position: left center;
+      filter: drop-shadow(0 10px 26px rgba(245,189,107,.18));
+    }
+
+    .brand-fallback {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      flex: 0 0 auto;
+      color: #111;
+      background: linear-gradient(135deg, #ffb33b, #f5bd6b 45%, #d97808);
+      box-shadow: 0 10px 36px rgba(229,139,18,.28), inset 0 1px 0 rgba(255,255,255,.42);
+      overflow: hidden;
+    }
+
+    .brand-icon::before {
+      content: '';
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 3px solid #151515;
+      border-right-color: transparent;
+      transform: rotate(-35deg);
+    }
+
+    .brand-icon::after {
+      content: '✦';
+      position: absolute;
+      right: 8px;
+      top: 5px;
+      color: #161616;
+      font-size: 15px;
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      min-width: 0;
+    }
+
+    .brand-name strong {
+      font-size: 1.05rem;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-name em {
+      font-family: var(--serif);
+      color: var(--gold);
+      font-style: italic;
+      font-size: 1.06rem;
+    }
+
+    .brand-name span {
+      margin-top: 6px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: .66rem;
+      letter-spacing: .14em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-menu a {
+      color: var(--soft);
+      font-weight: 800;
+      font-size: .9rem;
+      padding: 11px 13px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .nav-menu a:hover {
+      border-color: var(--line-gold);
+      color: #fff;
+      background: rgba(255,255,255,.05);
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 14px 19px;
+      border-radius: 999px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #17110a;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      box-shadow: 0 18px 44px rgba(229,139,18,.28);
+    }
+    .btn-primary:hover { box-shadow: 0 22px 54px rgba(229,139,18,.4); }
+    .btn-ghost {
+      color: var(--text);
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--line);
+    }
+    .btn-ghost:hover { border-color: var(--line-gold); background: rgba(245,189,107,.08); }
+
+    .hero { padding: 82px 0 54px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(340px, .76fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--soft);
+      font-size: .78rem;
+      font-weight: 900;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .eyebrow b { color: var(--gold); }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      margin-top: 24px;
+      font-family: var(--serif);
+      font-size: clamp(2.65rem, 6vw, 5.7rem);
+      line-height: .93;
+      letter-spacing: -.065em;
+      max-width: 920px;
+    }
+
+    h1 span {
+      display: block;
+      font-family: var(--font);
+      font-size: clamp(1.35rem, 3.2vw, 3.25rem);
+      line-height: 1.05;
+      color: var(--gold);
+      letter-spacing: -.055em;
+      margin-top: 12px;
+    }
+
+    .lead {
+      margin-top: 22px;
+      color: var(--soft);
+      max-width: 710px;
+      font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .micro {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 800;
+    }
+
+    .micro span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      border-radius: 999px;
+    }
+
+    .access-card {
+      position: relative;
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035)),
+        rgba(10,10,12,.82);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .access-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      background:
+        radial-gradient(circle at 22% 5%, rgba(245,189,107,.24), transparent 32%),
+        radial-gradient(circle at 100% 70%, rgba(120,183,255,.13), transparent 34%);
+      pointer-events: none;
+    }
+
+    .access-card > * { position: relative; }
+    .access-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .access-top h2 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      letter-spacing: -.04em;
+      line-height: 1.1;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: #102014;
+      background: linear-gradient(135deg, #c8ffdf, #62e49d);
+      font-weight: 950;
+      font-size: .75rem;
+      white-space: nowrap;
+    }
+
+    .access-box {
+      border: 1px solid var(--line-gold);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(0,0,0,.22);
+    }
+
+    .access-link-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: .72rem;
+      letter-spacing: .14em;
+      font-weight: 950;
+      margin-bottom: 9px;
+    }
+
+    .access-url {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: #fff;
+      min-height: 52px;
+      padding: 12px 13px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.12);
+      overflow: hidden;
+    }
+
+    .access-url code {
+      color: var(--gold);
+      font-weight: 900;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mini-copy {
+      border: 0;
+      height: 34px;
+      width: 34px;
+      border-radius: 11px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      color: #15110a;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      flex: 0 0 auto;
+      font-weight: 950;
+    }
+
+    .access-card .btn { width: 100%; margin-top: 16px; }
+
+    .notice {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 13px;
+      border-radius: 18px;
+      color: var(--soft);
+      background: rgba(245,189,107,.075);
+      border: 1px solid rgba(245,189,107,.19);
+      font-size: .91rem;
+      line-height: 1.55;
+    }
+
+    .notice strong { color: #fff; }
+
+    .section { padding: 70px 0; }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+      max-width: 710px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 430px;
+      font-weight: 700;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      min-height: 100%;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      box-shadow: 0 18px 54px rgba(0,0,0,.24);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(245,189,107,.12), transparent 36%);
+      opacity: .9;
+    }
+
+    .card > * { position: relative; }
+    .icon-badge {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #111;
+      font-size: 1.25rem;
+      font-weight: 950;
+      margin-bottom: 18px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 14px 30px rgba(0,0,0,.2);
+    }
+
+    .i-gold { background: linear-gradient(135deg, #ffd98d, #ef991e); }
+    .i-blue { background: linear-gradient(135deg, #9ed0ff, #5976ff); }
+    .i-green { background: linear-gradient(135deg, #b7ffd6, #27d27d); }
+    .i-purple { background: linear-gradient(135deg, #dec6ff, #985dff); }
+    .i-pink { background: linear-gradient(135deg, #ffc0df, #ff5fae); }
+    .i-red { background: linear-gradient(135deg, #ffb1a8, #ff644f); }
+
+    .card h3 {
+      font-size: 1.12rem;
+      letter-spacing: -.025em;
+      margin-bottom: 10px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 650;
+      font-size: .96rem;
+    }
+
+    .card ul {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .card li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+    }
+
+    .card li::before {
+      content: '✓';
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: #111;
+      background: var(--gold);
+      font-size: .72rem;
+      font-weight: 950;
+      margin-top: 2px;
+    }
+
+    .steps {
+      counter-reset: step;
+    }
+
+    .step {
+      counter-increment: step;
+    }
+
+    .step .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      margin-bottom: 17px;
+      color: #111;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      font-weight: 950;
+    }
+
+    .tool-panel {
+      border: 1px solid var(--line-gold);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(245,189,107,.13), rgba(255,255,255,.035) 42%, rgba(120,183,255,.08)),
+        rgba(11,11,14,.78);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .quick-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
+    }
+
+    .quick-row + .quick-row { margin-top: 12px; }
+    .quick-row strong { display: block; margin-bottom: 4px; }
+    .quick-row span { color: var(--muted); line-height: 1.55; font-weight: 700; font-size: .93rem; }
+    .quick-row .mini-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      background: rgba(255,255,255,.075);
+      border: 1px solid var(--line);
+    }
+
+
+    .license-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 107, 107, .38);
+      border-radius: 34px;
+      padding: clamp(24px, 4vw, 42px);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(255,107,107,.20), transparent 32%),
+        radial-gradient(circle at 85% 0%, rgba(245,189,107,.18), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+      box-shadow: var(--shadow);
+    }
+
+    .license-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.06), transparent);
+      transform: translateX(-60%);
+      opacity: .9;
+    }
+
+    .license-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #ffd7d7;
+      background: rgba(255,107,107,.10);
+      border: 1px solid rgba(255,107,107,.28);
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .license-panel h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+      max-width: 780px;
+      margin-bottom: 16px;
+    }
+
+    .license-panel .license-lead {
+      color: var(--soft);
+      max-width: 790px;
+      line-height: 1.75;
+      font-weight: 750;
+      margin-bottom: 24px;
+    }
+
+    .license-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .license-box {
+      position: relative;
+      min-height: 100%;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.22);
+    }
+
+    .license-box strong {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 1.04rem;
+    }
+
+    .license-box p,
+    .license-box li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 680;
+      font-size: .95rem;
+    }
+
+    .license-box ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .license-box li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+    }
+
+    .license-box li::before {
+      content: '✕';
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: #fff;
+      background: rgba(255,107,107,.82);
+      font-size: .68rem;
+      font-weight: 950;
+      margin-top: 2px;
+    }
+
+    .license-box.allow li::before {
+      content: '✓';
+      color: #111;
+      background: var(--gold);
+    }
+
+    .license-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid var(--line-gold);
+      background: rgba(245,189,107,.08);
+    }
+
+    .license-cta p {
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.65;
+      font-weight: 750;
+    }
+
+    .final-cta {
+      margin: 58px auto 0;
+      padding: clamp(28px, 5vw, 48px);
+      border-radius: 34px;
+      text-align: center;
+      border: 1px solid var(--line-gold);
+      background:
+        radial-gradient(circle at 50% -15%, rgba(245,189,107,.32), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+      box-shadow: var(--shadow);
+    }
+
+    .final-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 4.5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      color: var(--soft);
+      max-width: 660px;
+      margin: 0 auto 24px;
+      line-height: 1.75;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 36px 0 100px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    footer .heart { color: #ff5f8d; filter: drop-shadow(0 0 8px rgba(255,95,141,.45)); }
+    footer a { color: var(--gold); font-weight: 950; }
+
+    .mobile-bottom-nav {
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 80;
+      display: none;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      padding: 9px;
+      border-radius: 24px;
+      background: rgba(10,10,13,.84);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 20px 70px rgba(0,0,0,.5);
+    }
+
+    .mobile-bottom-nav a {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 5px;
+      border-radius: 18px;
+      color: var(--soft);
+      font-size: .67rem;
+      font-weight: 950;
+    }
+
+    .mob-ico {
+      width: 33px;
+      height: 33px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: #141414;
+      font-size: 1rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 96px;
+      z-index: 100;
+      transform: translateX(-50%) translateY(16px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 12px 16px;
+      border-radius: 999px;
+      color: #111;
+      background: linear-gradient(135deg, #c8ffdf, #66eaa1);
+      font-weight: 950;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      transition: .22s ease;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid, .grid-3, .grid-2, .license-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 14px; }
+      .nav-menu a:not(.desktop-cta) { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .nav-inner { height: 66px; }
+      .brand-logo-img { height: 38px; max-width: 190px; }
+      .brand-icon { width: 38px; height: 38px; border-radius: 13px; }
+      .brand-name strong { font-size: .95rem; }
+      .brand-name em { font-size: .96rem; }
+      .brand-name span { display: none; }
+      .nav-menu .desktop-cta { display: none; }
+      .hero { padding: 56px 0 36px; }
+      h1 { font-size: clamp(2.42rem, 12vw, 4.1rem); }
+      h1 span { font-size: clamp(1.16rem, 7vw, 2rem); }
+      .hero-actions .btn { width: 100%; }
+      .access-card { padding: 19px; border-radius: 24px; }
+      .access-top { display: block; }
+      .status { margin-top: 13px; }
+      .access-url { align-items: flex-start; }
+      .access-url code { font-size: .79rem; }
+      .section { padding: 52px 0; }
+      .card, .tool-panel { padding: 20px; }
+      .quick-row { grid-template-columns: 1fr; }
+      .license-cta { align-items: stretch; flex-direction: column; }
+      .license-cta .btn { width: 100%; }
+      .mobile-bottom-nav { display: grid; }
+      footer { padding-bottom: 112px; font-size: .86rem; line-height: 1.7; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    GANTI LINK AKSES APLIKASI DI SINI:
+    Cari teks GANTI_LINK_APLIKASI_DI_SINI lalu ubah ke URL aplikasi iMers ModelMate kamu.
+    Contoh: https://imersmodelmate.com/app
+  -->
+
+  <!--
+    GANTI LOGO HEADER DI SINI:
+    Cari teks GANTI_URL_LOGO_HEADER_DI_SINI lalu ubah dengan URL image address logo kamu.
+    Format yang disarankan: PNG transparan, SVG, atau WebP.
+    Contoh: https://domainkamu.com/logo-imersmodelmate.png
+  -->
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="iMers ModelMate">
+        <img
+          class="brand-logo-img"
+          src="GANTI_URL_LOGO_HEADER_DI_SINI"
+          alt="iMers ModelMate"
+          loading="eager"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <span class="brand-fallback" aria-hidden="true">
+          <span class="brand-icon"></span>
+          <span class="brand-name">
+            <strong>iMers <em>ModelMate</em></strong>
+            <span>AI Product Talent Model Studio</span>
+          </span>
+        </span>
+      </a>
+
+      <div class="nav-menu" aria-label="Navigasi utama">
+        <a href="#akses">Akses</a>
+        <a href="#panduan">Panduan</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#lisensi">Lisensi</a>
+        <a href="#link">Link</a>
+        <a class="btn btn-primary desktop-cta" href="GANTI_LINK_APLIKASI_DI_SINI" target="_blank" rel="noopener">Masuk App</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><b>✦</b> Halaman Akses Resmi iMers ModelMate</span>
+          <h1>
+            Selamat Datang di Studio Model Virtual AI
+            <span>Akses prompt visual, model virtual, dan copywriting iklan dari satu dashboard.</span>
+          </h1>
+          <p class="lead">
+            Gunakan halaman ini sebagai pintu masuk utama untuk membuka iMers ModelMate, membaca panduan cepat, dan mulai membuat prompt foto produk premium untuk Midjourney, FLUX, SeaArt, Bing Image Creator, dan generator AI lainnya.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="GANTI_LINK_APLIKASI_DI_SINI" target="_blank" rel="noopener">🚀 Buka iMers ModelMate Sekarang</a>
+            <a class="btn btn-ghost" href="#panduan">Lihat Panduan Cepat</a>
+          </div>
+
+          <div class="micro" aria-label="Benefit singkat">
+            <span>⚡ Generate prompt instan</span>
+            <span>🪄 Varian model premium</span>
+            <span>✍️ Caption siap pakai</span>
+          </div>
+        </div>
+
+        <aside class="access-card" id="akses" aria-label="Kotak akses aplikasi">
+          <div class="access-top">
+            <h2>Akses Dashboard</h2>
+            <span class="status">● Aktif</span>
+          </div>
+
+          <div class="access-box">
+            <div class="access-link-label">Link akses aplikasi</div>
+            <div class="access-url">
+              <code id="appLinkText">GANTI_LINK_APLIKASI_DI_SINI</code>
+              <button class="mini-copy" type="button" data-copy="GANTI_LINK_APLIKASI_DI_SINI" aria-label="Salin link akses">⧉</button>
+            </div>
+            <a class="btn btn-primary" href="GANTI_LINK_APLIKASI_DI_SINI" target="_blank" rel="noopener">Masuk ke Aplikasi</a>
+          </div>
+
+          <div class="notice">
+            <span>💡</span>
+            <p><strong>Catatan:</strong> setelah file HTML ini dipasang, ubah bagian <strong>GANTI_LINK_APLIKASI_DI_SINI</strong> menjadi URL aplikasi final kamu.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="panduan">
+      <div class="container">
+        <div class="section-head">
+          <h2>Mulai Pakai dalam 3 Langkah</h2>
+          <p>Halaman ini dibuat supaya user baru tidak bingung. Mereka tinggal klik akses, isi detail produk, lalu salin prompt dan caption yang sudah dibuat otomatis.</p>
+        </div>
+
+        <div class="grid-3 steps">
+          <article class="card step">
+            <span class="num">1</span>
+            <h3>Buka Dashboard</h3>
+            <p>Klik tombol akses untuk masuk ke aplikasi iMers ModelMate. Pastikan koneksi internet aktif agar proses generate berjalan lancar.</p>
+          </article>
+          <article class="card step">
+            <span class="num">2</span>
+            <h3>Isi Detail Produk</h3>
+            <p>Masukkan nama produk, kategori, deskripsi, target pembeli, keunggulan, serta warna brand agar hasil prompt lebih relevan.</p>
+          </article>
+          <article class="card step">
+            <span class="num">3</span>
+            <h3>Salin & Generate</h3>
+            <p>Salin prompt visual ke generator AI pilihan kamu, lalu pakai caption dan hook yang sudah disiapkan untuk konten jualan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fitur">
+      <div class="container">
+        <div class="section-head">
+          <h2>Yang Bisa Kamu Buat di iMers ModelMate</h2>
+          <p>Fokus utamanya adalah membantu brand menghasilkan konsep visual model virtual yang terlihat premium, konsisten, dan siap dipakai untuk promosi.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <span class="icon-badge i-gold">👑</span>
+            <h3>Model Virtual Premium</h3>
+            <p>Buat karakter brand ambassador virtual dengan vibe, ekspresi, outfit, pose, dan setting foto yang disesuaikan dengan produk.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge i-blue">🧠</span>
+            <h3>Prompt EN & ID</h3>
+            <p>Hasilkan prompt visual dalam bahasa Inggris dan Indonesia, cocok untuk Midjourney, FLUX, SeaArt, Leonardo, atau Bing Image Creator.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge i-pink">✍️</span>
+            <h3>Caption & Hook Jualan</h3>
+            <p>Dapatkan caption, headline, dan angle promosi yang bisa langsung disesuaikan untuk Instagram, TikTok, marketplace, atau WhatsApp.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge i-purple">🧕</span>
+            <h3>Model Hijab & Muslimah</h3>
+            <p>Tersedia varian karakter muslimah, hijab, dan visual fashion yang cocok untuk produk modest wear, gamis, skincare, dan lifestyle.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge i-green">👧</span>
+            <h3>Model Anak</h3>
+            <p>Preset model anak untuk kebutuhan brand pakaian anak, mainan edukasi, produk keluarga, suplemen, dan konten promosi parenting.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge i-red">✂️</span>
+            <h3>Master Talent Cutout</h3>
+            <p>Prompt khusus untuk membuat model full-body dengan background putih polos agar mudah dipotong dan ditempel ke desain promosi.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="lisensi">
+      <div class="container">
+        <div class="license-panel">
+          <span class="license-kicker">🛡️ Lisensi Personal Use</span>
+          <h2>Pahami Hak Pakai Produk Ini Sebelum Digunakan</h2>
+          <p class="license-lead">
+            Akses iMers ModelMate pada halaman ini diberikan untuk penggunaan pribadi. Artinya, Anda boleh memakai produknya untuk kebutuhan sendiri, membuat prompt, membuat konten visual, dan mendukung proses promosi pribadi atau bisnis Anda sendiri.
+          </p>
+
+          <div class="license-grid">
+            <div class="license-box">
+              <strong>🚫 Yang Tidak Diperbolehkan</strong>
+              <ul>
+                <li>Dilarang membagikan file, akses, source, atau isi produk ini kepada pihak lain.</li>
+                <li>Dilarang meremix, mengemas ulang, atau membuat versi turunan dari produk ini untuk dibagikan.</li>
+                <li>Dilarang menjual ulang produk ini dalam bentuk apa pun tanpa lisensi yang sesuai.</li>
+                <li>Dilarang mengklaim produk ini sebagai buatan Anda sendiri pada lisensi personal.</li>
+              </ul>
+            </div>
+
+            <div class="license-box allow">
+              <strong>✅ Untuk Anda yang Mau Menjual</strong>
+              <p>
+                Jika Anda ingin menjual produk ini, Anda bisa membeli lisensi whitelabel. Dengan lisensi whitelabel, produk ini bisa Anda rebrand dan modifikasi untuk kebutuhan bisnis Anda sendiri.
+              </p>
+              <p>
+                Catatan penting: lisensi whitelabel hanya cocok untuk Anda yang sudah paham cara rebrand. Kami tidak mengajarkan cara merebrand, mengedit source, mengganti tampilan, atau mengatur ulang teknis produknya dari nol.
+              </p>
+            </div>
+          </div>
+
+          <div class="license-cta">
+            <p>
+              Setuju dengan ketentuan ini dan ingin masuk ke komunitas reseller? Silakan join grup reseller community melalui tombol berikut.
+            </p>
+            <a class="btn btn-primary" href="https://chat.whatsapp.com/LWR3aWcIYAN0LRKLm0692j" target="_blank" rel="noopener">💬 Join Reseller Community</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="link">
+      <div class="container grid-2">
+        <div class="tool-panel">
+          <div class="section-head" style="margin-bottom:18px; display:block;">
+            <h2 style="font-size:clamp(1.9rem,3vw,2.8rem);">Link Penting</h2>
+            <p style="margin-top:10px;">Bisa kamu ubah sesuai kebutuhan sebelum halaman ini dipasang ke hosting.</p>
+          </div>
+
+          <div class="quick-row">
+            <div>
+              <strong>Dashboard iMers ModelMate</strong>
+              <span>Tempat generate prompt, model virtual, caption, dan hook promosi.</span>
+            </div>
+            <a class="mini-icon" href="GANTI_LINK_APLIKASI_DI_SINI" target="_blank" rel="noopener" aria-label="Buka dashboard">🚀</a>
+          </div>
+
+          <div class="quick-row">
+            <div>
+              <strong>Support WhatsApp</strong>
+              <span>Ganti link ini ke nomor WA support kamu agar user bisa tanya bantuan.</span>
+            </div>
+            <a class="mini-icon" href="https://wa.me/6281270760200" target="_blank" rel="noopener" aria-label="Buka WhatsApp">💬</a>
+          </div>
+
+          <div class="quick-row">
+            <div>
+              <strong>Website iMersnesia</strong>
+              <span>Link brand/developer untuk portofolio, produk lain, atau halaman utama.</span>
+            </div>
+            <a class="mini-icon" href="https://imersnesia.com" target="_blank" rel="noopener" aria-label="Buka website">🌐</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="icon-badge i-gold">📌</span>
+          <h3>Checklist Sebelum Generate</h3>
+          <ul>
+            <li>Siapkan nama produk yang jelas dan mudah dibaca.</li>
+            <li>Tulis deskripsi produk secara spesifik, jangan terlalu umum.</li>
+            <li>Masukkan target pembeli agar karakter model lebih tepat.</li>
+            <li>Tambahkan warna brand supaya visual konsisten.</li>
+            <li>Salin prompt English untuk hasil gambar AI yang lebih optimal.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mulai">
+      <div class="container">
+        <div class="final-cta">
+          <h2>Siap Buat Model Virtual Pertama?</h2>
+          <p>Klik tombol di bawah, buka dashboard, isi detail produk, lalu generate prompt visual premium untuk kebutuhan konten dan promosi brand kamu.</p>
+          <a class="btn btn-primary" href="GANTI_LINK_APLIKASI_DI_SINI" target="_blank" rel="noopener">Buka Dashboard iMers ModelMate</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 iMers ModelMate. Developed with <span class="heart">♥</span> by Terry Katar | <a href="https://imersnesia.com" target="_blank" rel="noopener">iMersnesia.com</a>
+    </div>
+  </footer>
+
+  <nav class="mobile-bottom-nav" aria-label="Navigasi mobile">
+    <a href="#home"><span class="mob-ico i-gold">⌂</span><span>Home</span></a>
+    <a href="#akses"><span class="mob-ico i-blue">↗</span><span>Akses</span></a>
+    <a href="#panduan"><span class="mob-ico i-green">✓</span><span>Panduan</span></a>
+    <a href="#fitur"><span class="mob-ico i-pink">✦</span><span>Fitur</span></a>
+    <a href="#lisensi"><span class="mob-ico i-red">🛡</span><span>Lisensi</span></a>
+  </nav>
+
+  <div class="toast" id="toast">Link akses berhasil disalin</div>
+
+  <script>
+
+    const toast = document.getElementById('toast');
+    const copyButtons = document.querySelectorAll('[data-copy]');
+    copyButtons.forEach((button) => {
+      button.addEventListener('click', async () => {
+        const text = button.getAttribute('data-copy');
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (err) {
+          const temp = document.createElement('textarea');
+          temp.value = text;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+        }
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1800);
+      });
+    });
+  </script>
+</body>
+</html>
