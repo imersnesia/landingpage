@@ -394,6 +394,127 @@
     }
     .step h3 { margin-bottom: 9px; font-size: 18px; }
 
+
+
+    .gallery-marquee {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding: 8px 0 16px;
+      border-radius: 34px;
+      border: 1px solid rgba(245,189,107,.16);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(245,189,107,.12), transparent 34%),
+        radial-gradient(circle at 88% 100%, rgba(229,139,18,.10), transparent 34%),
+        rgba(255,255,255,.025);
+      box-shadow: 0 18px 60px rgba(0,0,0,.18);
+    }
+    .gallery-marquee::before,
+    .gallery-marquee::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 110px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .gallery-marquee::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--bg), rgba(7,7,8,.72), transparent);
+    }
+    .gallery-marquee::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--bg), rgba(7,7,8,.72), transparent);
+    }
+    .gallery-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+      padding: 18px;
+      will-change: transform;
+      animation: galleryMove 36s linear infinite;
+    }
+    .gallery-marquee:hover .gallery-track { animation-play-state: paused; }
+    @keyframes galleryMove {
+      from { transform: translateX(-50%); }
+      to { transform: translateX(0); }
+    }
+    .gallery-card {
+      position: relative;
+      flex: 0 0 clamp(248px, 27vw, 350px);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(245,189,107,.08), rgba(255,255,255,.025)),
+        rgba(15,15,18,.82);
+      border-radius: 28px;
+      overflow: hidden;
+      height: 420px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.24);
+    }
+    .gallery-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(245,189,107,.22), transparent 26%),
+        linear-gradient(to bottom, transparent 50%, rgba(0,0,0,.74));
+      z-index: 2;
+    }
+    .gallery-card img,
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-placeholder {
+      display: none;
+      place-items: center;
+      padding: 26px;
+      text-align: center;
+      color: var(--gold);
+      background:
+        radial-gradient(circle at center, rgba(245,189,107,.16), transparent 38%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 10px, transparent 10px 20px),
+        rgba(255,255,255,.035);
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .gallery-overlay {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 3;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(245,189,107,.22);
+      background: rgba(7,7,8,.70);
+      backdrop-filter: blur(16px);
+    }
+    .gallery-overlay span {
+      display: inline-flex;
+      margin-bottom: 7px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .gallery-overlay b {
+      display: block;
+      font-size: 16px;
+      letter-spacing: -.03em;
+      line-height: 1.25;
+    }
+@media (prefers-reduced-motion: reduce) {
+      .gallery-track { animation: none; transform: translateX(0); }
+    }
+
     .pricing {
       max-width: 920px;
       margin: 0 auto;
@@ -480,12 +601,103 @@
 
     .mobile-only { display: none; }
 
+    .mobile-bottom-nav { display: none; }
+    .footer-heart {
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      margin: 0 5px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, #ff4d7d, #ff9f1a);
+      box-shadow: 0 8px 22px rgba(255,77,125,.28);
+      font-size: 13px;
+      transform: translateY(-1px);
+    }
+    .footer-copy {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2px;
+      line-height: 1.8;
+    }
+
     @media (max-width: 980px) {
       .nav-links { display: none; }
       .mobile-only { display: inline-flex; }
+      body { padding-bottom: 98px; }
+      .mobile-bottom-nav {
+        position: fixed;
+        left: 50%;
+        bottom: max(14px, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        width: min(100% - 28px, 520px);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+        padding: 9px;
+        z-index: 140;
+        border: 1px solid rgba(255,255,255,.16);
+        border-radius: 28px;
+        background: rgba(10,10,13,.82);
+        backdrop-filter: blur(22px);
+        box-shadow: 0 22px 70px rgba(0,0,0,.52), inset 0 1px 0 rgba(255,255,255,.08);
+      }
+      .mobile-bottom-nav a {
+        position: relative;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 7px 3px;
+        border-radius: 20px;
+        color: #f8f4ec;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: -.02em;
+        overflow: hidden;
+      }
+      .mobile-bottom-nav a::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,.055);
+        opacity: 0;
+        transition: .2s ease;
+      }
+      .mobile-bottom-nav a:active::before,
+      .mobile-bottom-nav a:hover::before { opacity: 1; }
+      .nav-ico {
+        position: relative;
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        color: #120f0a;
+        font-size: 16px;
+        box-shadow: 0 10px 24px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.26);
+      }
+      .mobile-bottom-nav small {
+        position: relative;
+        display: block;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .mobile-bottom-nav a:nth-child(1) .nav-ico { background: linear-gradient(135deg, #ff9f1a, #f5bd6b); }
+      .mobile-bottom-nav a:nth-child(2) .nav-ico { background: linear-gradient(135deg, #70e2a4, #a7f3d0); }
+      .mobile-bottom-nav a:nth-child(3) .nav-ico { background: linear-gradient(135deg, #8ab4ff, #b8c7ff); }
+      .mobile-bottom-nav a:nth-child(4) .nav-ico { background: linear-gradient(135deg, #ff7ab6, #ffd1e3); }
+      .mobile-bottom-nav a:nth-child(5) .nav-ico { background: linear-gradient(135deg, #f5bd6b, #ff6b6b); }
       .hero-grid, .solution-wrap { grid-template-columns: 1fr; }
       .hero { padding-top: 60px; }
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .gallery-card { flex-basis: 300px; height: 390px; }
       .grid-3 { grid-template-columns: 1fr; }
       .floating-card { right: 16px; bottom: -34px; }
       .logo-strip { grid-template-columns: repeat(2, 1fr); }
@@ -496,9 +708,17 @@
       .section { padding: 68px 0; }
       .brand-sub { display: none; }
       .nav-inner { height: 68px; }
+      .nav-inner > .btn-primary { display: none; }
+      .brand-title { font-size: 18px; }
+      .brand-mark { width: 39px; height: 39px; border-radius: 13px; }
       h1 { font-size: clamp(39px, 15vw, 58px); }
       .hero-actions .btn { width: 100%; }
       .grid-4, .grid-2, .stat-grid, .feature-list { grid-template-columns: 1fr; }
+      .gallery-marquee { border-radius: 24px; margin-left: -14px; margin-right: -14px; width: calc(100% + 28px); }
+      .gallery-marquee::before, .gallery-marquee::after { width: 52px; }
+      .gallery-track { gap: 14px; padding: 14px; animation-duration: 30s; }
+      .gallery-card { flex-basis: 250px; height: 340px; border-radius: 22px; }
+      .gallery-overlay { left: 12px; right: 12px; bottom: 12px; padding: 13px; border-radius: 16px; }
       .pricing-top { align-items: flex-start; flex-direction: column; padding: 24px; }
       .pricing-body { padding: 20px; }
       .floating-card { position: static; margin-top: 14px; max-width: none; }
@@ -523,12 +743,21 @@
         <a href="#solution">Solusi</a>
         <a href="#features">Fitur</a>
         <a href="#works">Cara Kerja</a>
+        <a href="#gallery">Gallery</a>
         <a href="#pricing">Harga</a>
         <a href="#faq">FAQ</a>
       </nav>
       <a class="btn btn-primary" href="#pricing">Mulai Gratis</a>
     </div>
   </header>
+
+  <nav class="mobile-bottom-nav" aria-label="Navigasi mobile">
+    <a href="#home"><span class="nav-ico" aria-hidden="true">⌂</span><small>Home</small></a>
+    <a href="#features"><span class="nav-ico" aria-hidden="true">✦</span><small>Fitur</small></a>
+    <a href="#gallery"><span class="nav-ico" aria-hidden="true">🖼️</span><small>Gallery</small></a>
+    <a href="#pricing"><span class="nav-ico" aria-hidden="true">💎</span><small>Gratis</small></a>
+    <a href="#faq"><span class="nav-ico" aria-hidden="true">?</span><small>FAQ</small></a>
+  </nav>
 
   <main id="home">
     <section class="hero">
@@ -699,6 +928,81 @@
       </div>
     </section>
 
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Gallery Result</div>
+          <h2>Contoh hasil visual dari iMers ModelMate.</h2>
+          <p>Tampilkan hasil model virtual, produk campaign, dan ide foto AI terbaik dari prompt yang dibuat melalui iMers ModelMate.</p>
+        </div>
+<div class="gallery-marquee" aria-label="Gallery hasil iMers ModelMate berjalan horizontal">
+          <div class="gallery-track">
+          <article class="gallery-card">
+            <img src="GANTI_URL_GALLERY_1" alt="Hasil iMers ModelMate 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_1</div>
+            <div class="gallery-overlay"><span>Result 01</span><b>Model Virtual Fashion Premium</b></div>
+          </article>
+          <article class="gallery-card">
+            <img src="GANTI_URL_GALLERY_2" alt="Hasil iMers ModelMate 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_2</div>
+            <div class="gallery-overlay"><span>Result 02</span><b>Campaign Produk Muslimah</b></div>
+          </article>
+          <article class="gallery-card">
+            <img src="GANTI_URL_GALLERY_3" alt="Hasil iMers ModelMate 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_3</div>
+            <div class="gallery-overlay"><span>Result 03</span><b>Model Anak & Kids Product</b></div>
+          </article>
+          <article class="gallery-card">
+            <img src="GANTI_URL_GALLERY_4" alt="Hasil iMers ModelMate 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_4</div>
+            <div class="gallery-overlay"><span>Result 04</span><b>Foto Produk Lifestyle</b></div>
+          </article>
+          <article class="gallery-card">
+            <img src="GANTI_URL_GALLERY_5" alt="Hasil iMers ModelMate 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_5</div>
+            <div class="gallery-overlay"><span>Result 05</span><b>Master Talent Cutout Ready</b></div>
+          </article>
+          <article class="gallery-card">
+            <img src="GANTI_URL_GALLERY_6" alt="Hasil iMers ModelMate 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_6</div>
+            <div class="gallery-overlay"><span>Result 06</span><b>Visual Ads Produk Premium</b></div>
+          </article>
+          <article class="gallery-card" aria-hidden="true">
+            <img src="GANTI_URL_GALLERY_1" alt="Hasil iMers ModelMate 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_1</div>
+            <div class="gallery-overlay"><span>Result 01</span><b>Model Virtual Fashion Premium</b></div>
+          </article>
+          <article class="gallery-card" aria-hidden="true">
+            <img src="GANTI_URL_GALLERY_2" alt="Hasil iMers ModelMate 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_2</div>
+            <div class="gallery-overlay"><span>Result 02</span><b>Campaign Produk Muslimah</b></div>
+          </article>
+          <article class="gallery-card" aria-hidden="true">
+            <img src="GANTI_URL_GALLERY_3" alt="Hasil iMers ModelMate 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_3</div>
+            <div class="gallery-overlay"><span>Result 03</span><b>Model Anak & Kids Product</b></div>
+          </article>
+          <article class="gallery-card" aria-hidden="true">
+            <img src="GANTI_URL_GALLERY_4" alt="Hasil iMers ModelMate 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_4</div>
+            <div class="gallery-overlay"><span>Result 04</span><b>Foto Produk Lifestyle</b></div>
+          </article>
+          <article class="gallery-card" aria-hidden="true">
+            <img src="GANTI_URL_GALLERY_5" alt="Hasil iMers ModelMate 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_5</div>
+            <div class="gallery-overlay"><span>Result 05</span><b>Master Talent Cutout Ready</b></div>
+          </article>
+          <article class="gallery-card" aria-hidden="true">
+            <img src="GANTI_URL_GALLERY_6" alt="Hasil iMers ModelMate 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="gallery-placeholder">GANTI_URL_GALLERY_6</div>
+            <div class="gallery-overlay"><span>Result 06</span><b>Visual Ads Produk Premium</b></div>
+          </article>
+          </div>
+        </div>
+</div>
+    </section>
+
     <section id="pricing" class="section">
       <div class="container">
         <div class="section-head">
@@ -723,7 +1027,8 @@
               <li><span class="check">✓</span><span>Prompt bilingual Bahasa Indonesia dan English.</span></li>
               <li><span class="check">✓</span><span>Tanpa kartu kredit dan tanpa metode pembayaran.</span></li>
             </ul>
-            
+
+          </div>
 <style>
 .im-wrapper { 
     font-family: 'Inter', sans-serif; 
@@ -781,8 +1086,8 @@
 } 
 .im-input:focus { 
     outline: none; 
-    border-color: #f5bd6b; 
-    box-shadow: 0 0 0 3px rgba(245, 189, 107,0.1); 
+    border-color: #dfbb07; 
+    box-shadow: 0 0 0 3px rgba(223, 187, 7,0.1); 
     background: #fff; 
 } 
 .im-radio-group, .im-checkbox-group { 
@@ -808,7 +1113,7 @@
     background: #f1f5f9; 
 } 
 .im-radio-label input, .im-checkbox-label input { 
-    accent-color: #f5bd6b; 
+    accent-color: #dfbb07; 
     width: 16px; 
     height: 16px; 
     cursor: pointer; 
@@ -834,14 +1139,14 @@
 .im-total-value { 
     font-size: 18px; 
     font-weight: 800; 
-    color: #f5bd6b; 
+    color: #dfbb07; 
 } 
 .im-trust { 
     display: flex; 
     gap: 12px; 
     padding: 12px 16px; 
-    background: rgba(245, 189, 107, 0.08); 
-    border: 1px solid rgba(245, 189, 107, 0.2); 
+    background: rgba(223, 187, 7, 0.08); 
+    border: 1px solid rgba(223, 187, 7, 0.2); 
     border-radius: 12px; 
     margin-bottom: 16px; 
     align-items: flex-start; 
@@ -849,7 +1154,7 @@
 .im-trust-title { 
     font-size: 13px; 
     font-weight: 700; 
-    color: #f5bd6b; 
+    color: #dfbb07; 
     line-height: 1.2; 
 } 
 .im-trust-desc { 
@@ -875,7 +1180,7 @@
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
 }
 .im-timer-wrap { text-align: center; margin-bottom: 12px; }
-.im-timer { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; font-size: 14px; color: #f5bd6b; background: rgba(245, 189, 107, 0.1); padding: 8px 16px; border-radius: 99px; }
+.im-timer { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; font-size: 14px; color: #dfbb07; background: rgba(223, 187, 7, 0.1); padding: 8px 16px; border-radius: 99px; }
 .im-error-modal { position: fixed; inset: 0; background: rgba(15,23,42,0.6); backdrop-filter: blur(4px); z-index: 999999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 16px; }
 .im-error-modal.im-show { opacity: 1; pointer-events: auto; }
 .im-error-box { background: white; padding: 24px; border-radius: 20px; text-align: center; max-width: 320px; width: 100%; transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
@@ -894,7 +1199,7 @@
     border: none; 
     cursor: pointer; 
     font-size: 16px; 
-    background: linear-gradient(135deg, #f5bd6b, #ff9f1a); 
+    background: linear-gradient(135deg, #dfbb07, #fdd926); 
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); 
 }
 .im-overlay { 
@@ -948,16 +1253,16 @@
 
 </style>
 
-<button class="im-trigger-btn" onclick="document.getElementById('im-overlay').classList.add('im-show')"><span style="background: linear-gradient(135deg, #000000, #282824); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Akses Sekarang</span></button>
+<button class="im-trigger-btn" onclick="document.getElementById('im-overlay').classList.add('im-show')"><span style="color: #000000;">Akses Gratis Sekarang</span></button>
 <div id="im-overlay" class="im-overlay">
     <div class="im-modal">
         <button class="im-close" onclick="document.getElementById('im-overlay').classList.remove('im-show')">✕</button>
 
 <div class="im-wrapper">
-    <div class="im-header" style="background: linear-gradient(135deg, #000000, #1a1b1e)">
+    <div class="im-header" style="background: linear-gradient(135deg, #000000, #000000)">
         <img src="https://imersnesia.com/wp-content/uploads/2026/07/iMersmodelmate.png" class="im-logo" alt="Logo">
 
-        <h2 class="im-title" style="background: linear-gradient(135deg, #ff9f1a, #f5bd6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Akses Gratis iMersModelMate</h2>
+        <h2 class="im-title" style="background: linear-gradient(135deg, #d2b41e, #fab700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Gratis iMersModelMate</h2>
 
     </div>
     <form id="im-form" class="im-body" onsubmit="return false;">
@@ -997,7 +1302,7 @@
             
             
                 <div class="im-trust">
-                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" style="color:#f5bd6b; flex-shrink:0">
+                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" style="color:#dfbb07; flex-shrink:0">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         <polyline points="9 12 11 14 15 10"></polyline>
                     </svg>
@@ -1015,7 +1320,7 @@
                     </div>
                 </div>
             
-            <button id="im-submit-btn" type="submit" class="im-btn" style="background: linear-gradient(135deg, #f5bd6b, #ff9f1a)"><span style="background: linear-gradient(135deg, #000000, #282824); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Akses Sekarang</span></button>
+            <button id="im-submit-btn" type="submit" class="im-btn" style="background: linear-gradient(135deg, #dfbb07, #fdd926)"><span style="color: #000000;">Akses Gratis Sekarang</span></button>
         </div>
     </form>
     
@@ -1112,56 +1417,13 @@ let sessionLeadId = 'LD_' + Date.now() + '_' + Math.random().toString(36).substr
 (function() {
     const sheetUrl = 'https://script.google.com/macros/s/AKfycbxY1yXfvrNPrvi0hKs1bHc8LmkEdaX-APvdMs1W0VlBJD-0cSGLHIyFXp8oQ07fyMDL/exec';
     if(sheetUrl && sheetUrl.startsWith('http')) {
-        fetch(sheetUrl + "?action=track_view&form_name=" + encodeURIComponent('Akses Gratis iMersModelMate'), {
+        fetch(sheetUrl + "?action=track_view&form_name=" + encodeURIComponent('Gratis iMersModelMate'), {
             method: 'GET',
             mode: 'no-cors'
         });
     }
 })();
 
-
-let captureTimeout;
-let lastCapturedData = '';
-const formElCap = document.getElementById('im-form');
-formElCap.addEventListener('input', function(e) {
-    clearTimeout(captureTimeout);
-    captureTimeout = setTimeout(() => {
-        const fd = new FormData(formElCap);
-        const telInput = formElCap.querySelector('input[type="tel"]');
-        if (!telInput || !telInput.value) return;
-        
-        if (validateWA(telInput.value)) {
-            let formObj = {}; 
-            for (let [key, value] of fd.entries()) { 
-                if (formObj[key]) formObj[key] += ', ' + value; 
-                else formObj[key] = value; 
-            } 
-            
-            let jsonData = {
-                Waktu_Order: new Date().toLocaleString(),
-                Nama_Form: 'Akses Gratis iMersModelMate',
-                wa_target: '',
-                Status_Pesanan: 'UNFINISHED',
-                Lead_ID: sessionLeadId
-            };
-            for (let key in formObj) { jsonData[key] = formObj[key]; }
-            
-            let finalTotal = calculateTotal();
-            if (finalTotal > 0) jsonData['Total_Tagihan'] = finalTotal;
-            
-            const currentDataStr = JSON.stringify(jsonData);
-            if (currentDataStr !== lastCapturedData) {
-                lastCapturedData = currentDataStr;
-                fetch('https://script.google.com/macros/s/AKfycbxY1yXfvrNPrvi0hKs1bHc8LmkEdaX-APvdMs1W0VlBJD-0cSGLHIyFXp8oQ07fyMDL/exec', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {'Content-Type': 'application/json'},
-                    body: currentDataStr
-                });
-            }
-        }
-    }, 1500);
-});
 
 
 document.getElementById('im-form').addEventListener('submit', function(e) { 
@@ -1189,12 +1451,12 @@ document.getElementById('im-form').addEventListener('submit', function(e) {
         }
     } 
     
-    let waText = 'Halo, saya ingin klaim akses gratis iMersModelMate.\n\n*Form:* Akses Gratis iMersModelMate\n'; 
+    let waText = 'Halo, saya ingin klaim akses gratis iMersModelMate.\n\n*Form:* Gratis iMersModelMate\n'; 
     
     let jsonData = { 
         Waktu_Order: new Date().toLocaleString(), 
-        Nama_Form: 'Akses Gratis iMersModelMate', 
-        wa_target: '',
+        Nama_Form: 'Gratis iMersModelMate', 
+        wa_target: '6281398077819',
         Status_Pesanan: 'SUBMITTED',
         Lead_ID: sessionLeadId
     }; 
@@ -1214,7 +1476,7 @@ document.getElementById('im-form').addEventListener('submit', function(e) {
     jsonData.wa_text = waText; 
     
     // Logika Rotator / Multi-CS
-    const rawWaTargets = '';
+    const rawWaTargets = '6281398077819';
     const waNumbers = rawWaTargets.split(',').map(n => n.trim()).filter(n => n);
     const selectedWa = waNumbers[Math.floor(Math.random() * waNumbers.length)] || waNumbers[0] || '';
     
@@ -1231,24 +1493,23 @@ document.getElementById('im-form').addEventListener('submit', function(e) {
             headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify(jsonData) 
         }).then(() => { 
-            btn.innerText = 'Terkirim ✓'; btn.style.background = '#10b981'; btn.style.color = '#fff'; 
+            window.location.href = waUrl; 
         }).catch(() => { 
-            btn.innerText = 'Terkirim ✓'; btn.style.background = '#10b981'; btn.style.color = '#fff'; 
+            window.location.href = waUrl; 
         }); 
         
         setTimeout(() => { 
             if(btn.innerText === 'Memproses...') { 
-                btn.innerText = 'Terkirim ✓'; btn.style.background = '#10b981'; btn.style.color = '#fff'; 
+                window.location.href = waUrl; 
             } 
         }, 3500); 
     } else { 
-        btn.innerText = 'Terkirim ✓'; btn.style.background = '#10b981'; btn.style.color = '#fff'; 
+        window.location.href = waUrl; 
     } 
 });
 </script>
 
 
-          </div>
         </div>
       </div>
     </section>
@@ -1294,7 +1555,7 @@ document.getElementById('im-form').addEventListener('submit', function(e) {
 
   <footer>
     <div class="container footer-inner">
-      <div>© 2026 iMers ModelMate. AI Product Talent Model Studio.</div>
+      <div class="footer-copy">© 2026 iMers ModelMate. Developed with <span class="footer-heart" aria-label="love">♥</span> by Terry Katar | <a href="https://imersnesia.com" target="_blank" rel="noopener">iMersnesia.com</a></div>
       <div><a href="#home">Kembali ke atas ↑</a></div>
     </div>
   </footer>
