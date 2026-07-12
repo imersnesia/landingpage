@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syarat & Ketentuan Lisensi - iMersTeleship PHP cPanel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        tele: { 400: '#33c0ff', 500: '#2AABEE', 600: '#229ED9' },
+                        ink: { 900: '#0f172a', 800: '#1e293b', 700: '#334155' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background:
+                radial-gradient(circle at 12% 0%, rgba(42,171,238,.18), transparent 32%),
+                radial-gradient(circle at 90% 0%, rgba(168,85,247,.14), transparent 34%),
+                radial-gradient(circle at 50% 100%, rgba(16,185,129,.10), transparent 34%),
+                linear-gradient(180deg, #f8fafc 0%, #ffffff 45%, #f1f5f9 100%);
+            color: #334155;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .soft-card { box-shadow: 0 28px 90px rgba(15, 23, 42, 0.08); }
+        .cta-glow { box-shadow: 0 20px 50px rgba(42, 171, 238, 0.35); }
+        .number-badge {
+            width: 2.1rem;
+            height: 2.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background: rgba(42,171,238,.12);
+            color: #229ED9;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased py-10 px-4 sm:px-6 lg:px-8">
+    <main class="max-w-4xl mx-auto">
+        <header class="text-center mb-9">
+            <a href="#" class="inline-flex justify-center items-center mb-8 hover:opacity-90 transition-opacity">
+                <img
+                    src="https://imersnesia.com/wp-content/uploads/2026/07/imersteleship.png"
+                    alt="iMersTeleship"
+                    class="h-20 sm:h-24 md:h-28 w-auto object-contain"
+                >
+            </a>
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                📜 Syarat & Ketentuan Lisensi
+            </h1>
+            <p class="text-slate-500 mt-4 font-semibold text-sm sm:text-base">
+                Pembaruan Terakhir: Juli 2026
+            </p>
+        </header>
+
+        <section class="bg-white rounded-[2rem] sm:rounded-[2.5rem] soft-card p-6 sm:p-10 md:p-12 border border-slate-100">
+            <p class="text-slate-600 mb-9 leading-relaxed font-medium text-base sm:text-lg">
+                Terima kasih telah mempercayakan <b>iMersTeleship</b> sebagai sistem toko digital Telegram Anda.
+                Dengan melakukan pembelian, mengunduh, menginstal, atau menggunakan <i>source code</i> ini, Anda dianggap telah membaca, memahami, dan menyetujui seluruh syarat serta ketentuan lisensi berikut.
+            </p>
+
+            <div class="space-y-9">
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">1</span>
+                        Sistem Jual Putus Berbasis PHP & cPanel
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Produk ini dijual dengan sistem jual putus berupa <i>source code</i> PHP, file dashboard admin, file webhook Telegram, struktur database, serta aset pendukung yang diperlukan untuk menjalankan sistem toko digital berbasis Telegram di hosting cPanel.
+                        Kami memastikan versi bawaan yang diberikan telah diuji pada lingkungan standar hosting PHP dan dapat berjalan sesuai fungsi utama sistem.
+                    </p>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">2</span>
+                        Kebutuhan Hosting, Domain, dan Server
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Sistem ini membutuhkan hosting yang mendukung PHP, database yang sesuai dengan paket source code, SSL aktif, dan akses cPanel atau file manager untuk upload file.
+                        Kualitas hosting, limit server, pengaturan SSL, konfigurasi domain, proteksi firewall, atau pembatasan dari provider hosting berada di luar kendali kami.
+                    </p>
+                    <div class="mt-4 bg-blue-50 border border-blue-100 rounded-2xl p-4 text-sm text-blue-900 font-medium leading-relaxed">
+                        Rekomendasi: gunakan hosting cPanel yang stabil, domain aktif, SSL HTTPS, dan pastikan URL webhook dapat diakses publik agar bot Telegram dapat berkomunikasi dengan sistem.
+                    </div>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">3</span>
+                        Hak Penggunaan White-Label
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Anda diperbolehkan menggunakan sistem ini dengan brand Anda sendiri, termasuk mengubah logo, nama sistem, nama bot, foto profil bot, copywriting pesan, tampilan sales page, produk, harga, rekening pembayaran, QRIS, domain, dan identitas toko Anda sendiri.
+                        Anda juga bebas menentukan strategi harga jual produk digital yang dijual melalui bot Anda.
+                    </p>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">4</span>
+                        Modifikasi Source Code
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Anda diperbolehkan memodifikasi source code sesuai kebutuhan dan kemampuan teknis Anda. Namun, apabila terjadi <i>error</i>, <i>bug</i>, kerusakan tampilan, kegagalan webhook, gangguan checkout, atau sistem berhenti berjalan akibat modifikasi kode, perubahan struktur database, perubahan alur logic, penghapusan file, kesalahan upload, atau konfigurasi hosting yang tidak sesuai, maka hal tersebut sepenuhnya menjadi tanggung jawab Anda.
+                    </p>
+                    <div class="mt-4 bg-rose-50 border border-rose-100 rounded-2xl p-4 text-sm text-rose-700 font-semibold leading-relaxed">
+                        Kami tidak berkewajiban memperbaiki source code yang sudah diubah, dirombak, digabung dengan sistem lain, atau dimodifikasi oleh pihak pembeli maupun pihak ketiga.
+                    </div>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">5</span>
+                        Batas Dukungan Teknis
+                    </h2>
+                    <div class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Dukungan teknis hanya mencakup hal-hal berikut:
+                        <ul class="list-disc list-inside mt-3 space-y-2 ml-2">
+                            <li>Panduan instalasi dasar sesuai dokumentasi resmi.</li>
+                            <li>Bantuan pengecekan jika versi asli source code belum dimodifikasi dan terjadi kendala saat instalasi awal.</li>
+                            <li>Laporan bug yang terbukti berasal dari versi bawaan source code, bukan karena perubahan kode, hosting, domain, atau konfigurasi pihak pembeli.</li>
+                        </ul>
+                        <p class="mt-4 bg-amber-50 border border-amber-100 rounded-2xl p-4 text-amber-800 font-semibold">
+                            Dukungan tidak mencakup jasa custom fitur, edit tampilan khusus, integrasi payment gateway baru, migrasi hosting, debugging hasil modifikasi, atau konsultasi coding lanjutan. Kebutuhan tersebut dapat diajukan sebagai layanan custom berbayar jika tersedia.
+                        </p>
+                    </div>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">6</span>
+                        Metode Pembayaran Manual
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        iMersTeleship mendukung sistem pembayaran manual seperti transfer bank, e-wallet, dan QRIS statis sesuai data yang Anda masukkan di dashboard admin.
+                        Sistem ini tidak menjamin, memverifikasi otomatis, atau bertanggung jawab atas validitas pembayaran di luar alur yang tersedia. Proses pengecekan, approval, refund, komplain pembayaran, dan layanan pelanggan akhir sepenuhnya menjadi tanggung jawab pemilik toko.
+                    </p>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">7</span>
+                        Keamanan Token, Admin, dan Data
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Anda bertanggung jawab menjaga keamanan Bot Token Telegram, Admin Chat ID, username dan password dashboard, akses hosting, database, file konfigurasi, serta data pelanggan Anda.
+                        Jangan membagikan token bot, akses cPanel, atau kredensial admin kepada pihak yang tidak dipercaya.
+                    </p>
+                    <div class="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-sm text-slate-600 font-medium leading-relaxed">
+                        Jika token bot atau akses admin pernah tersebar, segera lakukan penggantian token melalui BotFather, ubah password dashboard, dan cek ulang file konfigurasi di hosting Anda.
+                    </div>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">8</span>
+                        Larangan Distribusi Source Code / PLR / MRR
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base mb-4">
+                        Anda <b>dilarang keras</b> menjual ulang, membagikan gratis, menyewakan, mengunggah ke marketplace source code, membocorkan, mendistribusikan, atau menjadikan source code mentah ini sebagai produk PLR, MRR, reseller source code, bundle source code, atau produk turunan sejenis.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                        Jika Anda ingin menjual sistem ini kepada klien, Anda hanya diperbolehkan bertindak sebagai <b>penyedia jasa setup / agensi terima beres</b>. Klien hanya boleh menerima sistem yang sudah terpasang dan siap pakai di hosting/domain mereka, bukan source code mentah untuk dijual ulang lagi.
+                    </p>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">9</span>
+                        Tanggung Jawab Terhadap End User
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Kami sebagai developer asli tidak memiliki hubungan langsung, kewajiban layanan, tanggung jawab hukum, tanggung jawab finansial, atau kewajiban refund kepada pelanggan akhir dari toko Anda.
+                        Segala bentuk komplain, refund, dispute pembayaran, masalah akses produk, layanan pelanggan, dan konsekuensi transaksi sepenuhnya menjadi tanggung jawab Anda sebagai pemilik toko, brand, atau agensi yang menggunakan sistem ini.
+                    </p>
+                </article>
+
+                <article>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3 flex items-start gap-3">
+                        <span class="number-badge">10</span>
+                        Pembaruan dan Perbedaan Versi
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Fitur, tampilan, struktur file, dan alur sistem dapat berubah mengikuti versi pengembangan terbaru. Pembeli hanya mendapatkan file sesuai paket dan versi yang dibeli pada saat transaksi, kecuali ada kebijakan update khusus yang dinyatakan secara terpisah.
+                        Jika Anda menggunakan versi yang sudah dimodifikasi, pembaruan dari versi terbaru mungkin tidak dapat langsung diterapkan tanpa penyesuaian teknis.
+                    </p>
+                </article>
+            </div>
+
+            <hr class="border-slate-200 my-9">
+
+            <div class="bg-slate-50 p-5 sm:p-6 rounded-3xl text-center border border-slate-100">
+                <p class="text-slate-500 text-xs sm:text-sm italic font-semibold leading-relaxed">
+                    "Dengan menginstal dan menjalankan iMersTeleship di hosting Anda, Anda menyetujui untuk membebaskan developer asli dari segala tuntutan teknis, finansial, maupun hukum yang timbul akibat penggunaan, modifikasi, transaksi, layanan pelanggan, atau pengelolaan toko digital Anda."
+                </p>
+            </div>
+
+            <div class="text-center mt-9">
+                <a
+                    href="#"
+                    class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-tele-500 to-blue-600 hover:from-tele-600 hover:to-blue-700 text-white font-black px-8 py-4 rounded-2xl transition-all duration-300 cta-glow hover:-translate-y-1"
+                >
+                    🚀 Yakin Saya Beli
+                </a>
+                <p class="text-xs text-slate-400 mt-3 font-semibold">
+                    Dengan klik tombol ini, Anda menyatakan telah membaca dan menyetujui syarat lisensi.
+                </p>
+            </div>
+        </section>
+
+        <div class="text-center mt-10">
+            <a href="index.html" class="inline-flex items-center gap-2 text-slate-500 hover:text-tele-600 font-bold transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Kembali ke Halaman Utama
+            </a>
+        </div>
+
+        <footer class="text-center mt-10 pb-5">
+            <a href="#" class="inline-flex justify-center items-center mb-4 hover:opacity-90 transition-opacity">
+                <img
+                    src="https://imersnesia.com/wp-content/uploads/2026/07/imersteleship.png"
+                    alt="iMersTeleship"
+                    class="h-12 sm:h-14 w-auto object-contain"
+                >
+            </a>
+            <p class="text-xs sm:text-sm text-slate-400 font-semibold">
+                iMersTeleship developed by
+                <span class="text-slate-600">Terry Katar</span>
+                |
+                <a href="https://imersnesia.com" target="_blank" rel="noopener" class="text-tele-500 hover:text-tele-600 transition-colors">
+                    iMersnesia.com
+                </a>
+            </p>
+        </footer>
+    </main>
+</body>
+</html>
