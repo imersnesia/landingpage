@@ -1,10 +1,22 @@
 <!-- ================================
 SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
+MOBILE FRIENDLY VERSION
 ================================ -->
 <section class="imt-demo-admin-section">
   <div class="imt-demo-admin-bg"></div>
 
   <div class="imt-demo-admin-container">
+
+    <!-- LOGO -->
+    <div class="imt-section-logo-wrap">
+      <a href="#" class="imt-section-logo-link">
+        <img 
+          src="https://imersnesia.com/wp-content/uploads/2026/07/imersteleship.png" 
+          alt="iMersTeleShip Logo"
+          class="imt-section-logo"
+        >
+      </a>
+    </div>
 
     <!-- DEMO ADMIN CARD -->
     <div class="imt-demo-admin-card">
@@ -176,6 +188,14 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
 
     <!-- FOOTER -->
     <footer class="imt-member-footer">
+      <a href="#" class="imt-footer-logo-link">
+        <img 
+          src="https://imersnesia.com/wp-content/uploads/2026/07/imersteleship.png" 
+          alt="iMersTeleShip Logo"
+          class="imt-footer-logo"
+        >
+      </a>
+
       <p>
         Developed with love by 
         <strong>Terry Katar</strong> 
@@ -190,9 +210,18 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
+  .imt-demo-admin-section,
+  .imt-demo-admin-section *,
+  .imt-demo-admin-section *::before,
+  .imt-demo-admin-section *::after {
+    box-sizing: border-box;
+  }
+
   .imt-demo-admin-section {
     position: relative;
-    padding: 80px 20px;
+    width: 100%;
+    max-width: 100%;
+    padding: 72px 18px;
     overflow: hidden;
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background:
@@ -214,13 +243,37 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
 
   .imt-demo-admin-container {
     position: relative;
-    max-width: 1120px;
+    width: min(1120px, 100%);
     margin: 0 auto;
   }
 
+  .imt-section-logo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .imt-section-logo-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    max-width: 100%;
+  }
+
+  .imt-section-logo {
+    width: min(340px, 82vw);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 18px 32px rgba(37, 99, 235, 0.16));
+  }
+
   .imt-demo-admin-card {
+    width: 100%;
     display: grid;
-    grid-template-columns: 1.08fr 0.92fr;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
     gap: 34px;
     align-items: center;
     background: rgba(255, 255, 255, 0.82);
@@ -231,10 +284,16 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
     backdrop-filter: blur(18px);
   }
 
+  .imt-demo-admin-left,
+  .imt-demo-admin-right {
+    min-width: 0;
+  }
+
   .imt-demo-admin-badge {
     display: inline-flex;
     align-items: center;
     gap: 9px;
+    max-width: 100%;
     padding: 10px 16px;
     border-radius: 999px;
     background: linear-gradient(90deg, #e0f2fe, #ede9fe);
@@ -245,15 +304,17 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
     letter-spacing: 0.06em;
     margin-bottom: 22px;
     box-shadow: 0 10px 30px rgba(37, 99, 235, 0.12);
+    white-space: normal;
   }
 
   .imt-demo-admin-left h2 {
     margin: 0 0 18px;
     color: #0f172a;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(30px, 4vw, 52px);
     line-height: 1.04;
     font-weight: 950;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.045em;
+    overflow-wrap: anywhere;
   }
 
   .imt-demo-admin-left h2 span {
@@ -281,6 +342,7 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
   }
 
   .imt-demo-feature-item {
+    min-width: 0;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -312,6 +374,8 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
 
   .imt-login-card {
     position: relative;
+    width: 100%;
+    min-width: 0;
     background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
     border: 1px solid #e4ecf7;
     border-radius: 30px;
@@ -365,14 +429,19 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
 
   .imt-login-info {
     position: relative;
+    width: 100%;
+    min-width: 0;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 22px;
     padding: 8px 18px;
     margin-bottom: 22px;
+    overflow: hidden;
   }
 
   .imt-login-row {
+    width: 100%;
+    min-width: 0;
     display: flex;
     justify-content: space-between;
     gap: 16px;
@@ -389,6 +458,7 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
     color: #475569;
     font-size: 13px;
     font-weight: 900;
+    flex-shrink: 0;
   }
 
   .imt-login-row a {
@@ -398,6 +468,8 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
     text-decoration: none;
     text-align: right;
     word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
   }
 
   .imt-login-row strong {
@@ -426,6 +498,7 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
     font-weight: 950;
     box-shadow: 0 20px 44px rgba(37, 99, 235, 0.28);
     transition: 0.25s ease;
+    text-align: center;
   }
 
   .imt-demo-button:hover {
@@ -482,6 +555,7 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
   }
 
   .imt-special-price-box {
+    width: 100%;
     max-width: 1120px;
     margin: 28px auto 0;
     padding: 32px;
@@ -491,13 +565,13 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
       linear-gradient(135deg, #ffffff 0%, #f8fbff 52%, #f5f3ff 100%);
     border: 1px solid #e5e7eb;
     box-shadow: 0 24px 70px rgba(37, 99, 235, 0.10);
-    font-family: Inter, system-ui, sans-serif;
   }
 
   .imt-special-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    max-width: 100%;
     padding: 9px 15px;
     border-radius: 999px;
     background: linear-gradient(90deg, #fff7ed, #fef3c7);
@@ -516,6 +590,7 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
     font-weight: 950;
     color: #0f172a;
     letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
   }
 
   .imt-special-price-box > p {
@@ -577,6 +652,7 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
   }
 
   .imt-special-list li {
+    min-width: 0;
     background: #ffffff;
     border: 1px solid #e8eef8;
     color: #1e293b;
@@ -599,6 +675,7 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
   }
 
   .imt-community-cta {
+    width: 100%;
     max-width: 1120px;
     margin: 24px auto 0;
     display: flex;
@@ -612,7 +689,6 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
       linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #312e81 100%);
     color: white;
     box-shadow: 0 28px 80px rgba(15, 23, 42, 0.22);
-    font-family: Inter, system-ui, sans-serif;
   }
 
   .imt-community-label {
@@ -646,12 +722,12 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 290px;
+    width: auto;
+    max-width: 100%;
     min-height: 58px;
     padding: 16px 24px;
     border-radius: 18px;
-    background:
-      linear-gradient(90deg, #2AABEE 0%, #2563eb 48%, #9333ea 100%);
+    background: linear-gradient(90deg, #2AABEE 0%, #2563eb 48%, #9333ea 100%);
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
@@ -661,6 +737,7 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
       0 0 0 1px rgba(255, 255, 255, 0.18) inset;
     transition: 0.25s ease;
     text-align: center;
+    white-space: normal;
   }
 
   .imt-community-button:hover {
@@ -673,16 +750,34 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
 
   .imt-member-footer {
     max-width: 1120px;
-    margin: 26px auto 0;
+    margin: 30px auto 0;
     text-align: center;
-    padding: 24px 16px 8px;
-    font-family: Inter, system-ui, sans-serif;
+    padding: 30px 16px 8px;
+  }
+
+  .imt-footer-logo-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 14px;
+    text-decoration: none;
+    max-width: 100%;
+  }
+
+  .imt-footer-logo {
+    width: min(220px, 72vw);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.95;
+    filter: drop-shadow(0 12px 24px rgba(37, 99, 235, 0.12));
   }
 
   .imt-member-footer p {
     margin: 0;
     color: #64748b;
     font-size: 14px;
+    line-height: 1.6;
     font-weight: 700;
   }
 
@@ -696,66 +791,169 @@ SECTION: AKSES DEMO ADMIN WEB + SPECIAL PRICE + COMMUNITY CTA + FOOTER
     font-weight: 900;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 920px) {
     .imt-demo-admin-card {
       grid-template-columns: 1fr;
-      padding: 28px;
+      gap: 26px;
+      padding: 30px;
       border-radius: 30px;
     }
 
     .imt-demo-feature-list {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 860px) {
-    .imt-special-list {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     .imt-community-cta {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: stretch;
+      text-align: left;
     }
 
     .imt-community-button {
       width: 100%;
-      min-width: unset;
     }
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 680px) {
     .imt-demo-admin-section {
-      padding: 56px 16px;
+      padding: 52px 14px;
     }
 
-    .imt-demo-admin-card {
+    .imt-section-logo {
+      width: min(300px, 86vw);
+    }
+
+    .imt-section-logo-wrap {
+      margin-bottom: 24px;
+    }
+
+    .imt-demo-admin-card,
+    .imt-special-price-box,
+    .imt-community-cta {
       padding: 22px;
+      border-radius: 24px;
+    }
+
+    .imt-demo-admin-left h2 {
+      font-size: clamp(30px, 9vw, 38px);
+      letter-spacing: -0.04em;
+    }
+
+    .imt-demo-admin-left > p,
+    .imt-special-price-box > p,
+    .imt-community-cta p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .imt-demo-feature-list,
+    .imt-special-list {
+      grid-template-columns: 1fr;
     }
 
     .imt-login-card {
       padding: 22px;
+      border-radius: 24px;
+    }
+
+    .imt-login-card h3 {
+      font-size: 24px;
     }
 
     .imt-login-row {
       flex-direction: column;
       align-items: flex-start;
-      gap: 8px;
+      gap: 7px;
     }
 
     .imt-login-row a {
       text-align: left;
+      width: 100%;
     }
 
     .imt-demo-warning,
     .imt-special-highlight {
       flex-direction: column;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 22px;
     }
 
+    .imt-community-cta h3 {
+      font-size: clamp(24px, 8vw, 30px);
+    }
+
+    .imt-community-button,
+    .imt-demo-button {
+      min-height: 54px;
+      font-size: 15px;
+      padding: 14px 18px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .imt-demo-admin-section {
+      padding: 42px 12px;
+    }
+
+    .imt-section-logo {
+      width: min(260px, 88vw);
+    }
+
+    .imt-demo-admin-card,
     .imt-special-price-box,
     .imt-community-cta {
-      padding: 22px;
-      border-radius: 24px;
+      padding: 18px;
+      border-radius: 22px;
+    }
+
+    .imt-demo-admin-badge,
+    .imt-special-badge {
+      font-size: 10.5px;
+      line-height: 1.4;
+      padding: 8px 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .imt-demo-admin-left h2 {
+      font-size: 30px;
+      line-height: 1.08;
+    }
+
+    .imt-demo-admin-left > p,
+    .imt-special-price-box > p,
+    .imt-community-cta p,
+    .imt-demo-warning p,
+    .imt-special-note {
+      font-size: 14px;
+    }
+
+    .imt-demo-feature-item {
+      padding: 13px;
+    }
+
+    .imt-demo-feature-item p,
+    .imt-special-list li {
+      font-size: 13.5px;
+    }
+
+    .imt-login-info {
+      padding: 6px 14px;
+      border-radius: 18px;
+    }
+
+    .imt-login-row strong {
+      font-size: 13px;
+    }
+
+    .imt-special-price-box h3 {
+      font-size: 25px;
+      line-height: 1.15;
+    }
+
+    .imt-member-footer {
+      padding-left: 6px;
+      padding-right: 6px;
     }
   }
 </style>
