@@ -87,6 +87,60 @@
     ::-webkit-scrollbar-track { background: #f1f5f9; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+
+    .shorts-shell {
+      width: min(390px, 100%);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .shorts-shell::before {
+      content: "";
+      position: absolute;
+      inset: -22px;
+      border-radius: 38px;
+      background: linear-gradient(135deg, rgba(42, 171, 238, .24), rgba(139, 92, 246, .20));
+      filter: blur(22px);
+      opacity: .85;
+      z-index: -1;
+    }
+
+    .shorts-phone {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 34px;
+      overflow: hidden;
+      background: #0f172a;
+      border: 10px solid rgba(15, 23, 42, .94);
+      box-shadow:
+        0 26px 75px rgba(15, 23, 42, .26),
+        0 0 0 1px rgba(255,255,255,.14) inset;
+    }
+
+    .shorts-phone::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 74px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.22);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .shorts-phone iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
   </style>
 </head>
 
@@ -244,14 +298,18 @@
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-10">
         <h2 class="text-tele-600 font-extrabold tracking-widest uppercase text-sm mb-3">Review & Demo Video</h2>
-        <h3 class="text-3xl md:text-5xl font-black text-slate-800">Lihat Cara iMersTeleship Bekerja</h3>
-        <p class="text-slate-600 mt-5 max-w-2xl mx-auto font-medium leading-relaxed">Tempelkan embed video YouTube Anda di area ini untuk menampilkan demo dashboard, alur checkout bot, dan proses pengaturan sistem.</p>
+        <h3 class="text-3xl md:text-5xl font-black text-slate-800">Lihat Demo Singkat iMersTeleship</h3>
       </div>
 
-      <div class="bg-white rounded-[2rem] p-3 md:p-4 shadow-soft border border-slate-100">
-        <div class="aspect-video rounded-[1.5rem] overflow-hidden bg-slate-900 relative">
-          <!-- GANTI BAGIAN IFRAME DI BAWAH INI DENGAN EMBED VIDEO YOUTUBE ANDA -->
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/GANTI_VIDEO_ID" title="Review iMersTeleship" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="shorts-shell">
+        <div class="shorts-phone">
+          <iframe
+            src="https://www.youtube.com/embed/Xya7R88ja8E?si=wDspNUsdytXebOK_"
+            title="YouTube Shorts Demo iMersTeleship"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </div>
