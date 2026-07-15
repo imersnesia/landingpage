@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Instalasi iMersTeleship dari Nol Sampai Live</title>
+  <meta name="description" content="Panduan lengkap instalasi iMersTeleship mulai dari download SQL dan source code PHP, membuat database MySQL, import melalui phpMyAdmin, upload ke cPanel, menghubungkan Telegram Bot, hingga siap digunakan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: { tele: { 50:'#eef9ff',100:'#d8f1ff',400:'#33c0ff',500:'#2AABEE',600:'#229ED9',700:'#147fb7' } },
+          boxShadow: { soft:'0 24px 80px rgba(15,23,42,.10)', glow:'0 18px 45px rgba(42,171,238,.28)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body{color:#1e293b;background:radial-gradient(circle at 8% 8%,rgba(42,171,238,.18),transparent 30%),radial-gradient(circle at 94% 12%,rgba(139,92,246,.16),transparent 30%),radial-gradient(circle at 50% 100%,rgba(16,185,129,.11),transparent 34%),linear-gradient(135deg,#f8fbff 0%,#f5f7ff 50%,#faf7ff 100%);min-height:100vh}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(37,99,235,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.035) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(circle at center,#000,transparent 84%)}
+    .glass{background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.96);box-shadow:0 24px 80px rgba(15,23,42,.09);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .gradient-text{background:linear-gradient(90deg,#2AABEE,#2563eb,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .step-card{position:relative;overflow:hidden}.step-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,#2AABEE,#2563eb,#8b5cf6)}
+    .step-number{background:linear-gradient(135deg,#2AABEE,#2563eb,#8b5cf6);box-shadow:0 12px 28px rgba(37,99,235,.24)}
+    .code-box{position:relative;overflow-x:auto;background:#0f172a;color:#e2e8f0;border:1px solid rgba(148,163,184,.18)}
+    .copy-btn{position:absolute;top:10px;right:10px}.toc-link.active{background:linear-gradient(90deg,rgba(42,171,238,.14),rgba(139,92,246,.10));color:#2563eb;border-color:rgba(42,171,238,.25)}
+    details summary::-webkit-details-marker{display:none}::selection{background:rgba(42,171,238,.22)}
+  </style>
+</head>
+<body class="font-sans antialiased">
+<header class="sticky top-0 z-50 border-b border-white/70 bg-white/75 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+    <a href="#top"><img src="URL_LOGO_IMERSTELESHIP" alt="Logo iMersTeleship" class="h-10 sm:h-12 w-auto max-w-[190px] object-contain"></a>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a href="URL_AKSES_PAGE" class="hidden sm:inline-flex rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-extrabold text-slate-700 hover:bg-slate-50">Halaman Akses</a>
+      <a href="URL_GRUP_SUPPORT" target="_blank" class="inline-flex rounded-full bg-slate-900 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-extrabold text-white hover:bg-slate-800">Grup Support</a>
+    </div>
+  </div>
+</header>
+<main id="top">
+<section class="pt-12 sm:pt-20 pb-12 sm:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="glass rounded-[2rem] sm:rounded-[3rem] p-7 sm:p-10 lg:p-14 text-center relative overflow-hidden">
+      <div class="absolute -top-24 -right-20 w-72 h-72 rounded-full bg-tele-400/20 blur-3xl"></div>
+      <div class="absolute -bottom-28 -left-20 w-72 h-72 rounded-full bg-purple-400/20 blur-3xl"></div>
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <span class="inline-flex rounded-full border border-tele-200 bg-tele-50 px-4 py-2 text-xs sm:text-sm font-black text-tele-700 mb-6">Panduan instalasi lengkap dari nol sampai live</span>
+        <div class="flex justify-center mb-6"><img src="URL_LOGO_IMERSTELESHIP" alt="iMersTeleship" class="h-16 sm:h-20 md:h-24 w-auto object-contain"></div>
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-slate-900 mb-5">Tutorial Instalasi <span class="gradient-text block">iMersTeleship Sampai Siap Digunakan</span></h1>
+        <p class="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-3xl mx-auto mb-8">Ikuti urutan di bawah ini untuk mengunduh file, membuat database MySQL, mengimpor SQL melalui phpMyAdmin, mengunggah source code PHP, menghubungkan Telegram Bot, dan melakukan pengujian sebelum sistem digunakan secara publik.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <a href="URL_DOWNLOAD_SQL" target="_blank" class="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-4 text-white font-black shadow-lg shadow-emerald-500/25 transition hover:-translate-y-1">Download SQL</a>
+          <a href="URL_DOWNLOAD_SCRIPT" target="_blank" class="rounded-2xl bg-gradient-to-r from-tele-500 to-blue-600 px-6 py-4 text-white font-black shadow-glow transition hover:-translate-y-1">Download Script</a>
+          <a href="URL_GRUP_SUPPORT" target="_blank" class="rounded-2xl bg-gradient-to-r from-purple-500 to-violet-600 px-6 py-4 text-white font-black shadow-lg shadow-purple-500/25 transition hover:-translate-y-1">Grup Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pb-14">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-8 shadow-soft">
+        <h2 class="text-2xl font-black text-slate-900 mb-5">Sebelum Memulai, Siapkan Ini</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-800 mb-2">Hosting cPanel</div><p class="text-sm text-slate-500 font-medium leading-relaxed">Mendukung PHP, MySQL atau MariaDB, SSL HTTPS, File Manager, dan phpMyAdmin.</p></div>
+          <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-800 mb-2">Domain atau Subdomain</div><p class="text-sm text-slate-500 font-medium leading-relaxed">Contoh: <code class="font-bold text-blue-700">toko.domainanda.com</code>.</p></div>
+          <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-800 mb-2">Telegram Bot</div><p class="text-sm text-slate-500 font-medium leading-relaxed">Buat melalui BotFather dan simpan Bot Token dengan aman.</p></div>
+          <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-800 mb-2">File ZIP & SQL</div><p class="text-sm text-slate-500 font-medium leading-relaxed">Simpan file asli sebagai backup sebelum instalasi.</p></div>
+        </div>
+      </div>
+      <div class="rounded-[2rem] border border-amber-200 bg-amber-50 p-7 sm:p-8">
+        <h3 class="text-lg font-black text-amber-900 mb-3">Catatan Penting</h3>
+        <ul class="space-y-3 text-sm text-amber-800 font-medium leading-relaxed"><li>• Jangan membagikan Bot Token.</li><li>• Gunakan database khusus.</li><li>• Simpan backup file asli.</li><li>• Lakukan testing sebelum dipublikasikan.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pb-20">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-[270px_minmax(0,1fr)] gap-8">
+      <aside class="hidden lg:block"><div class="sticky top-24 glass rounded-3xl p-4"><div class="px-3 pt-2 pb-3 text-xs font-black uppercase tracking-widest text-slate-400">Daftar Langkah</div><nav class="space-y-1">
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-1">1. Download File</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-2">2. Buat Telegram Bot</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-3">3. Buat Database</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-4">4. Import SQL</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-5">5. Upload Script PHP</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-6">6. Atur Koneksi DB</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-7">7. Login Admin</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-8">8. Konfigurasi Bot</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-9">9. Aktifkan Webhook</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-10">10. Isi Produk</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-11">11. Tes Sistem</a>
+        <a class="toc-link block rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-slate-600" href="#step-12">12. Go Live</a>
+      </nav></div></aside>
+      <div class="space-y-7">
+
+        <article id="step-1" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">1</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Persiapan File</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Download File SQL dan Source Code PHP</h2></div></div>
+          <p class="text-slate-600 font-medium leading-relaxed mb-5">Unduh dua file utama dari halaman akses produk dan simpan di folder khusus.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <a href="URL_DOWNLOAD_SQL" target="_blank" class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5"><div class="font-black text-emerald-800 mb-1">File Database SQL</div><p class="text-sm text-emerald-700 font-medium">Berisi struktur tabel dan data awal.</p></a>
+            <a href="URL_DOWNLOAD_SCRIPT" target="_blank" class="rounded-2xl border border-blue-200 bg-blue-50 p-5"><div class="font-black text-blue-800 mb-1">File Source Code PHP</div><p class="text-sm text-blue-700 font-medium">Berisi seluruh file aplikasi.</p></a>
+          </div>
+          <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5"><ol class="list-decimal pl-5 space-y-2 text-sm text-amber-800 font-medium"><li>Jangan mengubah file SQL.</li><li>Ekstrak ZIP untuk memeriksa isinya.</li><li>Simpan satu salinan asli sebagai backup.</li></ol></div>
+        </article>
+
+        <article id="step-2" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">2</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Telegram</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Buat Telegram Bot dan Simpan Token</h2></div></div>
+          <ol class="space-y-4 text-slate-600 font-medium leading-relaxed"><li><b>1.</b> Buka Telegram dan cari <b>@BotFather</b>.</li><li><b>2.</b> Kirim <code class="font-bold text-blue-700">/newbot</code>.</li><li><b>3.</b> Masukkan nama bot.</li><li><b>4.</b> Buat username yang berakhiran <code class="font-bold text-blue-700">bot</code>.</li><li><b>5.</b> Salin Bot Token.</li></ol>
+          <div class="mt-6 code-box rounded-2xl p-5 text-sm"><button class="copy-btn rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white" onclick="copyCode(this)">Copy</button><pre><code>1234567890:AAExampleTokenJanganGunakanIni</code></pre></div>
+          <div class="mt-5 rounded-2xl border border-red-200 bg-red-50 p-5 text-sm text-red-800 font-medium">Jangan membagikan token kepada siapa pun.</div>
+        </article>
+
+        <article id="step-3" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">3</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Database</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Buat Database MySQL di cPanel</h2></div></div>
+          <ol class="space-y-4 text-slate-600 font-medium leading-relaxed"><li><b>1.</b> Login ke cPanel.</li><li><b>2.</b> Buka <b>MySQL Databases</b> atau <b>MySQL Database Wizard</b>.</li><li><b>3.</b> Buat database baru.</li><li><b>4.</b> Buat user database dan password kuat.</li><li><b>5.</b> Hubungkan user ke database.</li><li><b>6.</b> Aktifkan <b>ALL PRIVILEGES</b>.</li></ol>
+          <div class="mt-6 rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-800 mb-3">Catat Data Berikut</div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm"><div class="rounded-xl bg-white border border-slate-200 p-4">Host: <b>localhost</b></div><div class="rounded-xl bg-white border border-slate-200 p-4">Nama DB: <b>cpaneluser_imersteleship</b></div><div class="rounded-xl bg-white border border-slate-200 p-4">User DB: <b>cpaneluser_teleship</b></div><div class="rounded-xl bg-white border border-slate-200 p-4">Password: <b>Password Anda</b></div></div></div>
+        </article>
+
+        <article id="step-4" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">4</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">phpMyAdmin</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Import File SQL ke Database</h2></div></div>
+          <ol class="space-y-4 text-slate-600 font-medium leading-relaxed"><li><b>1.</b> Buka <b>phpMyAdmin</b>.</li><li><b>2.</b> Klik database yang dibuat.</li><li><b>3.</b> Klik tab <b>Import</b>.</li><li><b>4.</b> Pilih file SQL.</li><li><b>5.</b> Klik <b>Go</b> atau <b>Import</b>.</li><li><b>6.</b> Tunggu pesan sukses.</li></ol>
+          <div class="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-5"><div class="font-black text-emerald-900 mb-2">Tanda Berhasil</div><p class="text-sm text-emerald-800 font-medium">Tabel settings, products, orders, members, coupons, coupon_products, coupon_redemptions, dan bot_user_states muncul.</p></div>
+          <details class="mt-5 rounded-2xl border border-red-200 bg-red-50 p-5"><summary class="cursor-pointer font-black text-red-900">Jika import gagal</summary><div class="mt-3 text-sm text-red-800 font-medium space-y-2"><p>• Pastikan database benar.</p><p>• Pastikan file SQL utuh.</p><p>• Jangan import dua kali ke database yang sama.</p><p>• Gunakan database baru jika ingin mengulang.</p></div></details>
+        </article>
+
+        <article id="step-5" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">5</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">File Manager</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Upload Source Code PHP ke Hosting</h2></div></div>
+          <ol class="space-y-4 text-slate-600 font-medium leading-relaxed"><li><b>1.</b> Buka <b>File Manager</b>.</li><li><b>2.</b> Masuk ke folder domain atau subdomain.</li><li><b>3.</b> Upload ZIP source code.</li><li><b>4.</b> Klik kanan lalu <b>Extract</b>.</li><li><b>5.</b> Pastikan file tidak berada di folder ganda.</li></ol>
+          <div class="mt-6 code-box rounded-2xl p-5 text-sm"><pre><code>public_html/
+├── admin.php
+├── config.php
+├── db.php
+├── Telegram.php
+├── webhook.php
+└── file pendukung lainnya</code></pre></div>
+          <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 font-medium">Jika memakai subfolder, contoh URL menjadi <b>https://domainanda.com/teleship/</b>.</div>
+        </article>
+
+        <article id="step-6" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">6</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Koneksi</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Masukkan Data Database ke db.php</h2></div></div>
+          <p class="text-slate-600 font-medium leading-relaxed mb-5">Buka file koneksi database dan sesuaikan host, database, username, serta password.</p>
+          <div class="code-box rounded-2xl p-5 text-sm"><button class="copy-btn rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
+$dbHost = 'localhost';
+$dbName = 'cpaneluser_imersteleship';
+$dbUser = 'cpaneluser_teleship';
+$dbPass = 'PASSWORD_DATABASE_ANDA';
+
+$pdo = new PDO(
+  "mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4",
+  $dbUser,
+  $dbPass,
+  [
+    PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC
+  ]
+);
+?&gt;</code></pre></div>
+          <div class="mt-5 rounded-2xl border border-blue-200 bg-blue-50 p-5 text-sm text-blue-800 font-medium">Contoh di atas hanya acuan. Pertahankan struktur file bawaan.</div>
+        </article>
+
+        <article id="step-7" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">7</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Dashboard</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Login ke Admin Dashboard</h2></div></div>
+          <div class="code-box rounded-2xl p-5 text-sm"><button class="copy-btn rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white" onclick="copyCode(this)">Copy</button><pre><code>https://domainanda.com/admin.php</code></pre></div>
+          <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="rounded-2xl border border-slate-200 bg-slate-50 p-5"><div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Username Default</div><div class="text-xl font-black text-slate-900">admin</div></div><div class="rounded-2xl border border-slate-200 bg-slate-50 p-5"><div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Password Default</div><div class="text-xl font-black text-slate-900">admin123</div></div></div>
+          <div class="mt-5 rounded-2xl border border-red-200 bg-red-50 p-5 text-sm text-red-800 font-medium">Segera ganti username dan password setelah login.</div>
+        </article>
+
+        <article id="step-8" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">8</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Konfigurasi</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Isi Pengaturan Bot di Dashboard</h2></div></div>
+          <div class="space-y-4"><div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-900 mb-2">Bot Token</div><p class="text-sm text-slate-500 font-medium">Token dari BotFather.</p></div><div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-900 mb-2">Admin Chat ID</div><p class="text-sm text-slate-500 font-medium">ID Telegram admin penerima notifikasi.</p></div><div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-900 mb-2">Username Admin</div><p class="text-sm text-slate-500 font-medium">Tanpa tanda @.</p></div><div class="rounded-2xl bg-slate-50 border border-slate-100 p-5"><div class="font-black text-slate-900 mb-2">Webhook URL</div><p class="text-sm text-slate-500 font-medium">Alamat lengkap webhook.php menggunakan HTTPS.</p></div></div>
+          <div class="mt-6 code-box rounded-2xl p-5 text-sm"><button class="copy-btn rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white" onclick="copyCode(this)">Copy</button><pre><code>https://domainanda.com/webhook.php</code></pre></div>
+        </article>
+
+        <article id="step-9" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">9</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Webhook</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Aktifkan dan Periksa Webhook Telegram</h2></div></div>
+          <p class="text-slate-600 font-medium leading-relaxed mb-5">Klik simpan pengaturan. Sistem akan mencoba memasang webhook otomatis.</p>
+          <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 mb-5"><div class="font-black text-emerald-900 mb-2">Jika Berhasil</div><p class="text-sm text-emerald-800 font-medium">Muncul notifikasi bahwa webhook aktif.</p></div>
+          <div class="code-box rounded-2xl p-5 text-sm"><button class="copy-btn rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white" onclick="copyCode(this)">Copy</button><pre><code>https://api.telegram.org/botTOKEN_BOT_ANDA/getWebhookInfo</code></pre></div>
+          <div class="mt-5 rounded-2xl bg-slate-50 border border-slate-100 p-5 text-sm text-slate-600 font-medium">Pastikan nilai <b>url</b> sesuai webhook.php dan tidak ada <b>last_error_message</b>.</div>
+        </article>
+
+        <article id="step-10" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">10</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Isi Sistem</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Atur Produk, Pembayaran, Kupon, dan Pesan Bot</h2></div></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="rounded-2xl bg-blue-50 border border-blue-100 p-5"><h3 class="font-black text-blue-900 mb-2">Katalog Produk</h3><p class="text-sm text-blue-800 font-medium">Nama, harga, deskripsi, sales page, dan link akses.</p></div><div class="rounded-2xl bg-emerald-50 border border-emerald-100 p-5"><h3 class="font-black text-emerald-900 mb-2">Metode Pembayaran</h3><p class="text-sm text-emerald-800 font-medium">Bank, e-wallet, dan QRIS.</p></div><div class="rounded-2xl bg-purple-50 border border-purple-100 p-5"><h3 class="font-black text-purple-900 mb-2">Kupon</h3><p class="text-sm text-purple-800 font-medium">Persen, nominal, produk, kuota, dan masa aktif.</p></div><div class="rounded-2xl bg-amber-50 border border-amber-100 p-5"><h3 class="font-black text-amber-900 mb-2">Pesan Bot</h3><p class="text-sm text-amber-800 font-medium">Sambutan, invoice, reminder, dan pesan lunas.</p></div></div>
+        </article>
+
+        <article id="step-11" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">11</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Quality Check</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Tes Seluruh Alur Sebelum Go Live</h2></div></div>
+          <div class="space-y-3">
+            <label class="flex gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"><input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600"><span class="text-sm font-semibold">Kirim <b>/start</b> dan cek sambutan.</span></label>
+            <label class="flex gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"><input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600"><span class="text-sm font-semibold">Buka katalog dan pilih produk.</span></label>
+            <label class="flex gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"><input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600"><span class="text-sm font-semibold">Tes checkout dan kupon.</span></label>
+            <label class="flex gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"><input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600"><span class="text-sm font-semibold">Tes invoice dan bukti transfer.</span></label>
+            <label class="flex gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"><input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600"><span class="text-sm font-semibold">Approve order dan cek akses produk.</span></label>
+            <label class="flex gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"><input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600"><span class="text-sm font-semibold">Cek data order, kupon, dan pagination.</span></label>
+          </div>
+        </article>
+
+        <article id="step-12" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
+          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">12</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Final</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Go Live dan Amankan Sistem</h2></div></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6"><div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5"><div class="font-black text-emerald-900 mb-3">Checklist Go Live</div><ul class="space-y-2 text-sm text-emerald-800 font-medium"><li>• Testing berhasil.</li><li>• Harga dan link benar.</li><li>• Rekening benar.</li><li>• Webhook aktif.</li><li>• Akun admin diganti.</li></ul></div><div class="rounded-2xl border border-red-200 bg-red-50 p-5"><div class="font-black text-red-900 mb-3">Keamanan Wajib</div><ul class="space-y-2 text-sm text-red-800 font-medium"><li>• Hapus ZIP setelah ekstrak.</li><li>• Jangan taruh SQL di folder publik.</li><li>• Gunakan password kuat.</li><li>• Backup rutin.</li><li>• Jangan membagikan cPanel.</li></ul></div></div>
+          <div class="rounded-2xl bg-slate-900 p-6 text-center"><div class="text-white text-xl font-black mb-2">Instalasi Selesai</div><p class="text-slate-300 text-sm font-medium">iMersTeleship siap digunakan secara live.</p></div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pb-20">
+  <div class="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center mb-10"><span class="text-tele-600 text-xs font-black uppercase tracking-[.22em]">Troubleshooting</span><h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">Masalah yang Sering Terjadi</h2></div>
+    <div class="space-y-4">
+      <details class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm"><summary class="cursor-pointer font-black text-slate-900">Error database</summary><p class="mt-3 text-sm text-slate-600 font-medium">Periksa host, nama database, username, password, dan ALL PRIVILEGES.</p></details>
+      <details class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm"><summary class="cursor-pointer font-black text-slate-900">Bot tidak merespons /start</summary><p class="mt-3 text-sm text-slate-600 font-medium">Periksa token, HTTPS, URL webhook, dan getWebhookInfo.</p></details>
+      <details class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm"><summary class="cursor-pointer font-black text-slate-900">Error 404 pada webhook.php</summary><p class="mt-3 text-sm text-slate-600 font-medium">Pastikan path file dan URL sama.</p></details>
+      <details class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm"><summary class="cursor-pointer font-black text-slate-900">Error 500 atau halaman putih</summary><p class="mt-3 text-sm text-slate-600 font-medium">Periksa error_log, versi PHP, sintaks, dan kelengkapan file.</p></details>
+      <details class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm"><summary class="cursor-pointer font-black text-slate-900">Import SQL gagal karena tabel sudah ada</summary><p class="mt-3 text-sm text-slate-600 font-medium">Gunakan database baru atau pulihkan backup sebelum mengulang.</p></details>
+    </div>
+  </div>
+</section>
+<section class="pb-24">
+  <div class="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="glass rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 text-center"><span class="text-tele-600 text-xs font-black uppercase tracking-[.22em]">Butuh Bantuan?</span><h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3 mb-4">Bergabung ke Grup Support iMersTeleship</h2><p class="text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto mb-8">Saat bertanya, sertakan screenshot error, URL, nama file, dan langkah yang sudah dilakukan.</p><a href="URL_GRUP_SUPPORT" target="_blank" class="inline-flex rounded-2xl bg-gradient-to-r from-tele-500 to-blue-700 px-8 py-4 text-white font-black shadow-glow transition hover:-translate-y-1">Masuk Grup Support</a></div>
+  </div>
+</section>
+</main>
+<footer class="border-t border-slate-200/80 bg-white/65 backdrop-blur-md"><div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-7 text-center"><p class="text-sm text-slate-500 font-semibold">Developed with love by <span class="font-black text-slate-800">Terry Katar</span> | <a href="https://imersnesia.com" target="_blank" class="font-black text-tele-600 hover:text-tele-700">iMersnesia.com</a></p></div></footer>
+<script>
+function copyCode(button){const code=button.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code).then(()=>{const old=button.innerText;button.innerText='Tersalin';setTimeout(()=>button.innerText=old,1400)})}
+const sections=document.querySelectorAll('article[id^="step-"]');const links=document.querySelectorAll('.toc-link');const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.remove('active'));const active=document.querySelector('.toc-link[href="#'+entry.target.id+'"]');if(active)active.classList.add('active')}})},{rootMargin:'-25% 0px -65% 0px'});sections.forEach(section=>observer.observe(section));
+</script>
+</body>
+</html>
