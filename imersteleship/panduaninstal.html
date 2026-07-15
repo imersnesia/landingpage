@@ -35,7 +35,7 @@
 <body class="font-sans antialiased">
 <header class="sticky top-0 z-50 border-b border-white/70 bg-white/75 backdrop-blur-xl">
   <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
-    <a href="#top"><img src="URL_LOGO_IMERSTELESHIP" alt="Logo iMersTeleship" class="h-10 sm:h-12 w-auto max-w-[190px] object-contain"></a>
+    <a href="#top"><img src="https://imersnesia.com/wp-content/uploads/2026/07/imersteleship.png" alt="Logo iMersTeleship" class="h-10 sm:h-12 w-auto max-w-[190px] object-contain"></a>
     <div class="flex items-center gap-2 sm:gap-3">
       <a href="URL_AKSES_PAGE" class="hidden sm:inline-flex rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-extrabold text-slate-700 hover:bg-slate-50">Halaman Akses</a>
       <a href="URL_GRUP_SUPPORT" target="_blank" class="inline-flex rounded-full bg-slate-900 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-extrabold text-white hover:bg-slate-800">Grup Support</a>
@@ -50,9 +50,9 @@
       <div class="absolute -bottom-28 -left-20 w-72 h-72 rounded-full bg-purple-400/20 blur-3xl"></div>
       <div class="relative z-10 max-w-4xl mx-auto">
         <span class="inline-flex rounded-full border border-tele-200 bg-tele-50 px-4 py-2 text-xs sm:text-sm font-black text-tele-700 mb-6">Panduan instalasi lengkap dari nol sampai live</span>
-        <div class="flex justify-center mb-6"><img src="URL_LOGO_IMERSTELESHIP" alt="iMersTeleship" class="h-16 sm:h-20 md:h-24 w-auto object-contain"></div>
+        <div class="flex justify-center mb-6"><img src="https://imersnesia.com/wp-content/uploads/2026/07/imersteleship.png" alt="iMersTeleship" class="h-16 sm:h-20 md:h-24 w-auto object-contain"></div>
         <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-slate-900 mb-5">Tutorial Instalasi <span class="gradient-text block">iMersTeleship Sampai Siap Digunakan</span></h1>
-        <p class="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-3xl mx-auto mb-8">Ikuti urutan di bawah ini untuk mengunduh file, membuat database MySQL, mengimpor SQL melalui phpMyAdmin, mengunggah source code PHP, menghubungkan Telegram Bot, dan melakukan pengujian sebelum sistem digunakan secara publik.</p>
+        <p class="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-3xl mx-auto mb-8">Ikuti urutan di bawah ini untuk mengunduh file, membuat database MySQL, mengimpor SQL melalui phpMyAdmin, mengunggah source code PHP, menjalankan installer otomatis, menghubungkan Telegram Bot, dan melakukan pengujian sebelum sistem digunakan secara publik.</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
           <a href="URL_DOWNLOAD_SQL" target="_blank" class="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-4 text-white font-black shadow-lg shadow-emerald-500/25 transition hover:-translate-y-1">Download SQL</a>
           <a href="URL_DOWNLOAD_SCRIPT" target="_blank" class="rounded-2xl bg-gradient-to-r from-tele-500 to-blue-600 px-6 py-4 text-white font-black shadow-glow transition hover:-translate-y-1">Download Script</a>
@@ -131,44 +131,154 @@
         </article>
 
         <article id="step-5" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
-          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">5</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">File Manager</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Upload Source Code PHP ke Hosting</h2></div></div>
-          <ol class="space-y-4 text-slate-600 font-medium leading-relaxed"><li><b>1.</b> Buka <b>File Manager</b>.</li><li><b>2.</b> Masuk ke folder domain atau subdomain.</li><li><b>3.</b> Upload ZIP source code.</li><li><b>4.</b> Klik kanan lalu <b>Extract</b>.</li><li><b>5.</b> Pastikan file tidak berada di folder ganda.</li></ol>
-          <div class="mt-6 code-box rounded-2xl p-5 text-sm"><pre><code>public_html/
+          <div class="flex items-start gap-4 mb-6">
+            <div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">5</div>
+            <div>
+              <div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">File Manager</div>
+              <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Upload Seluruh File Script PHP ke Hosting</h2>
+            </div>
+          </div>
+
+          <p class="text-slate-600 font-medium leading-relaxed mb-5">
+            Upload paket source code iMersTeleship ke folder domain atau subdomain yang akan digunakan. Setelah file ZIP berhasil diunggah, ekstrak seluruh isinya di folder tersebut.
+          </p>
+
+          <ol class="space-y-4 text-slate-600 font-medium leading-relaxed">
+            <li><b class="text-slate-900">1.</b> Buka <b>File Manager</b> di cPanel.</li>
+            <li><b class="text-slate-900">2.</b> Masuk ke folder domain atau subdomain tujuan.</li>
+            <li><b class="text-slate-900">3.</b> Upload file ZIP source code iMersTeleship.</li>
+            <li><b class="text-slate-900">4.</b> Klik kanan file ZIP, lalu pilih <b>Extract</b>.</li>
+            <li><b class="text-slate-900">5.</b> Pastikan semua file berada langsung di folder tujuan dan tidak masuk ke folder ganda.</li>
+          </ol>
+
+          <div class="mt-6 code-box rounded-2xl p-5 text-sm">
+            <pre><code>Contoh struktur file yang benar:
+
+public_html/
+├── .htaccess
 ├── admin.php
 ├── config.php
 ├── db.php
+├── index.php
+├── install.php
 ├── Telegram.php
-├── webhook.php
-└── file pendukung lainnya</code></pre></div>
-          <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 font-medium">Jika memakai subfolder, contoh URL menjadi <b>https://domainanda.com/teleship/</b>.</div>
+└── webhook.php</code></pre>
+          </div>
+
+          <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+              <div class="font-black text-blue-900 mb-2">Domain Utama</div>
+              <p class="text-sm text-blue-800 font-medium leading-relaxed">
+                Jika dipasang di domain utama, file biasanya berada langsung di dalam <b>public_html</b>.
+              </p>
+            </div>
+            <div class="rounded-2xl border border-purple-200 bg-purple-50 p-5">
+              <div class="font-black text-purple-900 mb-2">Subfolder</div>
+              <p class="text-sm text-purple-800 font-medium leading-relaxed">
+                Jika dipasang di folder <b>teleship</b>, lokasinya menjadi <b>public_html/teleship/</b>.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 font-medium leading-relaxed">
+            Jangan menghapus <b>install.php</b> sebelum proses instalasi selesai. File tersebut digunakan untuk mengisi koneksi database dan Base URL secara otomatis.
+          </div>
         </article>
 
         <article id="step-6" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
-          <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">6</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Koneksi</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Masukkan Data Database ke db.php</h2></div></div>
-          <p class="text-slate-600 font-medium leading-relaxed mb-5">Buka file koneksi database dan sesuaikan host, database, username, serta password.</p>
-          <div class="code-box rounded-2xl p-5 text-sm"><button class="copy-btn rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white" onclick="copyCode(this)">Copy</button><pre><code>&lt;?php
-$dbHost = 'localhost';
-$dbName = 'cpaneluser_imersteleship';
-$dbUser = 'cpaneluser_teleship';
-$dbPass = 'PASSWORD_DATABASE_ANDA';
+          <div class="flex items-start gap-4 mb-6">
+            <div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">6</div>
+            <div>
+              <div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Installer Resmi</div>
+              <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Buka install.php dan Isi Konfigurasi Database</h2>
+            </div>
+          </div>
 
-$pdo = new PDO(
-  "mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4",
-  $dbUser,
-  $dbPass,
-  [
-    PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC
-  ]
-);
-?&gt;</code></pre></div>
-          <div class="mt-5 rounded-2xl border border-blue-200 bg-blue-50 p-5 text-sm text-blue-800 font-medium">Contoh di atas hanya acuan. Pertahankan struktur file bawaan.</div>
+          <p class="text-slate-600 font-medium leading-relaxed mb-5">
+            Anda tidak perlu membuka atau mengedit kode koneksi database secara manual. Jalankan installer melalui browser, lalu isi formulir sesuai data database yang sudah dibuat di cPanel.
+          </p>
+
+          <div class="code-box rounded-2xl p-5 text-sm">
+            <button class="copy-btn rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white" onclick="copyCode(this)">Copy</button>
+            <pre><code>https://domainanda.com/install.php</code></pre>
+          </div>
+
+          <p class="mt-4 text-sm text-slate-500 font-medium">
+            Jika script dipasang di subfolder, gunakan URL lengkap seperti:
+            <b class="text-slate-700">https://domainanda.com/teleship/install.php</b>
+          </p>
+
+          <div class="mt-6 space-y-4">
+            <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5">
+              <div class="font-black text-slate-900 mb-2">1. Database Host</div>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Biasanya menggunakan <code class="font-bold text-blue-700">localhost</code>, kecuali hosting Anda memberikan host database yang berbeda.
+              </p>
+            </div>
+
+            <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5">
+              <div class="font-black text-slate-900 mb-2">2. Database Name</div>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Masukkan nama database lengkap sesuai yang tampil di cPanel, termasuk prefix akun hosting.
+              </p>
+            </div>
+
+            <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5">
+              <div class="font-black text-slate-900 mb-2">3. Database User</div>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Masukkan username database lengkap yang sudah dihubungkan ke database dengan hak akses <b>ALL PRIVILEGES</b>.
+              </p>
+            </div>
+
+            <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5">
+              <div class="font-black text-slate-900 mb-2">4. Database Password</div>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Masukkan password user database yang dibuat sebelumnya.
+              </p>
+            </div>
+
+            <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5">
+              <div class="font-black text-slate-900 mb-2">5. Base URL Website</div>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Masukkan URL folder tempat source code diunggah. Contoh:
+                <code class="font-bold text-blue-700">https://domainanda.com/teleship/</code>
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-2xl border border-tele-200 bg-tele-50 p-5">
+            <div class="font-black text-tele-700 mb-2">Jalankan Proses Instalasi</div>
+            <ol class="list-decimal pl-5 space-y-2 text-sm text-tele-700 font-medium leading-relaxed">
+              <li>Periksa kembali seluruh data yang dimasukkan.</li>
+              <li>Klik tombol <b>Install Sekarang</b>.</li>
+              <li>Tunggu sampai installer menampilkan informasi bahwa konfigurasi berhasil disimpan.</li>
+              <li>Installer akan mengisi koneksi database dan Base URL ke file konfigurasi secara otomatis.</li>
+            </ol>
+          </div>
+
+          <div class="mt-5 rounded-2xl border border-blue-200 bg-blue-50 p-5 text-sm text-blue-800 font-medium leading-relaxed">
+            Installer hanya mengatur koneksi database dan Base URL. Struktur tabel database tetap berasal dari file SQL master yang sudah Anda import melalui phpMyAdmin pada langkah sebelumnya.
+          </div>
+
+          <details class="mt-5 rounded-2xl border border-red-200 bg-red-50 p-5">
+            <summary class="cursor-pointer font-black text-red-900">Jika installer gagal menyimpan konfigurasi</summary>
+            <div class="mt-3 text-sm text-red-800 font-medium leading-relaxed space-y-2">
+              <p>• Periksa kembali nama database, username, password, dan hak akses user database.</p>
+              <p>• Pastikan file <b>config.php</b> tersedia di folder yang sama dengan <b>install.php</b>.</p>
+              <p>• Jika ada pesan file tidak dapat ditulis, periksa permission file melalui File Manager. Setelah instalasi berhasil, kembalikan permission ke pengaturan aman hosting.</p>
+              <p>• Pastikan Base URL menggunakan HTTPS dan mengarah ke folder instalasi yang benar.</p>
+            </div>
+          </details>
+
+          <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 font-medium leading-relaxed">
+            Setelah instalasi berhasil dan dashboard dapat dibuka, hapus atau ganti nama <b>install.php</b> jika installer tidak menguncinya secara otomatis. Langkah ini mencegah orang lain menjalankan ulang installer.
+          </div>
         </article>
 
         <article id="step-7" class="step-card bg-white rounded-[2rem] border border-slate-100 p-7 sm:p-9 shadow-soft scroll-mt-28">
           <div class="flex items-start gap-4 mb-6"><div class="step-number w-12 h-12 rounded-2xl text-white font-black flex items-center justify-center shrink-0">7</div><div><div class="text-xs font-black uppercase tracking-widest text-tele-600 mb-1">Dashboard</div><h2 class="text-2xl sm:text-3xl font-black text-slate-900">Login ke Admin Dashboard</h2></div></div>
           <div class="code-box rounded-2xl p-5 text-sm"><button class="copy-btn rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white" onclick="copyCode(this)">Copy</button><pre><code>https://domainanda.com/admin.php</code></pre></div>
-          <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="rounded-2xl border border-slate-200 bg-slate-50 p-5"><div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Username Default</div><div class="text-xl font-black text-slate-900">admin</div></div><div class="rounded-2xl border border-slate-200 bg-slate-50 p-5"><div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Password Default</div><div class="text-xl font-black text-slate-900">admin123</div></div></div>
+          <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="rounded-2xl border border-slate-200 bg-slate-50 p-5"><div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Username Default</div><div class="text-xl font-black text-slate-900">teleship</div></div><div class="rounded-2xl border border-slate-200 bg-slate-50 p-5"><div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Password Default</div><div class="text-xl font-black text-slate-900">teleship</div></div></div>
           <div class="mt-5 rounded-2xl border border-red-200 bg-red-50 p-5 text-sm text-red-800 font-medium">Segera ganti username dan password setelah login.</div>
         </article>
 
