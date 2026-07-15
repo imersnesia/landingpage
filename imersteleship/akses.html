@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akses Produk iMersTeleship</title>
+  <meta name="description" content="Halaman akses resmi iMersTeleship untuk mengunduh source code, database SQL, menonton tutorial instalasi, dan bergabung ke grup support." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          },
+          colors: {
+            tele: {
+              50: '#eef9ff',
+              100: '#d8f1ff',
+              400: '#33c0ff',
+              500: '#2AABEE',
+              600: '#229ED9',
+              700: '#147fb7'
+            }
+          },
+          boxShadow: {
+            soft: '0 24px 80px rgba(15, 23, 42, 0.10)',
+            glow: '0 18px 45px rgba(42, 171, 238, 0.30)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      color: #1e293b;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(42, 171, 238, .20), transparent 30%),
+        radial-gradient(circle at 92% 10%, rgba(139, 92, 246, .17), transparent 30%),
+        radial-gradient(circle at 48% 100%, rgba(16, 185, 129, .12), transparent 32%),
+        linear-gradient(135deg, #f8fbff 0%, #f5f7ff 48%, #faf7ff 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(37, 99, 235, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, .04) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, #000, transparent 82%);
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, .78);
+      border: 1px solid rgba(255, 255, 255, .95);
+      box-shadow: 0 24px 80px rgba(15, 23, 42, .09);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #2AABEE, #2563eb, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .download-card {
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .download-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 65px rgba(15, 23, 42, .12);
+      border-color: rgba(42, 171, 238, .35);
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, #2AABEE, #2563eb, #8b5cf6);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, .25);
+    }
+
+    ::selection {
+      background: rgba(42, 171, 238, .22);
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+
+  <!-- Decorative background -->
+  <div class="fixed top-4 -left-20 w-72 h-72 rounded-full bg-cyan-300/30 blur-3xl -z-10"></div>
+  <div class="fixed top-0 -right-20 w-80 h-80 rounded-full bg-purple-300/30 blur-3xl -z-10"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-white/70 bg-white/70 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 h-18 py-4 flex items-center justify-between gap-4">
+      <a href="#home" class="flex items-center gap-3 min-w-0">
+        <!-- Ganti URL_LOGO_IMERSTELESHIP dengan URL logo Anda -->
+        <img
+          src="URL_LOGO_IMERSTELESHIP"
+          alt="Logo iMersTeleship"
+          class="h-10 sm:h-12 w-auto max-w-[190px] object-contain"
+        />
+      </a>
+
+      <a
+        href="URL_GRUP_SUPPORT"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
+      >
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21.944 2.506a1.5 1.5 0 0 0-1.542-.177L2.95 9.853a1.5 1.5 0 0 0 .136 2.8l4.43 1.477 1.477 4.43a1.5 1.5 0 0 0 2.8.136l7.524-17.452a1.5 1.5 0 0 0-.177-1.542 1.5 1.5 0 0 0-1.196-.596Zm-11.57 12.972-.734-2.2 6.538-5.446-5.804 7.646Z"/>
+        </svg>
+        Grup Support
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="relative pt-14 sm:pt-20 pb-14 sm:pb-20">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="glass rounded-[2rem] sm:rounded-[3rem] p-7 sm:p-10 lg:p-14 overflow-hidden relative">
+          <div class="absolute -top-24 -right-24 w-64 h-64 bg-tele-400/20 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-28 -left-20 w-72 h-72 bg-purple-400/20 rounded-full blur-3xl"></div>
+
+          <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs sm:text-sm font-extrabold text-emerald-700 mb-6">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Pembelian berhasil — akses produk tersedia
+            </div>
+
+            <!-- Logo hero -->
+            <div class="flex justify-center mb-7">
+              <a href="URL_LOGO_IMERSTELESHIP" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="URL_LOGO_IMERSTELESHIP"
+                  alt="iMersTeleship"
+                  class="h-16 sm:h-20 md:h-24 w-auto object-contain"
+                />
+              </a>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-slate-900 mb-5">
+              Selamat Datang di
+              <span class="gradient-text block">Akses Produk iMersTeleship</span>
+            </h1>
+
+            <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-600 font-medium leading-relaxed mb-9">
+              Unduh file database dan source code, ikuti tutorial instalasi, lalu pasang iMersTeleship di hosting cPanel dan bot Telegram milik Anda.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              <a
+                href="URL_DOWNLOAD_SQL"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-4 text-white font-black shadow-lg shadow-emerald-500/25 transition hover:-translate-y-1 hover:brightness-105"
+              >
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7c0-1.657 3.582-3 8-3s8 1.343 8 3-3.582 3-8 3-8-1.343-8-3Zm0 0v5c0 1.657 3.582 3 8 3s8-1.343 8-3V7m-16 5v5c0 1.657 3.582 3 8 3s8-1.343 8-3v-5"/>
+                </svg>
+                Download SQL
+              </a>
+
+              <a
+                href="URL_DOWNLOAD_SCRIPT"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-tele-500 to-blue-600 px-6 py-4 text-white font-black shadow-glow transition hover:-translate-y-1 hover:brightness-105"
+              >
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 9-3 3 3 3m8-6 3 3-3 3m-5 4 2-14"/>
+                </svg>
+                Download Script
+              </a>
+
+              <a
+                href="URL_TUTORIAL_YOUTUBE"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-rose-500 to-red-600 px-6 py-4 text-white font-black shadow-lg shadow-rose-500/25 transition hover:-translate-y-1 hover:brightness-105"
+              >
+                <svg class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.5 6.2a3.05 3.05 0 0 0-2.15-2.16C19.46 3.5 12 3.5 12 3.5s-7.46 0-9.35.54A3.05 3.05 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3.05 3.05 0 0 0 2.15 2.16c1.89.54 9.35.54 9.35.54s7.46 0 9.35-.54a3.05 3.05 0 0 0 2.15-2.16C24 15.9 24 12 24 12s0-3.9-.5-5.8ZM9.6 15.7V8.3l6.4 3.7-6.4 3.7Z"/>
+                </svg>
+                Lihat Tutorial
+              </a>
+            </div>
+
+            <p class="mt-5 text-xs sm:text-sm text-slate-500 font-semibold">
+              Simpan seluruh file di tempat aman sebelum melakukan instalasi atau modifikasi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download details -->
+    <section class="py-10 sm:py-14">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <span class="text-tele-600 text-xs sm:text-sm font-black uppercase tracking-[.22em]">File Produk</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">Mulai dari Tiga Akses Utama</h2>
+          <p class="text-slate-600 font-medium mt-4 max-w-2xl mx-auto">
+            Unduh file sesuai urutan agar proses pemasangan lebih terstruktur dan mudah diikuti.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="download-card bg-white border border-slate-100 rounded-[2rem] p-7 shadow-soft">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-5">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7c0-1.657 3.582-3 8-3s8 1.343 8 3-3.582 3-8 3-8-1.343-8-3Zm0 0v5c0 1.657 3.582 3 8 3s8-1.343 8-3V7m-16 5v5c0 1.657 3.582 3 8 3s8-1.343 8-3v-5"/>
+              </svg>
+            </div>
+            <div class="text-xs font-black text-emerald-600 uppercase tracking-widest mb-2">Langkah 01</div>
+            <h3 class="text-xl font-black text-slate-900 mb-3">Database SQL</h3>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed mb-6">
+              File struktur database untuk produk, pesanan, member, pengaturan bot, kupon, dan data pendukung lainnya.
+            </p>
+            <a href="URL_DOWNLOAD_SQL" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-emerald-700 font-black hover:text-emerald-800">
+              Unduh SQL
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="download-card bg-white border border-slate-100 rounded-[2rem] p-7 shadow-soft">
+            <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center mb-5">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 9-3 3 3 3m8-6 3 3-3 3m-5 4 2-14"/>
+              </svg>
+            </div>
+            <div class="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">Langkah 02</div>
+            <h3 class="text-xl font-black text-slate-900 mb-3">Full Source Code</h3>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed mb-6">
+              Paket script PHP iMersTeleship yang siap diunggah ke hosting dan disesuaikan menggunakan brand Anda sendiri.
+            </p>
+            <a href="URL_DOWNLOAD_SCRIPT" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-700 font-black hover:text-blue-800">
+              Unduh Script
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="download-card bg-white border border-slate-100 rounded-[2rem] p-7 shadow-soft">
+            <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center mb-5">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.5 6.2a3.05 3.05 0 0 0-2.15-2.16C19.46 3.5 12 3.5 12 3.5s-7.46 0-9.35.54A3.05 3.05 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3.05 3.05 0 0 0 2.15 2.16c1.89.54 9.35.54 9.35.54s7.46 0 9.35-.54a3.05 3.05 0 0 0 2.15-2.16C24 15.9 24 12 24 12s0-3.9-.5-5.8ZM9.6 15.7V8.3l6.4 3.7-6.4 3.7Z"/>
+              </svg>
+            </div>
+            <div class="text-xs font-black text-rose-600 uppercase tracking-widest mb-2">Langkah 03</div>
+            <h3 class="text-xl font-black text-slate-900 mb-3">Tutorial Instalasi</h3>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed mb-6">
+              Ikuti panduan pemasangan database, konfigurasi PHP, webhook Telegram, serta pengaturan dashboard admin.
+            </p>
+            <a href="URL_TUTORIAL_YOUTUBE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-rose-700 font-black hover:text-rose-800">
+              Tonton Tutorial
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick start -->
+    <section class="py-14 sm:py-20">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="bg-slate-900 rounded-[2rem] sm:rounded-[3rem] p-7 sm:p-10 lg:p-14 relative overflow-hidden">
+          <div class="absolute -top-24 right-0 w-80 h-80 rounded-full bg-tele-500/20 blur-3xl"></div>
+          <div class="absolute -bottom-32 -left-16 w-80 h-80 rounded-full bg-purple-500/20 blur-3xl"></div>
+
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[.85fr_1.15fr] gap-10 lg:gap-14 items-start">
+            <div>
+              <span class="inline-block rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-widest text-tele-300 mb-5">
+                Quick Start
+              </span>
+              <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight mb-5">
+                Urutan Instalasi yang Direkomendasikan
+              </h2>
+              <p class="text-slate-300 font-medium leading-relaxed">
+                Pastikan Anda mengikuti tutorial dan melakukan backup sebelum mengubah source code atau struktur database.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/10 p-5">
+                <div class="step-number w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white font-black">1</div>
+                <div>
+                  <h3 class="text-white font-black mb-1">Buat Database Baru</h3>
+                  <p class="text-sm text-slate-300 leading-relaxed">Buat database dan user database melalui cPanel, kemudian berikan seluruh hak akses yang diperlukan.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/10 p-5">
+                <div class="step-number w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white font-black">2</div>
+                <div>
+                  <h3 class="text-white font-black mb-1">Import File SQL</h3>
+                  <p class="text-sm text-slate-300 leading-relaxed">Buka phpMyAdmin, pilih database, lalu import atau jalankan isi file SQL yang sudah disediakan.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/10 p-5">
+                <div class="step-number w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white font-black">3</div>
+                <div>
+                  <h3 class="text-white font-black mb-1">Upload Source Code</h3>
+                  <p class="text-sm text-slate-300 leading-relaxed">Ekstrak dan unggah semua file PHP ke domain atau subdomain yang akan digunakan.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/10 p-5">
+                <div class="step-number w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white font-black">4</div>
+                <div>
+                  <h3 class="text-white font-black mb-1">Atur Database & Bot Telegram</h3>
+                  <p class="text-sm text-slate-300 leading-relaxed">Masukkan detail koneksi database, Bot Token, Admin Chat ID, URL webhook, dan metode pembayaran.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/10 p-5">
+                <div class="step-number w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white font-black">5</div>
+                <div>
+                  <h3 class="text-white font-black mb-1">Lakukan Pengujian</h3>
+                  <p class="text-sm text-slate-300 leading-relaxed">Tes katalog, checkout, kupon, pembayaran, approval order, dan akses produk sebelum digunakan secara publik.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Important notice -->
+    <section class="py-10 sm:py-14">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="rounded-[2rem] border border-amber-200 bg-amber-50 p-7 sm:p-8">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m0 4h.01M10.3 3.7 2.8 16.7A2 2 0 0 0 4.5 19.7h15a2 2 0 0 0 1.7-3L13.7 3.7a2 2 0 0 0-3.4 0Z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-black text-amber-900 mb-2">Backup Sebelum Modifikasi</h3>
+                <p class="text-sm text-amber-800 font-medium leading-relaxed">
+                  Simpan salinan source code dan database asli sebelum mengedit file, menambah fitur, atau mengubah struktur tabel.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[2rem] border border-blue-200 bg-blue-50 p-7 sm:p-8">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h8M8 14h5m7-2a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-black text-blue-900 mb-2">Gunakan Grup Support Secara Tepat</h3>
+                <p class="text-sm text-blue-800 font-medium leading-relaxed">
+                  Saat bertanya, sertakan screenshot error, nama file terkait, langkah yang sudah dilakukan, serta versi PHP atau database yang digunakan.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support CTA -->
+    <section class="pt-14 pb-20 sm:pt-20 sm:pb-28">
+      <div class="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="glass rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 text-center relative overflow-hidden">
+          <div class="absolute inset-x-0 -top-28 mx-auto w-80 h-80 rounded-full bg-tele-400/20 blur-3xl"></div>
+
+          <div class="relative z-10">
+            <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-tele-500 to-blue-700 text-white flex items-center justify-center shadow-glow mb-6">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M21.944 2.506a1.5 1.5 0 0 0-1.542-.177L2.95 9.853a1.5 1.5 0 0 0 .136 2.8l4.43 1.477 1.477 4.43a1.5 1.5 0 0 0 2.8.136l7.524-17.452a1.5 1.5 0 0 0-.177-1.542 1.5 1.5 0 0 0-1.196-.596Zm-11.57 12.972-.734-2.2 6.538-5.446-5.804 7.646Z"/>
+              </svg>
+            </div>
+
+            <span class="text-tele-600 text-xs font-black uppercase tracking-[.22em]">Komunitas Pengguna</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3 mb-4">
+              Bergabung ke Grup Support iMersTeleship
+            </h2>
+            <p class="text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto mb-8">
+              Dapatkan informasi penggunaan, diskusi instalasi, dan berbagi pengalaman bersama pengguna iMersTeleship lainnya.
+            </p>
+
+            <a
+              href="URL_GRUP_SUPPORT"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-tele-500 to-blue-700 px-7 py-4 text-white font-black shadow-glow transition hover:-translate-y-1 hover:brightness-105"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M21.944 2.506a1.5 1.5 0 0 0-1.542-.177L2.95 9.853a1.5 1.5 0 0 0 .136 2.8l4.43 1.477 1.477 4.43a1.5 1.5 0 0 0 2.8.136l7.524-17.452a1.5 1.5 0 0 0-.177-1.542 1.5 1.5 0 0 0-1.196-.596Zm-11.57 12.972-.734-2.2 6.538-5.446-5.804 7.646Z"/>
+              </svg>
+              Masuk Grup Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200/80 bg-white/65 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-7 text-center">
+      <p class="text-sm text-slate-500 font-semibold">
+        Developed with love by
+        <span class="font-black text-slate-800">Terry Katar</span>
+        |
+        <a href="https://imersnesia.com" target="_blank" rel="noopener noreferrer" class="font-black text-tele-600 hover:text-tele-700">
+          iMersnesia.com
+        </a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
