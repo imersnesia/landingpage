@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jasa Instal iMersWAStorePro - Toko Online, POS & WhatsApp Checkout</title>
+  <meta name="description" content="Jasa instal iMersWAStorePro untuk toko online, POS kasir, WhatsApp checkout, member area, produk digital, dan jasa/service. Pilih paket subdomain siap pakai atau instal di hosting/domain Anda sendiri.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Montserrat"', 'sans-serif'],
+          },
+          colors: {
+            imblue: '#0a84ff',
+            imcyan: '#12cfff',
+            imgreen: '#23d64b',
+            imnavy: '#061836',
+          },
+          boxShadow: {
+            soft: '0 22px 70px rgba(6, 24, 54, .10)',
+            glow: '0 24px 60px rgba(10, 132, 255, .24)',
+          },
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            blob: 'blob 8s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%,100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-14px)' },
+            },
+            blob: {
+              '0%,100%': { transform: 'translate(0,0) scale(1)' },
+              '33%': { transform: 'translate(22px,-28px) scale(1.08)' },
+              '66%': { transform: 'translate(-18px,20px) scale(.94)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif!important}
+    .text-gradient{background:linear-gradient(135deg,#0a84ff,#12cfff,#23d64b);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .mesh{background:
+      radial-gradient(circle at 12% 10%,rgba(18,207,255,.24),transparent 31%),
+      radial-gradient(circle at 86% 5%,rgba(35,214,75,.22),transparent 30%),
+      radial-gradient(circle at 70% 95%,rgba(10,132,255,.14),transparent 36%),
+      linear-gradient(135deg,#f8fbff 0%,#eff8ff 45%,#effdf5 100%)}
+    .grid-bg{background-image:linear-gradient(rgba(10,132,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(35,214,75,.04) 1px,transparent 1px);background-size:34px 34px}
+    .card-hover{transition:.22s ease}
+    .card-hover:hover{transform:translateY(-5px);box-shadow:0 24px 70px rgba(6,24,54,.12)}
+    .pricing-hot:before{content:"";position:absolute;inset:-1px;border-radius:2rem;background:linear-gradient(135deg,#0a84ff,#12cfff,#23d64b);z-index:-1}
+    .accordion-content{transition:max-height .32s ease,padding .32s ease;max-height:0;overflow:hidden}
+    .accordion-active .accordion-content{max-height:620px;padding-top:1rem;padding-bottom:1rem}
+    .accordion-active .accordion-icon{transform:rotate(180deg)}
+    .safe-bottom{padding-bottom:env(safe-area-inset-bottom)}
+  </style>
+</head>
+
+<body class="font-sans text-slate-800 bg-white antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/92 backdrop-blur-xl border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <img src="https://imersnesia.com/wp-content/uploads/2026/06/iconimerswastore.png" alt="iMersWAStore Icon" class="w-11 h-11 object-contain">
+        <img src="https://imersnesia.com/wp-content/uploads/2026/06/logo-teks-imerswastore-1.png" alt="iMersWAStore Logo" class="h-10 sm:h-12 w-auto object-contain">
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="#paket" class="text-sm font-black text-slate-600 hover:text-emerald-600">Paket</a>
+        <a href="#fitur" class="text-sm font-black text-slate-600 hover:text-emerald-600">Yang Didapat</a>
+        <a href="#alur" class="text-sm font-black text-slate-600 hover:text-emerald-600">Alur</a>
+        <a href="#faq" class="text-sm font-black text-slate-600 hover:text-emerald-600">FAQ</a>
+      </nav>
+
+      <div class="hidden md:flex items-center">
+        <a href="GANTI_LINK_WHATSAPP" target="_blank" class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-slate-950 text-white text-sm font-black hover:bg-slate-800">
+          Konsultasi Gratis
+        </a>
+      </div>
+
+      <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl border border-slate-200 bg-white text-slate-700">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a href="#paket" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Paket</a>
+        <a href="#fitur" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Yang Didapat</a>
+        <a href="#alur" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Alur</a>
+        <a href="#faq" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">FAQ</a>
+        <a href="GANTI_LINK_WHATSAPP" target="_blank" class="block text-center px-4 py-3 bg-emerald-500 rounded-xl text-white font-black hover:bg-emerald-600 shadow-md">Konsultasi Gratis</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden mesh grid-bg">
+    <div class="absolute top-28 left-8 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+    <div class="absolute top-24 right-10 w-80 h-80 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" style="animation-delay:2s"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/85 border border-slate-200 shadow-sm text-slate-700 text-sm font-black mb-8">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            Jasa Install · Subdomain · Hosting Pribadi
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-950 tracking-tight leading-[1.04] mb-7">
+            Jasa Instal <span class="text-gradient">iMersWAStorePro</span> sampai Siap Pakai
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-600 mb-9 leading-relaxed max-w-3xl">
+            Ingin punya toko online + POS kasir + WhatsApp checkout tanpa ribet install sendiri?
+            Kami bantu pasangkan iMersWAStorePro di subdomain siap pakai atau di hosting/domain milik Anda.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#paket" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:-translate-y-1 transition-all">
+              <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i>
+              Pilih Paket Install
+            </a>
+            <a href="GANTI_LINK_WHATSAPP" target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-emerald-400 hover:text-emerald-600 hover:-translate-y-1 transition-all">
+              <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
+              Tanya Dulu via WhatsApp
+            </a>
+          </div>
+
+          <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-white/80 border border-slate-200 rounded-2xl p-4 shadow-sm">
+              <strong class="block text-slate-950 text-lg">PHP</strong>
+              <span class="text-xs text-slate-500 font-bold">System Ready</span>
+            </div>
+            <div class="bg-white/80 border border-slate-200 rounded-2xl p-4 shadow-sm">
+              <strong class="block text-slate-950 text-lg">MySQL</strong>
+              <span class="text-xs text-slate-500 font-bold">Database</span>
+            </div>
+            <div class="bg-white/80 border border-slate-200 rounded-2xl p-4 shadow-sm">
+              <strong class="block text-slate-950 text-lg">cPanel</strong>
+              <span class="text-xs text-slate-500 font-bold">Support</span>
+            </div>
+            <div class="bg-white/80 border border-slate-200 rounded-2xl p-4 shadow-sm">
+              <strong class="block text-slate-950 text-lg">WA</strong>
+              <span class="text-xs text-slate-500 font-bold">Checkout</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-6 bg-gradient-to-br from-imblue/20 via-imcyan/20 to-imgreen/20 blur-3xl rounded-full"></div>
+          <div class="relative bg-white/85 border border-white rounded-[2rem] shadow-soft p-5 lg:p-7 overflow-hidden">
+            <img src="https://imersnesia.com/wp-content/uploads/2026/06/imerswastore-smart.webp" alt="Jasa Install iMersWAStorePro" class="w-full rounded-[1.6rem] shadow-2xl border border-white object-cover animate-float">
+            <div class="mt-5 grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-blue-50 border border-blue-100 p-4">
+                <i data-lucide="globe" class="w-6 h-6 text-blue-600 mb-2"></i>
+                <strong class="block text-slate-950">Subdomain</strong>
+                <span class="text-xs text-slate-500 font-bold">tokoanda.partner.web.id</span>
+              </div>
+              <div class="rounded-2xl bg-emerald-50 border border-emerald-100 p-4">
+                <i data-lucide="server" class="w-6 h-6 text-emerald-600 mb-2"></i>
+                <strong class="block text-slate-950">Hosting Anda</strong>
+                <span class="text-xs text-slate-500 font-bold">Domain/cPanel pribadi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="paket" class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-slate-50 transform -skew-y-2 z-0"></div>
+    <div class="absolute -right-32 top-20 w-96 h-96 rounded-full bg-emerald-200/40 blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">Pilih Paket</span>
+        <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">2 Pilihan Jasa Install</h2>
+        <p class="text-lg text-slate-600">Pilih yang paling sesuai: mau pakai subdomain dari kami, atau install di hosting/domain milik Anda sendiri.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 items-stretch max-w-6xl mx-auto">
+        <div class="relative rounded-[2rem] bg-white border border-slate-200 p-7 md:p-9 shadow-soft card-hover">
+          <div class="mb-7">
+            <span class="inline-flex px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-black text-xs uppercase tracking-widest mb-5">Paling Praktis</span>
+            <h3 class="text-3xl font-black text-slate-950 mb-3">Paket Subdomain Siap Pakai</h3>
+            <p class="text-slate-600 leading-relaxed">Untuk Anda yang belum punya domain/hosting dan ingin langsung punya alamat toko online siap pakai.</p>
+          </div>
+
+          <div class="mb-7 pb-7 border-b border-slate-200">
+            <span class="text-5xl font-black text-slate-950">Rp 199.000</span>
+            <span class="block text-emerald-600 font-bold text-sm mt-2">Jasa install awal</span>
+            <div class="mt-4 rounded-2xl bg-slate-50 border border-slate-200 p-4">
+              <span class="block text-sm text-slate-500 font-bold">Iuran tahunan</span>
+              <strong class="text-2xl text-slate-950">Rp 99.000 / tahun</strong>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">Untuk penggunaan subdomain dan tempat instalasi yang disediakan.</p>
+            </div>
+          </div>
+
+          <ul class="space-y-4 mb-8">
+            <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Dapat alamat subdomain contoh <strong>tokoanda.partner.web.id</strong>.</span></li>
+            <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Tidak perlu beli domain dan hosting sendiri di awal.</span></li>
+            <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Setup database, admin awal, logo, nama toko, dan pengaturan dasar.</span></li>
+            <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Cocok untuk UMKM, reseller, dan bisnis lokal yang ingin cepat online.</span></li>
+          </ul>
+
+          <a href="GANTI_LINK_WHATSAPP?text=Halo%20saya%20mau%20ambil%20Paket%20Subdomain%20iMersWAStorePro" target="_blank" class="block w-full py-4 px-5 bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black text-center rounded-2xl shadow-glow hover:scale-[1.02] transition-all">
+            Ambil Paket Subdomain
+          </a>
+        </div>
+
+        <div class="relative rounded-[2rem] bg-slate-950 p-7 md:p-9 shadow-2xl text-white overflow-hidden card-hover">
+          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+          <div class="absolute -top-20 -right-20 w-56 h-56 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+          <div class="mb-7 relative z-10">
+            <span class="inline-flex px-4 py-2 rounded-full bg-emerald-500 text-white font-black text-xs uppercase tracking-widest mb-5">Untuk Domain Sendiri</span>
+            <h3 class="text-3xl font-black mb-3">Paket Hosting & Domain Anda</h3>
+            <p class="text-slate-400 leading-relaxed">Untuk Anda yang sudah punya hosting/domain sendiri dan ingin iMersWAStorePro dipasang di sana.</p>
+          </div>
+
+          <div class="mb-7 pb-7 border-b border-slate-800 relative z-10">
+            <span class="text-5xl font-black">Rp 249.000</span>
+            <span class="block text-emerald-400 font-bold text-sm mt-2">Jasa install sekali bayar</span>
+            <div class="mt-4 rounded-2xl bg-white/5 border border-white/10 p-4">
+              <span class="block text-sm text-slate-400 font-bold">Anda menyediakan</span>
+              <strong class="text-xl text-white">Akses cPanel + domain</strong>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">Biaya hosting/domain menjadi tanggung jawab pemilik akun hosting.</p>
+            </div>
+          </div>
+
+          <ul class="space-y-4 mb-8 relative z-10">
+            <li class="flex gap-3 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Install di domain/subdomain milik Anda sendiri.</span></li>
+            <li class="flex gap-3 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Anda berikan akses cPanel dan domain yang akan digunakan.</span></li>
+            <li class="flex gap-3 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Setup database, config, admin awal, dan testing aplikasi.</span></li>
+            <li class="flex gap-3 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Cocok untuk brand yang ingin alamat website sendiri.</span></li>
+          </ul>
+
+          <a href="GANTI_LINK_WHATSAPP?text=Halo%20saya%20mau%20ambil%20Paket%20Install%20di%20Hosting%20dan%20Domain%20Saya" target="_blank" class="block w-full py-4 px-5 bg-white text-slate-950 font-black text-center rounded-2xl hover:bg-emerald-50 transition-all">
+            Install di Hosting Saya
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 max-w-6xl mx-auto rounded-[2rem] border border-amber-200 bg-amber-50 p-6">
+        <div class="flex gap-4">
+          <i data-lucide="info" class="w-7 h-7 text-amber-600 shrink-0 mt-1"></i>
+          <p class="text-sm sm:text-base text-amber-900 leading-relaxed">
+            Harga di atas adalah jasa instalasi. Biaya tambahan seperti domain, hosting pribadi, API WhatsApp Gateway, RajaOngkir/Komerce, atau custom fitur di luar paket tidak termasuk kecuali disepakati terpisah.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fitur" class="py-24 bg-slate-950 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 grid-bg"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-14">
+        <span class="text-emerald-400 font-black tracking-wider text-sm uppercase mb-3 block">Yang Didapat</span>
+        <h2 class="text-3xl md:text-5xl font-black mb-5">Kami Bantu Setup Sampai Toko Bisa Dibuka</h2>
+        <p class="text-slate-400 text-lg leading-relaxed">Paket jasa install ini fokus membuat sistem iMersWAStorePro Anda aktif, bisa diakses, dan siap mulai diisi produk.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-300 shrink-0"><i data-lucide="upload-cloud" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Upload & Instal Sistem</h4><p class="text-sm text-slate-400 leading-relaxed">File aplikasi dipasang ke folder hosting/subdomain yang dipilih.</p></div></div>
+        <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-300 shrink-0"><i data-lucide="database" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Setup Database</h4><p class="text-sm text-slate-400 leading-relaxed">Database MySQL dibuat/disambungkan dan sistem diuji agar bisa login.</p></div></div>
+        <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-300 shrink-0"><i data-lucide="user-cog" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Akun Admin Awal</h4><p class="text-sm text-slate-400 leading-relaxed">Dibuatkan akun admin utama untuk mengelola toko dan pesanan.</p></div></div>
+        <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-amber-300 shrink-0"><i data-lucide="paintbrush" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Setting Identitas Toko</h4><p class="text-sm text-slate-400 leading-relaxed">Nama toko, logo, WhatsApp, warna dasar, dan pengaturan awal dibantu.</p></div></div>
+        <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-green-300 shrink-0"><i data-lucide="shopping-cart" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Tes Checkout</h4><p class="text-sm text-slate-400 leading-relaxed">Kami cek alur checkout, order masuk admin, dan halaman toko bisa diakses.</p></div></div>
+        <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-purple-300 shrink-0"><i data-lucide="book-open-check" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Panduan Penggunaan</h4><p class="text-sm text-slate-400 leading-relaxed">Diberikan arahan penggunaan dasar setelah sistem berhasil dipasang.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="alur" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-start">
+        <div class="lg:sticky lg:top-28">
+          <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">Alur Pengerjaan</span>
+          <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Mudah, Tinggal Kirim Data</h2>
+          <p class="text-slate-600 text-lg leading-relaxed mb-6">Kami bantu dari proses awal sampai website iMersWAStorePro Anda bisa dibuka dan diuji.</p>
+          <a href="GANTI_LINK_WHATSAPP" target="_blank" class="inline-flex items-center justify-center px-7 py-4 rounded-2xl bg-slate-950 text-white font-black hover:bg-slate-800 transition-all">
+            Mulai Konsultasi
+          </a>
+        </div>
+
+        <div class="space-y-5">
+          <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 shadow-sm flex gap-5"><div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black shrink-0">1</div><div><h3 class="font-black text-xl mb-2">Pilih Paket</h3><p class="text-slate-600 leading-relaxed">Pilih paket subdomain siap pakai atau paket install di hosting/domain Anda sendiri.</p></div></div>
+          <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 shadow-sm flex gap-5"><div class="w-12 h-12 rounded-2xl bg-cyan-600 text-white flex items-center justify-center font-black shrink-0">2</div><div><h3 class="font-black text-xl mb-2">Kirim Data</h3><p class="text-slate-600 leading-relaxed">Kirim nama toko, logo, nomor WhatsApp, dan akses cPanel/domain jika memilih paket hosting sendiri.</p></div></div>
+          <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 shadow-sm flex gap-5"><div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black shrink-0">3</div><div><h3 class="font-black text-xl mb-2">Proses Install</h3><p class="text-slate-600 leading-relaxed">Kami pasang file, database, config, admin awal, dan melakukan pengecekan awal.</p></div></div>
+          <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 shadow-sm flex gap-5"><div class="w-12 h-12 rounded-2xl bg-green-600 text-white flex items-center justify-center font-black shrink-0">4</div><div><h3 class="font-black text-xl mb-2">Serah Terima</h3><p class="text-slate-600 leading-relaxed">Anda menerima link toko, link admin, username/password admin, dan panduan penggunaan dasar.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-24 bg-slate-50 border-y border-slate-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">FAQ</span>
+        <h2 class="text-3xl md:text-4xl font-black text-slate-950">Pertanyaan Umum</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+          <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+            <span class="font-black text-slate-900">Apa bedanya paket subdomain dan hosting sendiri?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+          </button>
+          <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Paket subdomain memakai alamat yang kami sediakan, contoh tokoanda.partner.web.id. Paket hosting sendiri dipasang di domain/subdomain milik Anda sendiri, sehingga Anda perlu memberikan akses cPanel dan domain.
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+          <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+            <span class="font-black text-slate-900">Kenapa paket subdomain ada iuran tahunan?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+          </button>
+          <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Karena paket subdomain menggunakan tempat instalasi dan subdomain yang disediakan. Iuran tahunan Rp 99.000 digunakan agar akses subdomain dan instalasi tetap aktif.
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+          <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+            <span class="font-black text-slate-900">Apakah input semua produk termasuk?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+          </button>
+          <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Paket ini fokus instalasi dan setup awal. Input produk banyak, desain banner khusus, setting konten lengkap, atau custom fitur bisa dibahas sebagai layanan tambahan.
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+          <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+            <span class="font-black text-slate-900">Apakah WhatsApp Gateway dan RajaOngkir sudah termasuk?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+          </button>
+          <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Sistemnya sudah mendukung, tetapi akun/API WhatsApp Gateway dan RajaOngkir/Komerce disediakan oleh pemilik toko. Kami bisa bantu arahkan cara input key jika data API sudah tersedia.
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+          <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+            <span class="font-black text-slate-900">Apa saja data yang perlu dikirim?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+          </button>
+          <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Minimal nama toko, logo jika ada, nomor WhatsApp toko, email admin, username/password admin yang diinginkan, dan untuk paket hosting sendiri: akses cPanel serta domain/subdomain yang akan digunakan.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] bg-slate-950 text-white p-8 md:p-12 text-center relative overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+        <h2 class="text-3xl md:text-5xl font-black mb-5">Siap Punya Toko Online Sendiri?</h2>
+        <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto mb-8">Pilih paket, kirim data, dan kami bantu install iMersWAStorePro sampai bisa dibuka.</p>
+        <a href="GANTI_LINK_WHATSAPP" target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:scale-[1.02] transition-all">
+          <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
+          Pesan Jasa Install Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-slate-950 text-white py-10 pb-24 md:pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <img src="https://imersnesia.com/wp-content/uploads/2026/06/logo-teks-imerswastore-1.png" alt="iMersWAStore Logo" class="h-11 w-auto object-contain brightness-0 invert opacity-90 mx-auto mb-4">
+      <p class="text-slate-500 text-sm">© 2026 iMersWAStorePro Install Service. Jasa instal toko online, POS kasir, dan WhatsApp checkout.</p>
+    </div>
+  </footer>
+
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/92 backdrop-blur-xl border-t border-slate-200 shadow-[0_-4px_20px_rgba(15,23,42,.08)] safe-bottom">
+    <div class="flex justify-around items-center h-[72px] px-2">
+      <a href="#" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+        <div class="p-2 rounded-2xl bg-emerald-50"><i data-lucide="home" class="w-5 h-5 text-emerald-500"></i></div>
+        <span class="text-[10px] font-black text-slate-500">Home</span>
+      </a>
+      <a href="#paket" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+        <div class="p-2 rounded-2xl bg-blue-50"><i data-lucide="badge-dollar-sign" class="w-5 h-5 text-blue-500"></i></div>
+        <span class="text-[10px] font-black text-slate-500">Paket</span>
+      </a>
+      <a href="#alur" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+        <div class="p-2 rounded-2xl bg-purple-50"><i data-lucide="list-checks" class="w-5 h-5 text-purple-500"></i></div>
+        <span class="text-[10px] font-black text-slate-500">Alur</span>
+      </a>
+      <a href="GANTI_LINK_WHATSAPP" target="_blank" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+        <div class="p-2 rounded-2xl bg-rose-50"><i data-lucide="message-circle" class="w-5 h-5 text-rose-500"></i></div>
+        <span class="text-[10px] font-black text-slate-500">Chat</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
+    });
+
+    function toggleFAQ(button) {
+      const item = button.parentElement;
+      document.querySelectorAll('.accordion-item').forEach(otherItem => {
+        if (otherItem !== item) otherItem.classList.remove('accordion-active');
+      });
+      item.classList.toggle('accordion-active');
+    }
+  </script>
+</body>
+</html>
