@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Akses Demo Admin iMersWAStorePro</title>
+  <meta name="description" content="Akses demo admin iMersWAStorePro untuk melihat dashboard, produk, pesanan, POS kasir, pengaturan toko, WhatsApp Gateway, dan fitur toko online PHP siap pakai.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Montserrat"', 'sans-serif'],
+          },
+          colors: {
+            imblue: '#0a84ff',
+            imcyan: '#12cfff',
+            imgreen: '#23d64b',
+            imnavy: '#061836',
+          },
+          boxShadow: {
+            soft: '0 22px 70px rgba(6, 24, 54, .10)',
+            glow: '0 24px 60px rgba(10, 132, 255, .24)',
+          },
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            blob: 'blob 8s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%,100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-14px)' },
+            },
+            blob: {
+              '0%,100%': { transform: 'translate(0,0) scale(1)' },
+              '33%': { transform: 'translate(22px,-28px) scale(1.08)' },
+              '66%': { transform: 'translate(-18px,20px) scale(.94)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif!important}
+    .text-gradient{background:linear-gradient(135deg,#0a84ff,#12cfff,#23d64b);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .mesh{background:
+      radial-gradient(circle at 12% 10%,rgba(18,207,255,.24),transparent 31%),
+      radial-gradient(circle at 86% 5%,rgba(35,214,75,.22),transparent 30%),
+      radial-gradient(circle at 70% 95%,rgba(10,132,255,.14),transparent 36%),
+      linear-gradient(135deg,#f8fbff 0%,#eff8ff 45%,#effdf5 100%)}
+    .grid-bg{background-image:linear-gradient(rgba(10,132,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(35,214,75,.04) 1px,transparent 1px);background-size:34px 34px}
+    .card-hover{transition:.22s ease}
+    .card-hover:hover{transform:translateY(-5px);box-shadow:0 24px 70px rgba(6,24,54,.12)}
+    .safe-bottom{padding-bottom:env(safe-area-inset-bottom)}
+  </style>
+</head>
+
+<body class="font-sans text-slate-800 bg-white antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+  <header class="sticky top-0 z-50 bg-white/92 backdrop-blur-xl border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <img src="https://imersnesia.com/wp-content/uploads/2026/06/iconimerswastore.png" alt="iMersWAStore Icon" class="w-11 h-11 object-contain">
+        <img src="https://imersnesia.com/wp-content/uploads/2026/07/imerswastorepro-logo-teks.png" alt="iMersWAStore Logo" class="h-10 sm:h-12 w-auto object-contain">
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7">
+        <a href="#akses" class="text-sm font-black text-slate-600 hover:text-emerald-600">Akses Demo</a>
+        <a href="#fitur" class="text-sm font-black text-slate-600 hover:text-emerald-600">Fitur</a>
+        <a href="#paket" class="text-sm font-black text-slate-600 hover:text-emerald-600">Paket</a>
+      </nav>
+
+      <a href="https://alldigital.web.id/demoimerswastore/admin.php" target="_blank" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-slate-950 text-white text-sm font-black hover:bg-slate-800">
+        Buka Demo Admin
+      </a>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden mesh grid-bg">
+    <div class="absolute top-24 left-10 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+    <div class="absolute top-20 right-10 w-80 h-80 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" style="animation-delay:2s"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/85 border border-slate-200 shadow-sm text-slate-700 text-sm font-black mb-8">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            Demo Admin · PHP + MySQL · cPanel Ready
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-950 tracking-tight leading-[1.04] mb-7">
+            Coba Dashboard Admin <span class="text-gradient">iMersWAStorePro</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-600 mb-9 leading-relaxed max-w-3xl">
+            Lihat langsung tampilan admin, manajemen produk, pesanan, POS kasir, pengaturan toko, WhatsApp Gateway, RajaOngkir optional, dan fitur toko online siap pakai berbasis PHP.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#akses" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:-translate-y-1 transition-all">
+              <i data-lucide="key-round" class="w-5 h-5 mr-2"></i>
+              Lihat Akses Demo
+            </a>
+            <a href="https://alldigital.web.id/demoimerswastore/admin.php" target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-emerald-400 hover:text-emerald-600 hover:-translate-y-1 transition-all">
+              <i data-lucide="external-link" class="w-5 h-5 mr-2"></i>
+              Buka Admin
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-6 bg-gradient-to-br from-imblue/20 via-imcyan/20 to-imgreen/20 blur-3xl rounded-full"></div>
+          <div class="relative bg-slate-950 text-white rounded-[2rem] p-6 md:p-8 shadow-2xl overflow-hidden animate-float">
+            <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+
+            <div class="flex items-center justify-between mb-8">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
+                  <i data-lucide="layout-dashboard" class="w-7 h-7 text-emerald-300"></i>
+                </div>
+                <div>
+                  <strong class="block text-lg">Admin Demo</strong>
+                  <span class="text-xs text-slate-400">iMersWAStorePro Dashboard</span>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/20 text-xs font-black">ONLINE</span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                <span class="block text-xs text-slate-400 font-bold mb-2">Link Admin</span>
+                <div class="flex items-center justify-between gap-3">
+                  <strong class="text-sm sm:text-base break-all">alldigital.web.id/demoimerswastore/admin.php</strong>
+                  <button onclick="copyText('https://alldigital.web.id/demoimerswastore/admin.php')" class="shrink-0 w-10 h-10 rounded-xl bg-white/10 hover:bg-white/15 flex items-center justify-center">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                  <span class="block text-xs text-slate-400 font-bold mb-2">Username</span>
+                  <div class="flex items-center justify-between gap-3">
+                    <strong class="text-xl">katar</strong>
+                    <button onclick="copyText('katar')" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/15 flex items-center justify-center">
+                      <i data-lucide="copy" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                  <span class="block text-xs text-slate-400 font-bold mb-2">Password</span>
+                  <div class="flex items-center justify-between gap-3">
+                    <strong class="text-xl">adminkatar</strong>
+                    <button onclick="copyText('adminkatar')" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/15 flex items-center justify-center">
+                      <i data-lucide="copy" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <a href="https://alldigital.web.id/demoimerswastore/admin.php" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:scale-[1.01] transition-all">
+                Masuk ke Demo Admin
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="akses" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">Akses Demo</span>
+          <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Gunakan Data Login Berikut</h2>
+          <p class="text-lg text-slate-600">Silakan buka link admin dan login menggunakan username serta password demo.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-5">
+              <i data-lucide="link" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-black text-slate-950 mb-2">Link Admin</h3>
+            <p class="text-sm text-slate-600 break-all mb-5">https://alldigital.web.id/demoimerswastore/admin.php</p>
+            <button onclick="copyText('https://alldigital.web.id/demoimerswastore/admin.php')" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-blue-500 text-white font-black hover:bg-blue-600">
+              Copy Link
+            </button>
+          </div>
+
+          <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-5">
+              <i data-lucide="user" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-black text-slate-950 mb-2">Username</h3>
+            <p class="text-3xl font-black text-slate-950 mb-5">katar</p>
+            <button onclick="copyText('katar')" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-emerald-500 text-white font-black hover:bg-emerald-600">
+              Copy Username
+            </button>
+          </div>
+
+          <div class="bg-slate-50 rounded-3xl border border-slate-200 p-6 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 mb-5">
+              <i data-lucide="lock-keyhole" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-black text-slate-950 mb-2">Password</h3>
+            <p class="text-3xl font-black text-slate-950 mb-5">adminkatar</p>
+            <button onclick="copyText('adminkatar')" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-orange-500 text-white font-black hover:bg-orange-600">
+              Copy Password
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-8 rounded-[2rem] border border-amber-200 bg-amber-50 p-6">
+          <div class="flex gap-4">
+            <i data-lucide="info" class="w-7 h-7 text-amber-600 shrink-0 mt-1"></i>
+            <p class="text-sm sm:text-base text-amber-900 leading-relaxed">
+              Akses demo disediakan untuk melihat alur dashboard dan fitur admin. Data di dalam demo dapat berubah sewaktu-waktu karena digunakan untuk kebutuhan preview.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fitur" class="py-20 bg-slate-950 text-white relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 grid-bg"></div>
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl mb-14">
+          <span class="text-emerald-400 font-black tracking-wider text-sm uppercase mb-3 block">Yang Bisa Dilihat</span>
+          <h2 class="text-3xl md:text-5xl font-black mb-5">Preview Fitur Admin iMersWAStorePro</h2>
+          <p class="text-slate-400 text-lg leading-relaxed">Masuk ke dashboard demo untuk melihat bagaimana sistem ini digunakan oleh pemilik toko.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-300 shrink-0"><i data-lucide="package" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Produk & Kategori</h4><p class="text-sm text-slate-400 leading-relaxed">Kelola produk fisik, digital, lisensi, bundle, jasa, kategori, varian, dan gallery produk.</p></div></div>
+          <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-300 shrink-0"><i data-lucide="shopping-bag" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Pesanan Masuk</h4><p class="text-sm text-slate-400 leading-relaxed">Pantau order dari website, proses status pesanan, dan kirim notifikasi WhatsApp.</p></div></div>
+          <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-300 shrink-0"><i data-lucide="monitor-smartphone" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">POS Kasir</h4><p class="text-sm text-slate-400 leading-relaxed">Transaksi offline melalui POS kasir, cetak struk, dan pengurangan stok.</p></div></div>
+          <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-green-300 shrink-0"><i data-lucide="message-circle" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">WhatsApp Checkout</h4><p class="text-sm text-slate-400 leading-relaxed">Order dari website diteruskan ke WhatsApp dan dashboard admin.</p></div></div>
+          <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-amber-300 shrink-0"><i data-lucide="truck" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">RajaOngkir Optional</h4><p class="text-sm text-slate-400 leading-relaxed">Dukungan ongkir otomatis menggunakan API RajaOngkir/Komerce bila dibutuhkan.</p></div></div>
+          <div class="flex gap-4"><div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-purple-300 shrink-0"><i data-lucide="settings-2" class="w-6 h-6"></i></div><div><h4 class="font-black text-lg mb-2">Pengaturan Toko</h4><p class="text-sm text-slate-400 leading-relaxed">Atur profil toko, banner, template pesan, gateway, dan tampilan toko.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="paket" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">Paket Lisensi</span>
+          <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Mulai Gunakan iMersWAStorePro</h2>
+          <p class="text-lg text-slate-600">Setelah mencoba demo admin, Anda bisa memilih lisensi satuan atau paket agency untuk banyak project.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-[2rem] bg-white border border-slate-200 p-7 shadow-soft card-hover">
+            <span class="inline-flex px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-black text-xs uppercase tracking-widest mb-5">Satuan</span>
+            <h3 class="text-2xl font-black text-slate-950 mb-3">Lisensi Satuan</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">Untuk 1 toko atau 1 project.</p>
+            <strong class="block text-4xl font-black text-slate-950 mb-6">Rp xx.000</strong>
+            <a href="GANTI_LINK_BELI" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-slate-950 text-white font-black hover:bg-slate-800">Ambil Lisensi</a>
+          </div>
+
+          <div class="rounded-[2rem] bg-slate-950 text-white p-7 shadow-2xl card-hover relative overflow-hidden">
+            <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+            <span class="inline-flex px-4 py-2 rounded-full bg-emerald-500 text-white font-black text-xs uppercase tracking-widest mb-5">Agency</span>
+            <h3 class="text-2xl font-black mb-3">Agency Starter</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">25 lisensi + bonus 5 lisensi. Total 30 lisensi.</p>
+            <strong class="block text-4xl font-black mb-6">Rp xx.000</strong>
+            <a href="GANTI_LINK_BELI" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-white text-slate-950 font-black hover:bg-emerald-50">Ambil Starter</a>
+          </div>
+
+          <div class="rounded-[2rem] bg-white border border-slate-200 p-7 shadow-soft card-hover">
+            <span class="inline-flex px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-black text-xs uppercase tracking-widest mb-5">Premium</span>
+            <h3 class="text-2xl font-black text-slate-950 mb-3">Agency Premium</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">100 lisensi + bonus 5 lisensi. Total 105 lisensi.</p>
+            <strong class="block text-4xl font-black text-slate-950 mb-6">Rp xxx.000</strong>
+            <a href="GANTI_LINK_BELI" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-purple-600 text-white font-black hover:bg-purple-700">Ambil Premium</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[2rem] bg-slate-950 text-white p-8 md:p-12 text-center relative overflow-hidden">
+          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+          <h2 class="text-3xl md:text-5xl font-black mb-5">Sudah Lihat Demo Admin?</h2>
+          <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto mb-8">Gunakan iMersWAStorePro untuk toko sendiri atau project client dengan sistem PHP + MySQL siap install.</p>
+          <a href="https://chat.whatsapp.com/LWR3aWcIYAN0LRKLm0692j" target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:scale-[1.02] transition-all">
+            Waiting List iMersWAstorePRO
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-950 text-white py-10 pb-24 md:pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <img src="https://imersnesia.com/wp-content/uploads/2026/07/imerswastorepro-logofull.png" alt="iMersWAStore Logo" class="h-11 w-auto object-contain brightness-0 invert opacity-90 mx-auto mb-4">
+      <p class="text-slate-500 text-sm">© 2026 iMersWAStorePro. Demo admin toko online PHP, POS kasir, dan WhatsApp checkout.</p>
+    </div>
+  </footer>
+
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/92 backdrop-blur-xl border-t border-slate-200 shadow-[0_-4px_20px_rgba(15,23,42,.08)] safe-bottom">
+    <div class="flex justify-around items-center h-[72px] px-2">
+      <a href="#akses" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+        <div class="p-2 rounded-2xl bg-emerald-50"><i data-lucide="key-round" class="w-5 h-5 text-emerald-500"></i></div>
+        <span class="text-[10px] font-black text-slate-500">Akses</span>
+      </a>
+      <a href="https://alldigital.web.id/demoimerswastore/admin.php" target="_blank" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+        <div class="p-2 rounded-2xl bg-blue-50"><i data-lucide="external-link" class="w-5 h-5 text-blue-500"></i></div>
+        <span class="text-[10px] font-black text-slate-500">Demo</span>
+      </a>
+      <a href="#fitur" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+        <div class="p-2 rounded-2xl bg-purple-50"><i data-lucide="layout-dashboard" class="w-5 h-5 text-purple-500"></i></div>
+        <span class="text-[10px] font-black text-slate-500">Fitur</span>
+      </a>
+      <a href="GANTI_LINK_BELI" target="_blank" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+        <div class="p-2 rounded-2xl bg-rose-50"><i data-lucide="shopping-cart" class="w-5 h-5 text-rose-500"></i></div>
+        <span class="text-[10px] font-black text-slate-500">Beli</span>
+      </a>
+    </div>
+  </nav>
+
+  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-24 md:bottom-8 z-[70] px-5 py-3 rounded-2xl bg-slate-950 text-white font-black text-sm shadow-2xl opacity-0 pointer-events-none transition-all">
+    Berhasil disalin
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(function(){
+        showToast('Berhasil disalin');
+      }).catch(function(){
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast('Berhasil disalin');
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.add('opacity-0');
+        toast.classList.remove('opacity-100');
+      }, 1800);
+    }
+  </script>
+</body>
+</html>
