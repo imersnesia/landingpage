@@ -178,37 +178,15 @@
                     <p class="text-slate-600 leading-relaxed">Silakan download file produk iMersWAStorePro berikut. Simpan baik-baik akses ini untuk kebutuhan instalasi dan update.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover md:col-span-2">
                         <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-5">
                             <i data-lucide="file-archive" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-xl font-black text-slate-950 mb-2">File Utama iMersWAStorePro</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Source aplikasi PHP siap upload ke hosting cPanel.</p>
-                        <a href="GANTI_LINK_DOWNLOAD_FILE_UTAMA" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-slate-950 text-white font-black hover:bg-slate-800">
-                            Download File Utama
-                        </a>
-                    </div>
-
-                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
-                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-5">
-                            <i data-lucide="database" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-xl font-black text-slate-950 mb-2">Database SQL</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-5">File database.sql untuk import otomatis via installer.</p>
-                        <a href="GANTI_LINK_DATABASE_SQL" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-emerald-500 text-white font-black hover:bg-emerald-600">
-                            Download Database
-                        </a>
-                    </div>
-
-                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
-                        <div class="w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-5">
-                            <i data-lucide="settings-2" class="w-7 h-7"></i>
-                        </div>
-                        <h3 class="text-xl font-black text-slate-950 mb-2">Installer Premium</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Installer otomatis untuk setup database, admin awal, dan lock install.</p>
-                        <a href="GANTI_LINK_INSTALLER" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-cyan-500 text-white font-black hover:bg-cyan-600">
-                            Download Installer
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Paket Lengkap iMersWAStorePro</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Download 1 file ZIP berisi aplikasi PHP, database.sql, installer, assets, panduan, dan file pendukung lainnya.</p>
+                        <a href="GANTI_LINK_ZIP_PRODUK" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow">
+                            Download Paket ZIP
                         </a>
                     </div>
 
@@ -234,15 +212,21 @@
                         </a>
                     </div>
 
-                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
-                        <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-700 mb-5">
-                            <i data-lucide="video" class="w-7 h-7"></i>
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover md:col-span-2 lg:col-span-4">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                            <div class="flex gap-4">
+                                <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-700 shrink-0">
+                                    <i data-lucide="video" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-black text-slate-950 mb-2">Video Tutorial</h3>
+                                    <p class="text-sm text-slate-600 leading-relaxed">Kumpulan tutorial penggunaan sistem untuk install, admin toko, produk, POS, dan WhatsApp Gateway.</p>
+                                </div>
+                            </div>
+                            <a href="GANTI_LINK_VIDEO_TUTORIAL" target="_blank" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-slate-950 text-white font-black hover:bg-slate-800">
+                                Lihat Tutorial
+                            </a>
                         </div>
-                        <h3 class="text-xl font-black text-slate-950 mb-2">Video Tutorial</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Kumpulan tutorial penggunaan sistem untuk admin dan client.</p>
-                        <a href="GANTI_LINK_VIDEO_TUTORIAL" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-slate-950 text-white font-black hover:bg-slate-800">
-                            Lihat Tutorial
-                        </a>
                     </div>
                 </div>
 
@@ -250,7 +234,7 @@
                     <div class="flex gap-4">
                         <i data-lucide="info" class="w-7 h-7 text-amber-600 shrink-0 mt-1"></i>
                         <p class="text-sm sm:text-base text-amber-900 leading-relaxed">
-                            Catatan: link di halaman ini bisa diganti sesuai lokasi file produk Anda, misalnya Google Drive, server download, atau sistem member area utama.
+                            Catatan: semua file utama sudah dijadikan 1 paket ZIP. Link di halaman ini bisa diganti sesuai lokasi file produk Anda, misalnya Google Drive, server download, atau sistem member area utama.
                         </p>
                     </div>
                 </div>
@@ -298,7 +282,7 @@
                     <div>
                         <h2 class="text-3xl md:text-4xl font-black text-slate-950 mb-3">Agency License Generator</h2>
                         <p class="text-slate-600 leading-relaxed mb-6">
-                            Khusus member Agency Starter dan Agency Premium. Silakan login menggunakan email dan password terdaftar untuk generate lisensi client.
+                            Khusus member Agency Starter dan Agency Premium. Silakan buka link generator lisensi agency dan login menggunakan email serta password terdaftar di halaman tersebut.
                         </p>
 
                         <div class="rounded-3xl border border-emerald-200 bg-emerald-50 p-6">
@@ -318,30 +302,26 @@
                                 <i data-lucide="key-round" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <h3 class="text-2xl font-black text-slate-950">Login Agency</h3>
-                                <p class="text-sm text-slate-500">Gunakan email dan password terdaftar.</p>
+                                <h3 class="text-2xl font-black text-slate-950">Akses Generator Lisensi</h3>
+                                <p class="text-sm text-slate-500">Generate lisensi dilakukan di halaman khusus agency.</p>
                             </div>
                         </div>
 
-                        <form action="GANTI_LINK_GENERATOR_LISENSI" method="get" class="space-y-5">
-                            <label class="block">
-                                <span class="block text-sm font-black text-slate-700 mb-2">Email Terdaftar</span>
-                                <input type="email" name="email" placeholder="emailagency@email.com" class="w-full h-14 rounded-2xl border border-slate-200 px-4 outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 font-bold">
-                            </label>
-
-                            <label class="block">
-                                <span class="block text-sm font-black text-slate-700 mb-2">Password</span>
-                                <input type="password" name="password" placeholder="Password agency" class="w-full h-14 rounded-2xl border border-slate-200 px-4 outline-none focus:ring-4 focus:ring-emerald-100 focus:border-emerald-400 font-bold">
-                            </label>
-
-                            <button type="submit" class="w-full h-14 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:scale-[1.01] transition-all">
-                                Masuk & Generate Lisensi
-                            </button>
-                        </form>
-
-                        <div class="mt-6 rounded-2xl bg-slate-50 border border-slate-200 p-4">
+                        <div class="rounded-3xl bg-slate-50 border border-slate-200 p-5 mb-6">
+                            <h4 class="font-black text-slate-950 mb-2">Khusus Agency Aktif</h4>
                             <p class="text-sm text-slate-600 leading-relaxed">
-                                Belum punya akses agency? Upgrade ke paket Agency Starter atau Agency Premium untuk mendapatkan akun generate lisensi.
+                                Silakan buka halaman generator lisensi lalu login menggunakan email dan password agency yang sudah terdaftar.
+                                Halaman ini hanya menyediakan tombol akses, karena proses generate lisensi berada di sistem terpisah.
+                            </p>
+                        </div>
+
+                        <a href="GANTI_LINK_GENERATOR_LISENSI" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:scale-[1.01] transition-all">
+                            Buka Generator Lisensi Agency
+                        </a>
+
+                        <div class="mt-6 rounded-2xl bg-amber-50 border border-amber-200 p-4">
+                            <p class="text-sm text-amber-900 leading-relaxed">
+                                Belum punya akses agency? Upgrade ke Agency Starter atau Agency Premium untuk mendapatkan akun generator lisensi.
                             </p>
                         </div>
                     </div>
