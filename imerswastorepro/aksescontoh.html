@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Area iMersWAStorePro</title>
+    <meta name="description" content="Member Area iMersWAStorePro untuk akses produk, file download, panduan setup, update, support, dan generate lisensi agency.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Montserrat"', 'sans-serif'],
+                    },
+                    colors: {
+                        imblue: '#0a84ff',
+                        imcyan: '#12cfff',
+                        imgreen: '#23d64b',
+                        imnavy: '#061836',
+                    },
+                    boxShadow: {
+                        soft: '0 22px 70px rgba(6, 24, 54, .10)',
+                        glow: '0 24px 60px rgba(10, 132, 255, .24)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif!important}
+        .text-gradient{background:linear-gradient(135deg,#0a84ff,#12cfff,#23d64b);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .mesh{background:
+            radial-gradient(circle at 12% 10%,rgba(18,207,255,.24),transparent 31%),
+            radial-gradient(circle at 86% 5%,rgba(35,214,75,.22),transparent 30%),
+            radial-gradient(circle at 70% 95%,rgba(10,132,255,.14),transparent 36%),
+            linear-gradient(135deg,#f8fbff 0%,#eff8ff 45%,#effdf5 100%)}
+        .grid-bg{background-image:linear-gradient(rgba(10,132,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(35,214,75,.04) 1px,transparent 1px);background-size:34px 34px}
+        .tab-active{background:linear-gradient(135deg,#0a84ff,#12cfff,#23d64b);color:#fff;box-shadow:0 18px 36px rgba(10,132,255,.22)}
+        .section-panel{display:none}
+        .section-panel.active{display:block}
+        .card-hover{transition:.22s ease}
+        .card-hover:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(6,24,54,.11)}
+        .safe-bottom{padding-bottom:env(safe-area-inset-bottom)}
+    </style>
+</head>
+
+<body class="font-sans text-slate-800 bg-white antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+    <header class="sticky top-0 z-50 bg-white/92 backdrop-blur-xl border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <img src="https://imersnesia.com/wp-content/uploads/2026/06/iconimerswastore.png" alt="iMersWAStore Icon" class="w-11 h-11 object-contain">
+                <img src="https://imersnesia.com/wp-content/uploads/2026/06/logo-teks-imerswastore-1.png" alt="iMersWAStore Logo" class="h-10 sm:h-12 w-auto object-contain">
+            </a>
+
+            <div class="hidden md:flex items-center gap-3">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-black">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                    Member Active
+                </span>
+                <a href="#agency-login" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-slate-950 text-white font-black text-sm hover:bg-slate-800">
+                    Generate Lisensi
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="mesh grid-bg relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+            <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/85 border border-slate-200 shadow-sm text-slate-700 text-sm font-black mb-7">
+                        <i data-lucide="badge-check" class="w-4 h-4 text-emerald-600"></i>
+                        Terima kasih sudah menjadi member
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.05] mb-6">
+                        Akses Produk <span class="text-gradient">iMersWAStorePro</span> Anda
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-3xl">
+                        Berikut akses produk Anda: file aplikasi, installer, database, panduan setup, update produk, dan akses khusus agency untuk generate lisensi client.
+                    </p>
+
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <button onclick="openTab('produk')" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:-translate-y-1 transition-all">
+                            <i data-lucide="download-cloud" class="w-5 h-5 mr-2"></i>
+                            Buka Akses Produk
+                        </button>
+                        <button onclick="openTab('agency')" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-emerald-400 hover:text-emerald-600 transition-all">
+                            <i data-lucide="key-round" class="w-5 h-5 mr-2"></i>
+                            Agency Generator
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -inset-6 rounded-full bg-gradient-to-br from-blue-200/50 via-cyan-200/45 to-emerald-200/50 blur-3xl"></div>
+                    <div class="relative bg-slate-950 text-white rounded-[2rem] p-6 md:p-8 shadow-2xl overflow-hidden">
+                        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
+                                    <i data-lucide="user-check" class="w-7 h-7 text-emerald-300"></i>
+                                </div>
+                                <div>
+                                    <strong class="block text-lg">Member Dashboard</strong>
+                                    <span class="text-xs text-slate-400">iMersWAStorePro Access</span>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/20 text-xs font-black">ACTIVE</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                                <i data-lucide="package-check" class="w-7 h-7 text-blue-300 mb-4"></i>
+                                <span class="block text-xs text-slate-400 font-bold">Produk</span>
+                                <strong class="text-xl">iMersWAStorePro</strong>
+                            </div>
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                                <i data-lucide="shield-check" class="w-7 h-7 text-emerald-300 mb-4"></i>
+                                <span class="block text-xs text-slate-400 font-bold">Status</span>
+                                <strong class="text-xl">Aktif</strong>
+                            </div>
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                                <i data-lucide="download" class="w-7 h-7 text-cyan-300 mb-4"></i>
+                                <span class="block text-xs text-slate-400 font-bold">File</span>
+                                <strong class="text-xl">Ready</strong>
+                            </div>
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                                <i data-lucide="key" class="w-7 h-7 text-amber-300 mb-4"></i>
+                                <span class="block text-xs text-slate-400 font-bold">Agency</span>
+                                <strong class="text-xl">Optional</strong>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 rounded-2xl bg-white/5 border border-white/10 p-4">
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-sm text-slate-300 font-bold">Akses produk</span>
+                                <span class="text-sm font-black text-emerald-300">100%</span>
+                            </div>
+                            <div class="mt-3 h-2 rounded-full bg-white/10 overflow-hidden">
+                                <div class="h-full w-full rounded-full bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 bg-white/80 backdrop-blur-xl border border-white rounded-[2rem] p-3 shadow-soft overflow-x-auto">
+                <div class="flex gap-2 min-w-max">
+                    <button data-tab="produk" onclick="openTab('produk')" class="tab-btn tab-active px-5 py-3 rounded-2xl font-black text-sm">Akses Produk</button>
+                    <button data-tab="panduan" onclick="openTab('panduan')" class="tab-btn px-5 py-3 rounded-2xl font-black text-sm text-slate-600 hover:bg-slate-50">Panduan Setup</button>
+                    <button data-tab="agency" onclick="openTab('agency')" class="tab-btn px-5 py-3 rounded-2xl font-black text-sm text-slate-600 hover:bg-slate-50">Agency Lisensi</button>
+                    <button data-tab="support" onclick="openTab('support')" class="tab-btn px-5 py-3 rounded-2xl font-black text-sm text-slate-600 hover:bg-slate-50">Support & Update</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <section id="panel-produk" class="section-panel active">
+                <div class="mb-8">
+                    <h2 class="text-3xl md:text-4xl font-black text-slate-950 mb-3">Akses Produk Anda</h2>
+                    <p class="text-slate-600 leading-relaxed">Silakan download file produk iMersWAStorePro berikut. Simpan baik-baik akses ini untuk kebutuhan instalasi dan update.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-5">
+                            <i data-lucide="file-archive" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">File Utama iMersWAStorePro</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Source aplikasi PHP siap upload ke hosting cPanel.</p>
+                        <a href="GANTI_LINK_DOWNLOAD_FILE_UTAMA" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-slate-950 text-white font-black hover:bg-slate-800">
+                            Download File Utama
+                        </a>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-5">
+                            <i data-lucide="database" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Database SQL</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">File database.sql untuk import otomatis via installer.</p>
+                        <a href="GANTI_LINK_DATABASE_SQL" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-emerald-500 text-white font-black hover:bg-emerald-600">
+                            Download Database
+                        </a>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-5">
+                            <i data-lucide="settings-2" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Installer Premium</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Installer otomatis untuk setup database, admin awal, dan lock install.</p>
+                        <a href="GANTI_LINK_INSTALLER" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-cyan-500 text-white font-black hover:bg-cyan-600">
+                            Download Installer
+                        </a>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-5">
+                            <i data-lucide="book-open-check" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Panduan Lengkap</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Panduan install, setting toko, produk, ongkir, WA Gateway, dan testing.</p>
+                        <a href="GANTI_LINK_PANDUAN" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-purple-500 text-white font-black hover:bg-purple-600">
+                            Buka Panduan
+                        </a>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <div class="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 mb-5">
+                            <i data-lucide="refresh-cw" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Update Produk</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Cek update versi terbaru, patch, dan catatan perubahan iMersWAStorePro.</p>
+                        <a href="GANTI_LINK_UPDATE" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-orange-500 text-white font-black hover:bg-orange-600">
+                            Cek Update
+                        </a>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-700 mb-5">
+                            <i data-lucide="video" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Video Tutorial</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Kumpulan tutorial penggunaan sistem untuk admin dan client.</p>
+                        <a href="GANTI_LINK_VIDEO_TUTORIAL" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-slate-950 text-white font-black hover:bg-slate-800">
+                            Lihat Tutorial
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-8 rounded-3xl border border-amber-200 bg-amber-50 p-6">
+                    <div class="flex gap-4">
+                        <i data-lucide="info" class="w-7 h-7 text-amber-600 shrink-0 mt-1"></i>
+                        <p class="text-sm sm:text-base text-amber-900 leading-relaxed">
+                            Catatan: link di halaman ini bisa diganti sesuai lokasi file produk Anda, misalnya Google Drive, server download, atau sistem member area utama.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-panduan" class="section-panel">
+                <div class="mb-8">
+                    <h2 class="text-3xl md:text-4xl font-black text-slate-950 mb-3">Panduan Setup Cepat</h2>
+                    <p class="text-slate-600 leading-relaxed">Ikuti urutan ini agar instalasi lebih aman dan client tidak bingung.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+                        <h3 class="text-xl font-black mb-5">Checklist Install</h3>
+                        <div class="space-y-4">
+                            <div class="flex gap-4"><span class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black shrink-0">1</span><p class="text-slate-600 leading-relaxed">Upload file aplikasi ke hosting atau subdomain.</p></div>
+                            <div class="flex gap-4"><span class="w-9 h-9 rounded-xl bg-cyan-600 text-white flex items-center justify-center font-black shrink-0">2</span><p class="text-slate-600 leading-relaxed">Buat database MySQL kosong di cPanel.</p></div>
+                            <div class="flex gap-4"><span class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black shrink-0">3</span><p class="text-slate-600 leading-relaxed">Upload database.sql di root aplikasi bersama install.php.</p></div>
+                            <div class="flex gap-4"><span class="w-9 h-9 rounded-xl bg-green-600 text-white flex items-center justify-center font-black shrink-0">4</span><p class="text-slate-600 leading-relaxed">Buka domain/install.php lalu isi data database dan admin awal.</p></div>
+                            <div class="flex gap-4"><span class="w-9 h-9 rounded-xl bg-slate-950 text-white flex items-center justify-center font-black shrink-0">5</span><p class="text-slate-600 leading-relaxed">Login admin, setting toko, logo, WhatsApp, RajaOngkir, produk, dan template pesan.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+                        <h3 class="text-xl font-black mb-5">Yang Perlu Dites</h3>
+                        <ul class="space-y-3 text-slate-600">
+                            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> Checkout produk fisik + ongkir.</li>
+                            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> Checkout produk digital manual delivery.</li>
+                            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> Order lisensi dan stok kode.</li>
+                            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> Produk bundle dan pengurangan stok komponen.</li>
+                            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> Produk jasa/service tanpa ongkir.</li>
+                            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> Notifikasi WhatsApp admin dan pembeli.</li>
+                            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i> POS kasir dan cetak struk.</li>
+                        </ul>
+
+                        <a href="GANTI_LINK_PANDUAN" target="_blank" class="mt-7 inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow">
+                            Buka Panduan Lengkap
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-agency" class="section-panel">
+                <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-8 items-start">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-black text-slate-950 mb-3">Agency License Generator</h2>
+                        <p class="text-slate-600 leading-relaxed mb-6">
+                            Khusus member Agency Starter dan Agency Premium. Silakan login menggunakan email dan password terdaftar untuk generate lisensi client.
+                        </p>
+
+                        <div class="rounded-3xl border border-emerald-200 bg-emerald-50 p-6">
+                            <h3 class="font-black text-emerald-950 mb-3">Informasi Paket Agency</h3>
+                            <ul class="space-y-3 text-sm text-emerald-900">
+                                <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i> Agency Starter: 25 lisensi + bonus 5 lisensi = total 30 lisensi.</li>
+                                <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i> Agency Premium: 100 lisensi + bonus 5 lisensi = total 105 lisensi.</li>
+                                <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i> 1 lisensi digunakan untuk 1 instalasi/project toko client.</li>
+                                <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i> Generate lisensi hanya bisa dilakukan oleh akun agency aktif.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="agency-login" class="bg-white rounded-[2rem] border border-slate-200 p-6 md:p-8 shadow-soft">
+                        <div class="flex items-center gap-3 mb-7">
+                            <div class="w-12 h-12 rounded-2xl bg-slate-950 flex items-center justify-center text-white">
+                                <i data-lucide="key-round" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-black text-slate-950">Login Agency</h3>
+                                <p class="text-sm text-slate-500">Gunakan email dan password terdaftar.</p>
+                            </div>
+                        </div>
+
+                        <form action="GANTI_LINK_GENERATOR_LISENSI" method="get" class="space-y-5">
+                            <label class="block">
+                                <span class="block text-sm font-black text-slate-700 mb-2">Email Terdaftar</span>
+                                <input type="email" name="email" placeholder="emailagency@email.com" class="w-full h-14 rounded-2xl border border-slate-200 px-4 outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 font-bold">
+                            </label>
+
+                            <label class="block">
+                                <span class="block text-sm font-black text-slate-700 mb-2">Password</span>
+                                <input type="password" name="password" placeholder="Password agency" class="w-full h-14 rounded-2xl border border-slate-200 px-4 outline-none focus:ring-4 focus:ring-emerald-100 focus:border-emerald-400 font-bold">
+                            </label>
+
+                            <button type="submit" class="w-full h-14 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:scale-[1.01] transition-all">
+                                Masuk & Generate Lisensi
+                            </button>
+                        </form>
+
+                        <div class="mt-6 rounded-2xl bg-slate-50 border border-slate-200 p-4">
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Belum punya akses agency? Upgrade ke paket Agency Starter atau Agency Premium untuk mendapatkan akun generate lisensi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-support" class="section-panel">
+                <div class="mb-8">
+                    <h2 class="text-3xl md:text-4xl font-black text-slate-950 mb-3">Support & Update</h2>
+                    <p class="text-slate-600 leading-relaxed">Gunakan menu ini untuk bantuan, update produk, dan kontak support.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <i data-lucide="message-circle" class="w-10 h-10 text-emerald-600 mb-5"></i>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Grup Support</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Gabung ke grup support untuk info update dan diskusi penggunaan.</p>
+                        <a href="GANTI_LINK_GRUP_SUPPORT" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-emerald-500 text-white font-black hover:bg-emerald-600">Masuk Grup</a>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <i data-lucide="headphones" class="w-10 h-10 text-blue-600 mb-5"></i>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Kontak Admin</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Butuh bantuan akses produk atau kendala download? Hubungi admin.</p>
+                        <a href="GANTI_LINK_WHATSAPP_ADMIN" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-blue-500 text-white font-black hover:bg-blue-600">Hubungi Admin</a>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm card-hover">
+                        <i data-lucide="bell-ring" class="w-10 h-10 text-orange-600 mb-5"></i>
+                        <h3 class="text-xl font-black text-slate-950 mb-2">Info Update</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">Cek changelog, patch, dan pembaruan fitur terbaru iMersWAStorePro.</p>
+                        <a href="GANTI_LINK_CHANGELOG" target="_blank" class="inline-flex w-full items-center justify-center px-5 py-3 rounded-2xl bg-orange-500 text-white font-black hover:bg-orange-600">Lihat Update</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-950 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="https://imersnesia.com/wp-content/uploads/2026/06/logo-teks-imerswastore-1.png" alt="iMersWAStore Logo" class="h-11 w-auto object-contain brightness-0 invert opacity-90 mx-auto mb-4">
+            <p class="text-slate-500 text-sm">© 2026 iMersWAStorePro Member Area. Akses produk, panduan, update, dan lisensi agency.</p>
+        </div>
+    </footer>
+
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/92 backdrop-blur-xl border-t border-slate-200 shadow-[0_-4px_20px_rgba(15,23,42,.08)] safe-bottom">
+        <div class="flex justify-around items-center h-[72px] px-2">
+            <button onclick="openTab('produk')" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+                <div class="p-2 rounded-2xl bg-emerald-50"><i data-lucide="download" class="w-5 h-5 text-emerald-500"></i></div>
+                <span class="text-[10px] font-black text-slate-500">Produk</span>
+            </button>
+            <button onclick="openTab('panduan')" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+                <div class="p-2 rounded-2xl bg-blue-50"><i data-lucide="book-open" class="w-5 h-5 text-blue-500"></i></div>
+                <span class="text-[10px] font-black text-slate-500">Panduan</span>
+            </button>
+            <button onclick="openTab('agency')" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+                <div class="p-2 rounded-2xl bg-amber-50"><i data-lucide="key" class="w-5 h-5 text-amber-500"></i></div>
+                <span class="text-[10px] font-black text-slate-500">Agency</span>
+            </button>
+            <button onclick="openTab('support')" class="flex flex-col items-center justify-center w-full h-full space-y-1.5">
+                <div class="p-2 rounded-2xl bg-purple-50"><i data-lucide="headphones" class="w-5 h-5 text-purple-500"></i></div>
+                <span class="text-[10px] font-black text-slate-500">Support</span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        lucide.createIcons();
+
+        function openTab(name) {
+            document.querySelectorAll('.section-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            const panel = document.getElementById('panel-' + name);
+            if (panel) panel.classList.add('active');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-slate-600');
+            });
+
+            document.querySelectorAll('[data-tab="' + name + '"]').forEach(btn => {
+                btn.classList.add('tab-active');
+                btn.classList.remove('text-slate-600');
+            });
+
+            const main = document.querySelector('main');
+            if (main) {
+                main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            setTimeout(() => lucide.createIcons(), 50);
+        }
+    </script>
+</body>
+</html>
