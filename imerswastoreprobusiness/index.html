@@ -1,1 +1,1108 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iMersWAStore ProBusiness - Toko Online, POS Kasir, Shift, HPP & Laporan Laba Rugi</title>
+    <meta name="description" content="iMersWAStore ProBusiness adalah versi lengkap toko online PHP + MySQL dengan POS kasir, shift kasir, multi role, HPP produk, biaya operasional, laporan laba rugi, export CSV/PDF, WhatsApp checkout, produk digital, lisensi, bundling, jasa, RajaOngkir optional, dan installer cPanel ready.">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '"Poppins"', 'sans-serif'],
+                        heading: ['"Montserrat"', 'sans-serif']
+                    },
+                    colors: {
+                        imblue: '#0a84ff',
+                        imcyan: '#12cfff',
+                        imgreen: '#23d64b',
+                        imnavy: '#061836'
+                    },
+                    boxShadow: {
+                        soft: '0 20px 70px rgba(6, 24, 54, .10)',
+                        glow: '0 22px 55px rgba(10, 132, 255, .25)'
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                        blob: 'blob 8s ease-in-out infinite',
+                        shine: 'shine 5s linear infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-14px)' }
+                        },
+                        blob: {
+                            '0%,100%': { transform: 'translate(0,0) scale(1)' },
+                            '33%': { transform: 'translate(22px,-28px) scale(1.08)' },
+                            '66%': { transform: 'translate(-18px,20px) scale(.94)' }
+                        },
+                        shine: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif!important}
+        .glass-nav{background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(226,232,240,.82)}
+        .text-gradient{background:linear-gradient(135deg,#0a84ff 0%,#12cfff 46%,#23d64b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .bg-grid{background-image:linear-gradient(rgba(10,132,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(35,214,75,.045) 1px,transparent 1px);background-size:34px 34px}
+        .mesh{background:
+            radial-gradient(circle at 12% 10%,rgba(18,207,255,.23),transparent 32%),
+            radial-gradient(circle at 86% 6%,rgba(35,214,75,.22),transparent 30%),
+            radial-gradient(circle at 70% 95%,rgba(10,132,255,.15),transparent 36%),
+            linear-gradient(135deg,#f8fbff 0%,#eff8ff 45%,#effdf5 100%)}
+        .card-hover{transition:.22s ease}
+        .card-hover:hover{transform:translateY(-5px);box-shadow:0 22px 65px rgba(6,24,54,.12)}
+        .accordion-content{transition:max-height .32s ease,padding .32s ease;max-height:0;overflow:hidden}
+        .accordion-active .accordion-content{max-height:650px;padding-top:1rem;padding-bottom:1rem}
+        .accordion-active .accordion-icon{transform:rotate(180deg)}
+        .feature-icon{background:linear-gradient(135deg,rgba(10,132,255,.13),rgba(35,214,75,.13));border:1px solid rgba(148,163,184,.20)}
+        .mock-window{background:linear-gradient(180deg,#fff,#f8fbff);box-shadow:0 30px 90px rgba(6,24,54,.14)}
+        .pricing-glow:before{content:"";position:absolute;inset:-1px;border-radius:2rem;background:linear-gradient(135deg,#0a84ff,#12cfff,#23d64b);z-index:-1;filter:blur(0)}
+        .safe-bottom{padding-bottom:env(safe-area-inset-bottom)}
+        .no-scrollbar::-webkit-scrollbar{display:none}
+        .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-white antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+    <header class="fixed w-full top-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3">
+                    <img src="https://imersnesia.com/wp-content/uploads/2026/06/iconimerswastore.png" alt="iMersWAStore Icon" class="h-11 w-11 object-contain">
+                    <img src="https://imersnesia.com/wp-content/uploads/2026/07/imerswastorepro-logo-teks.png" alt="iMersWAStore Logo" class="h-10 sm:h-12 w-auto object-contain">
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-7">
+                    <a href="#fitur" class="text-sm font-extrabold text-slate-600 hover:text-emerald-600">Fitur</a>
+                    <a href="#produk" class="text-sm font-extrabold text-slate-600 hover:text-emerald-600">Tipe Produk</a>
+                    <a href="#workflow" class="text-sm font-extrabold text-slate-600 hover:text-emerald-600">Cara Kerja</a>
+                    <a href="#member-area" class="text-sm font-extrabold text-slate-600 hover:text-emerald-600">Member Area</a>
+                    <a href="#business-report" class="text-sm font-extrabold text-slate-600 hover:text-emerald-600">Finance</a>
+                    <a href="#wa-gateway" class="text-sm font-extrabold text-slate-600 hover:text-emerald-600">WA Gateway</a>
+                    <a href="#bonus" class="text-sm font-extrabold text-slate-600 hover:text-emerald-600">Bonus</a>
+                    <a href="#faq" class="text-sm font-extrabold text-slate-600 hover:text-emerald-600">FAQ</a>
+                </nav>
+
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#demo" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-black text-slate-700 bg-white border border-slate-200 rounded-xl hover:border-emerald-400 hover:text-emerald-600 transition-all">
+                        Lihat Demo
+                    </a>
+                    <a href="#harga" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-black text-white bg-slate-950 rounded-xl hover:bg-slate-800 transition-all shadow-lg hover:-translate-y-0.5">
+                        Beli Sekarang
+                    </a>
+                </div>
+
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl border border-slate-200 bg-white text-slate-700">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#fitur" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Fitur</a>
+                <a href="#produk" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Tipe Produk</a>
+                <a href="#workflow" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Cara Kerja</a>
+                <a href="#member-area" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Member Area</a>
+                <a href="#business-report" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Finance</a>
+                <a href="#wa-gateway" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">WA Gateway</a>
+                <a href="#bonus" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">Bonus</a>
+                <a href="#faq" class="block px-3 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-emerald-50">FAQ</a>
+                <a href="#harga" class="block text-center px-4 py-3 bg-emerald-500 rounded-xl text-white font-black hover:bg-emerald-600 shadow-md">Beli iMersWAStore</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden mesh bg-grid">
+        <div class="absolute top-28 left-8 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-24 right-10 w-80 h-80 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" style="animation-delay:2s"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/85 border border-slate-200 shadow-sm text-slate-700 text-sm font-black mb-8">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        </span>
+                        ProBusiness Edition · Shift Kasir · Finance Report
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-950 tracking-tight leading-[1.04] mb-7">
+                        Toko Online + POS Kasir + Laporan Keuangan dalam <span class="text-gradient">1 Sistem PHP</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-600 mb-9 leading-relaxed max-w-3xl">
+                        <strong>iMersWAStore ProBusiness</strong> adalah versi lengkap untuk UMKM, reseller, produk digital, jasa/service, dan toko yang ingin operasionalnya lebih rapi.
+                        Sudah include admin dashboard, POS kasir, shift kasir, multi role, HPP produk, biaya operasional, laporan laba rugi, export CSV/print PDF, member area, digital delivery, lisensi, bundling, checkout WhatsApp manual/API optional, dan installer otomatis.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#harga" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:-translate-y-1 transition-all">
+                            <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i>
+                            Beli Lisensi
+                        </a>
+                        <a href="#demo" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-emerald-400 hover:text-emerald-600 hover:-translate-y-1 transition-all">
+                            <i data-lucide="monitor-play" class="w-5 h-5 mr-2"></i>
+                            Lihat Live Demo
+                        </a>
+                    </div>
+
+                    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+                        <a href="https://imersfireship.vercel.app/member" target="_blank" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white/90 border border-emerald-200 text-emerald-700 font-black hover:bg-emerald-50 transition-all">
+                            <i data-lucide="log-in" class="w-5 h-5 mr-2"></i>
+                            Akses Member Area
+                        </a>
+                        <span class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-slate-950/5 border border-slate-200 text-slate-600 font-bold text-sm">
+                            Login setelah pembelian aktif
+                        </span>
+                    </div>
+
+                    <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="bg-white/80 border border-slate-200 rounded-2xl p-4 shadow-sm">
+                            <strong class="block text-slate-950 text-lg">PHP</strong>
+                            <span class="text-xs text-slate-500 font-bold">Native App</span>
+                        </div>
+                        <div class="bg-white/80 border border-slate-200 rounded-2xl p-4 shadow-sm">
+                            <strong class="block text-slate-950 text-lg">MySQL</strong>
+                            <span class="text-xs text-slate-500 font-bold">Database</span>
+                        </div>
+                        <div class="bg-white/80 border border-slate-200 rounded-2xl p-4 shadow-sm">
+                            <strong class="block text-slate-950 text-lg">cPanel</strong>
+                            <span class="text-xs text-slate-500 font-bold">Hosting Ready</span>
+                        </div>
+                        <div class="bg-white/80 border border-slate-200 rounded-2xl p-4 shadow-sm">
+                            <strong class="block text-slate-950 text-lg">Finance</strong>
+                            <span class="text-xs text-slate-500 font-bold">Report Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -inset-6 bg-gradient-to-br from-imblue/20 via-imcyan/20 to-imgreen/20 blur-3xl rounded-full"></div>
+                    <div class="relative bg-white/82 border border-white rounded-[2rem] shadow-soft p-5 lg:p-7 overflow-hidden">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                            </div>
+                            <span class="text-xs font-black text-slate-400 uppercase tracking-[.2em]">Admin Preview</span>
+                        </div>
+
+                        <div class="mock-window rounded-[1.5rem] border border-slate-200 overflow-hidden">
+                            <div class="bg-slate-950 text-white p-5">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://imersnesia.com/wp-content/uploads/2026/06/iconimerswastore.png" alt="Icon" class="w-11 h-11 object-contain">
+                                    <div>
+                                        <div class="font-black text-lg">iMersWAStore</div>
+                                        <div class="text-xs text-slate-400">Dashboard toko online & POS</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-5 grid grid-cols-2 gap-4">
+                                <div class="rounded-2xl p-4 bg-emerald-50 border border-emerald-100">
+                                    <i data-lucide="wallet" class="w-6 h-6 text-emerald-600 mb-3"></i>
+                                    <span class="block text-xs text-slate-500 font-bold">Omzet Bulan Ini</span>
+                                    <strong class="text-xl text-slate-900">Rp 25.860.000</strong>
+                                </div>
+                                <div class="rounded-2xl p-4 bg-blue-50 border border-blue-100">
+                                    <i data-lucide="shopping-bag" class="w-6 h-6 text-blue-600 mb-3"></i>
+                                    <span class="block text-xs text-slate-500 font-bold">Laba Bersih</span>
+                                    <strong class="text-xl text-slate-900">Rp 7.320.000</strong>
+                                </div>
+                                <div class="rounded-2xl p-4 bg-cyan-50 border border-cyan-100">
+                                    <i data-lucide="barcode" class="w-6 h-6 text-cyan-600 mb-3"></i>
+                                    <span class="block text-xs text-slate-500 font-bold">Shift Kasir</span>
+                                    <strong class="text-xl text-slate-900">12</strong>
+                                </div>
+                                <div class="rounded-2xl p-4 bg-green-50 border border-green-100">
+                                    <i data-lucide="message-circle" class="w-6 h-6 text-green-600 mb-3"></i>
+                                    <span class="block text-xs text-slate-500 font-bold">Laporan</span>
+                                    <strong class="text-xl text-slate-900">CSV/PDF</strong>
+                                </div>
+                            </div>
+
+                            <div class="px-5 pb-5">
+                                <div class="rounded-2xl bg-slate-50 border border-slate-100 p-4">
+                                    <div class="flex items-end gap-2 h-28">
+                                        <div class="w-1/7 flex-1 rounded-t-lg bg-blue-200 h-[40%]"></div>
+                                        <div class="w-1/7 flex-1 rounded-t-lg bg-blue-300 h-[55%]"></div>
+                                        <div class="w-1/7 flex-1 rounded-t-lg bg-cyan-300 h-[45%]"></div>
+                                        <div class="w-1/7 flex-1 rounded-t-lg bg-emerald-400 h-[85%] relative">
+                                            <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded-lg font-bold">Hari ini</span>
+                                        </div>
+                                        <div class="w-1/7 flex-1 rounded-t-lg bg-green-300 h-[62%]"></div>
+                                        <div class="w-1/7 flex-1 rounded-t-lg bg-green-200 h-[48%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute -right-8 -bottom-8 w-28 h-28 rounded-full bg-gradient-to-br from-imblue to-imgreen flex items-center justify-center shadow-glow animate-float">
+                            <i data-lucide="message-circle" class="w-12 h-12 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-6">
+                <div class="rounded-3xl border border-slate-200 bg-slate-50 p-7 card-hover">
+                    <i data-lucide="server-cog" class="w-10 h-10 text-blue-600 mb-4"></i>
+                    <h3 class="font-black text-xl text-slate-950 mb-3">Bukan Versi GAS Lagi</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Versi ini sudah pindah ke <strong>PHP + MySQL</strong>. Cocok untuk hosting cPanel, lebih familiar untuk client, dan lebih gampang dijadikan paket jasa install.</p>
+                </div>
+                <div class="rounded-3xl border border-slate-200 bg-slate-50 p-7 card-hover">
+                    <i data-lucide="package-check" class="w-10 h-10 text-emerald-600 mb-4"></i>
+                    <h3 class="font-black text-xl text-slate-950 mb-3">Installer Otomatis</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Client tinggal upload file, isi database, lalu installer akan import <strong>database.sql</strong>, membuat config, lock install, dan menyiapkan sistem.</p>
+                </div>
+                <div class="rounded-3xl border border-slate-200 bg-slate-50 p-7 card-hover">
+                    <i data-lucide="badge-dollar-sign" class="w-10 h-10 text-green-600 mb-4"></i>
+                    <h3 class="font-black text-xl text-slate-950 mb-3">Mesin Jualan + Kontrol Keuangan</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Bisa dipakai untuk toko sendiri, project client, atau jasa install dengan nilai tambah laporan shift, HPP, biaya operasional, dan laba rugi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fitur" class="py-24 bg-slate-950 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-grid"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 mb-16 border-b border-slate-800 pb-8">
+                <div class="max-w-3xl">
+                    <span class="text-emerald-400 font-black tracking-wider text-sm uppercase mb-3 block">Full Feature PHP Edition</span>
+                    <h2 class="text-3xl md:text-5xl font-black mb-5">Fitur Lengkap untuk Toko Online, POS, Produk Digital & Laporan Bisnis</h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">Semua fitur inti sudah dibuat dalam satu sistem, bukan sekadar landing page. Admin bisa kelola produk, order, POS, member, digital delivery, WhatsApp, promosi, shift kasir, HPP, biaya, dan laporan laba rugi.</p>
+                </div>
+                <a href="#harga" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white text-slate-950 font-black hover:bg-emerald-50 transition-all w-max">
+                    Ambil Lisensi
+                </a>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-emerald-400"><i data-lucide="store" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Etalase Toko Premium</h4><p class="text-sm text-slate-400 leading-relaxed">Halaman toko responsive, tema warna, banner slider, popup promo, badge produk, search, kategori, dan tombol checkout cepat.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-blue-400"><i data-lucide="layout-dashboard" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Admin Dashboard</h4><p class="text-sm text-slate-400 leading-relaxed">Dashboard omset, pesanan, produk, pembeli, status order, grafik, pengaturan toko, warna, logo, banner, dan template pesan.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-cyan-400"><i data-lucide="shopping-bag" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Katalog Produk Lengkap</h4><p class="text-sm text-slate-400 leading-relaxed">Kelola produk fisik, digital, lisensi, bundling, jasa/service, gambar utama, gallery, varian, stok, harga, diskon, satuan, dan badge.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-amber-400"><i data-lucide="layers-3" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Kategori & Sub Kategori</h4><p class="text-sm text-slate-400 leading-relaxed">Buat kategori induk dan sub kategori. Nama, slug, induk, urutan, dan status kategori bisa diedit dari popup admin.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-rose-400"><i data-lucide="palette" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Varian Produk Visual</h4><p class="text-sm text-slate-400 leading-relaxed">Varian warna/ukuran bisa punya harga, stok, dan gambar sendiri. Di checkout, pembeli memilih varian lewat kartu visual.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-green-400"><i data-lucide="message-circle" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">WhatsApp Checkout</h4><p class="text-sm text-slate-400 leading-relaxed">Checkout tetap bisa berjalan tanpa WA Gateway. Order masuk ke admin dan pembeli bisa diarahkan ke WhatsApp manual; jika gateway aktif, notifikasi dapat dikirim otomatis.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-lime-400"><i data-lucide="truck" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">RajaOngkir Optional</h4><p class="text-sm text-slate-400 leading-relaxed">Integrasi ongkir otomatis via RajaOngkir/Komerce. Bisa cari tujuan, pilih kurir, hitung ongkir, dan fallback ke ongkir manual.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-purple-400"><i data-lucide="monitor-smartphone" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Kasir POS</h4><p class="text-sm text-slate-400 leading-relaxed">Untuk transaksi offline. Pilih produk, hitung total, bayar, kembalian, struk, dan stok terhubung dengan katalog online.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-pink-400"><i data-lucide="users" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Member Area</h4><p class="text-sm text-slate-400 leading-relaxed">Pembeli bisa login member, melihat riwayat belanja, point reward, dan akses produk digital yang sudah aktif.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-indigo-400"><i data-lucide="download-cloud" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Secure Digital Delivery</h4><p class="text-sm text-slate-400 leading-relaxed">File digital tidak dibagikan mentah. Akses memakai token aman melalui download.php, cocok untuk file, link, Drive, Canva, dan konten member.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-orange-400"><i data-lucide="key-round" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Stok Lisensi</h4><p class="text-sm text-slate-400 leading-relaxed">Untuk license key, serial number, redeem code, atau kode lisensi siap pakai. Sistem mengambil kode saat order completed.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-teal-400"><i data-lucide="package-plus" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Bundle Engine</h4><p class="text-sm text-slate-400 leading-relaxed">Buat paket bundling dari produk fisik, digital, lisensi, atau campuran. Saat completed, semua komponen diproses otomatis.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-sky-400"><i data-lucide="briefcase-business" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Produk Jasa / Service</h4><p class="text-sm text-slate-400 leading-relaxed">Cocok untuk jasa website, desain, service elektronik, renovasi, konsultasi, dan maintenance. Tidak wajib ongkir dan bisa follow up via WA.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-red-400"><i data-lucide="megaphone" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Broadcast & Reminder WA</h4><p class="text-sm text-slate-400 leading-relaxed">Broadcast, follow up, reminder, dan pesan otomatis membutuhkan WA Gateway aktif. Tanpa gateway, toko online, checkout, dan POS tetap berjalan normal.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-yellow-400"><i data-lucide="trophy" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Point & Leaderboard</h4><p class="text-sm text-slate-400 leading-relaxed">Pembeli dapat point reward. Member bisa tampil di leaderboard dengan alias atau mode anonim.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-emerald-300"><i data-lucide="user-cog" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Manager Operasional</h4><p class="text-sm text-slate-400 leading-relaxed">Role khusus untuk mengelola HPP, biaya operasional, laporan shift, laporan laba rugi, dan export tanpa membuka akses setting sensitif.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-cyan-300"><i data-lucide="clock-3" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Shift Kasir</h4><p class="text-sm text-slate-400 leading-relaxed">Kasir buka shift, isi saldo awal, transaksi POS masuk ke shift aktif, lalu tutup shift dengan hitungan kas sistem dan selisih uang aktual.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-lime-300"><i data-lucide="calculator" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">HPP & Laba Kotor</h4><p class="text-sm text-slate-400 leading-relaxed">Isi harga modal produk dan varian. Sistem menyimpan HPP snapshot per order agar laporan laba tetap akurat meski harga modal berubah.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-amber-300"><i data-lucide="receipt-text" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Biaya Operasional</h4><p class="text-sm text-slate-400 leading-relaxed">Catat gaji, sewa, listrik, internet, iklan, packing, transport, subsidi ongkir, biaya admin payment, maintenance, dan biaya lainnya.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-rose-300"><i data-lucide="chart-no-axes-combined" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Laporan Laba Rugi</h4><p class="text-sm text-slate-400 leading-relaxed">Lihat omzet, HPP, laba kotor, biaya operasional, dan laba bersih. Cocok untuk pemilik toko yang butuh kontrol bisnis sederhana.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-sky-300"><i data-lucide="file-spreadsheet" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Export CSV & Print PDF</h4><p class="text-sm text-slate-400 leading-relaxed">Export laporan shift, biaya, dan laba rugi ke CSV. Untuk PDF, gunakan print report lalu simpan sebagai PDF dari browser.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-fuchsia-400"><i data-lucide="badge-percent" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Kupon, Diskon & Promo</h4><p class="text-sm text-slate-400 leading-relaxed">Buat kupon diskon, harga promo, badge produk, banner, popup promo, dan campaign penjualan dari admin.</p></div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="feature-icon w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 text-emerald-300"><i data-lucide="file-text" class="w-6 h-6"></i></div>
+                    <div><h4 class="font-black text-lg mb-2">Artikel, Legal & Panduan</h4><p class="text-sm text-slate-400 leading-relaxed">Ada artikel/blog, halaman terms, privacy policy, panduan sistem, video panduan, dan pengaturan footer toko.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <section id="business-report" class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[.95fr_1.05fr] gap-12 items-start">
+                <div class="lg:sticky lg:top-28">
+                    <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">ProBusiness Finance System</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Bukan Cuma Toko Online, Tapi Bisa Pantau Untung Rugi</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">Versi ProBusiness dibuat untuk pemilik toko yang ingin tahu kondisi bisnis dengan lebih rapi: siapa kasir yang transaksi, shift mana yang aktif, berapa HPP produk, berapa biaya operasional, dan berapa laba bersih dalam periode tertentu.</p>
+
+                    <div class="rounded-[2rem] bg-slate-950 text-white p-7 shadow-2xl">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5"><span class="block text-slate-400 text-xs font-bold mb-1">Omzet Bersih</span><strong class="text-2xl font-black">Rp 24.500.000</strong></div>
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5"><span class="block text-slate-400 text-xs font-bold mb-1">Total HPP</span><strong class="text-2xl font-black">Rp 14.000.000</strong></div>
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5"><span class="block text-slate-400 text-xs font-bold mb-1">Biaya Operasional</span><strong class="text-2xl font-black">Rp 3.200.000</strong></div>
+                            <div class="rounded-3xl bg-emerald-500/15 border border-emerald-400/20 p-5"><span class="block text-emerald-200 text-xs font-bold mb-1">Laba Bersih</span><strong class="text-2xl font-black text-emerald-300">Rp 7.300.000</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 card-hover"><i data-lucide="user-cog" class="w-10 h-10 text-blue-600 mb-4"></i><h3 class="font-black text-xl text-slate-950 mb-3">Role Manager Operasional</h3><p class="text-sm text-slate-600 leading-relaxed">Akses khusus untuk mengelola HPP, biaya operasional, laporan shift, laporan laba rugi, dan export tanpa akses penuh ke setting sistem.</p></div>
+                    <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 card-hover"><i data-lucide="clock-3" class="w-10 h-10 text-cyan-600 mb-4"></i><h3 class="font-black text-xl text-slate-950 mb-3">Buka & Tutup Shift</h3><p class="text-sm text-slate-600 leading-relaxed">Kasir wajib membuka shift, isi saldo awal, transaksi POS tercatat per shift, lalu tutup shift dengan uang aktual dan selisih kas.</p></div>
+                    <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 card-hover"><i data-lucide="calculator" class="w-10 h-10 text-emerald-600 mb-4"></i><h3 class="font-black text-xl text-slate-950 mb-3">HPP Produk & Varian</h3><p class="text-sm text-slate-600 leading-relaxed">Setiap produk/varian bisa punya harga modal. Saat transaksi completed, sistem menyimpan snapshot HPP dan profit per item.</p></div>
+                    <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 card-hover"><i data-lucide="receipt-text" class="w-10 h-10 text-amber-600 mb-4"></i><h3 class="font-black text-xl text-slate-950 mb-3">Biaya Operasional CRUD</h3><p class="text-sm text-slate-600 leading-relaxed">Kategori biaya bisa tambah, edit/rename, aktif/nonaktif, delete, search, dan pagination. Biaya operasional juga bisa tambah, edit, delete, search, dan pagination.</p></div>
+                    <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 card-hover"><i data-lucide="chart-no-axes-combined" class="w-10 h-10 text-rose-600 mb-4"></i><h3 class="font-black text-xl text-slate-950 mb-3">Laporan Laba Rugi</h3><p class="text-sm text-slate-600 leading-relaxed">Laporan menghitung omzet, HPP, laba kotor, biaya operasional, dan laba bersih berdasarkan periode yang dipilih.</p></div>
+                    <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 card-hover"><i data-lucide="file-spreadsheet" class="w-10 h-10 text-purple-600 mb-4"></i><h3 class="font-black text-xl text-slate-950 mb-3">Export & Print Report</h3><p class="text-sm text-slate-600 leading-relaxed">Export CSV untuk Excel/Google Sheets dan print report untuk disimpan sebagai PDF dari browser.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="wa-gateway" class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-start">
+                <div class="lg:sticky lg:top-28">
+                    <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">WA Gateway Optional</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">
+                        Bisa Dipakai Tanpa Langganan WA Gateway
+                    </h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                        iMersWAStore ProBusiness tetap berjalan normal walaupun belum memakai WA Gateway. Website toko, checkout, order masuk admin, POS kasir, stok, produk digital, lisensi, bundling, dan jasa tetap bisa digunakan.
+                    </p>
+
+                    <div class="rounded-[2rem] border border-emerald-200 bg-emerald-50 p-6 mb-6">
+                        <h3 class="font-black text-emerald-950 mb-3">Yang tetap jalan tanpa WA Gateway</h3>
+                        <div class="grid sm:grid-cols-2 gap-3 text-sm text-emerald-900">
+                            <div class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span>Toko online</span></div>
+                            <div class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span>Checkout manual</span></div>
+                            <div class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span>Order masuk admin</span></div>
+                            <div class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span>POS kasir</span></div>
+                            <div class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span>Cetak struk</span></div>
+                            <div class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span>Kelola produk & stok</span></div>
+                            <div class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span>Produk digital</span></div>
+                            <div class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0"></i><span>Lisensi, bundle, jasa</span></div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-[2rem] border border-amber-200 bg-amber-50 p-6">
+                        <h3 class="font-black text-amber-950 mb-3">Yang membutuhkan WA Gateway</h3>
+                        <p class="text-sm text-amber-900 leading-relaxed">
+                            WA Gateway hanya diperlukan untuk fitur otomatis seperti broadcast WhatsApp, reminder, follow up, dan notifikasi status pesanan otomatis ke pembeli/admin.
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="rounded-[2rem] bg-slate-950 text-white p-6 md:p-8 shadow-2xl overflow-hidden relative mb-7">
+                        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+                        <div class="flex gap-4 items-start mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-emerald-300 shrink-0">
+                                <i data-lucide="message-circle" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-black mb-2">Integrasi WA Gateway</h3>
+                                <p class="text-slate-400 leading-relaxed">
+                                    Untuk kebutuhan otomatisasi WhatsApp, iMersWAStore ProBusiness disiapkan agar bisa terhubung dengan beberapa layanan gateway berikut.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <a href="#" class="rounded-3xl bg-white/5 border border-white/10 p-5 hover:bg-white/10 transition-all">
+                                <i data-lucide="send" class="w-7 h-7 text-blue-300 mb-4"></i>
+                                <h4 class="font-black text-lg mb-1">StarSender</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">Untuk broadcast, reminder, dan notifikasi otomatis via API.</p>
+                            </a>
+
+                            <a href="#" class="rounded-3xl bg-white/5 border border-white/10 p-5 hover:bg-white/10 transition-all">
+                                <i data-lucide="message-square-text" class="w-7 h-7 text-emerald-300 mb-4"></i>
+                                <h4 class="font-black text-lg mb-1">WAPlus</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">Alternatif gateway WhatsApp untuk kebutuhan kirim pesan otomatis.</p>
+                            </a>
+
+                            <a href="#" class="rounded-3xl bg-white/5 border border-white/10 p-5 hover:bg-white/10 transition-all">
+                                <i data-lucide="radio-tower" class="w-7 h-7 text-cyan-300 mb-4"></i>
+                                <h4 class="font-black text-lg mb-1">XSender</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">Opsi gateway untuk mengaktifkan fitur pesan WhatsApp otomatis.</p>
+                            </a>
+
+                            <a href="#" class="rounded-3xl bg-emerald-500/10 border border-emerald-400/20 p-5 hover:bg-emerald-500/15 transition-all relative overflow-hidden">
+                                <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-400 text-emerald-950 text-[10px] font-black uppercase tracking-wider">Free Trial</span>
+                                <i data-lucide="gift" class="w-7 h-7 text-emerald-300 mb-4"></i>
+                                <h4 class="font-black text-lg mb-1">Fonnte</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed">Tersedia opsi gratis 1 bulan dengan 1000 pesan untuk mulai mencoba fitur otomatisasi.</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                            <i data-lucide="shopping-cart" class="w-9 h-9 text-blue-600 mb-4"></i>
+                            <h3 class="font-black text-slate-950 mb-2">Checkout tetap aman</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Tanpa gateway, pembeli tetap bisa checkout dan order tetap tersimpan di dashboard admin.</p>
+                        </div>
+                        <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                            <i data-lucide="megaphone" class="w-9 h-9 text-emerald-600 mb-4"></i>
+                            <h3 class="font-black text-slate-950 mb-2">Upgrade saat butuh otomatisasi</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">WA Gateway bisa diaktifkan belakangan saat sudah butuh broadcast, reminder, dan notifikasi otomatis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produk" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">Tipe Produk Final</span>
+                <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Bukan Cuma Jual Barang Fisik</h2>
+                <p class="text-lg text-slate-600 leading-relaxed">iMersWAStore dibuat fleksibel untuk banyak model bisnis, dari toko fisik sampai produk digital, lisensi, paket bundling, dan jasa.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+                <div class="rounded-3xl p-6 bg-slate-50 border border-slate-200 card-hover">
+                    <i data-lucide="box" class="w-10 h-10 text-blue-600 mb-4"></i>
+                    <h3 class="font-black text-lg text-slate-950 mb-2">Produk Fisik</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Fashion, skincare, makanan, elektronik, rumah tangga, hewan peliharaan, dan produk yang butuh stok/ongkir.</p>
+                </div>
+                <div class="rounded-3xl p-6 bg-slate-50 border border-slate-200 card-hover">
+                    <i data-lucide="file-down" class="w-10 h-10 text-emerald-600 mb-4"></i>
+                    <h3 class="font-black text-lg text-slate-950 mb-2">Produk Digital</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Ebook, template, source code, dokumen, video, audio, preset, asset, sampai top up/PPOB manual.</p>
+                </div>
+                <div class="rounded-3xl p-6 bg-slate-50 border border-slate-200 card-hover">
+                    <i data-lucide="key" class="w-10 h-10 text-orange-600 mb-4"></i>
+                    <h3 class="font-black text-lg text-slate-950 mb-2">Lisensi</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Untuk kode lisensi siap pakai seperti license key, serial number, redeem code, akses kelas, atau gift card.</p>
+                </div>
+                <div class="rounded-3xl p-6 bg-slate-50 border border-slate-200 card-hover">
+                    <i data-lucide="package" class="w-10 h-10 text-purple-600 mb-4"></i>
+                    <h3 class="font-black text-lg text-slate-950 mb-2">Bundling</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Gabungkan beberapa produk jadi satu paket promo. Bisa berisi fisik, digital, lisensi, atau campuran.</p>
+                </div>
+                <div class="rounded-3xl p-6 bg-slate-50 border border-slate-200 card-hover">
+                    <i data-lucide="wrench" class="w-10 h-10 text-cyan-600 mb-4"></i>
+                    <h3 class="font-black text-lg text-slate-950 mb-2">Jasa / Service</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Untuk jasa website, desain, maintenance, service elektronik, konsultasi, renovasi, dan layanan custom.</p>
+                </div>
+            </div>
+
+            <div class="mt-10 rounded-3xl border border-amber-200 bg-amber-50 p-6">
+                <div class="flex gap-4">
+                    <i data-lucide="info" class="w-7 h-7 text-amber-600 shrink-0 mt-1"></i>
+                    <p class="text-sm sm:text-base text-amber-900 leading-relaxed">
+                        <strong>Catatan penting:</strong> Token PLN, pulsa, paket data, e-wallet, dan tagihan tidak perlu dibuat sebagai Lisensi jika admin belum punya kode/nominal siap pakai.
+                        Masukkan sebagai <strong>Produk Digital + Manual Delivery</strong>, lalu pembeli mengisi nomor tujuan/ID pelanggan di catatan checkout.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="py-24 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-start">
+                <div class="lg:sticky lg:top-28">
+                    <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">Cara Kerja</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Install Cepat, Langsung Siap untuk Operasional Bisnis</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">Client tidak perlu paham coding. Cukup upload file, buat database, buka installer, lalu isi data awal toko.</p>
+                    <a href="#harga" class="inline-flex items-center justify-center px-7 py-4 rounded-2xl bg-slate-950 text-white font-black hover:bg-slate-800 transition-all">
+                        Mulai Pakai
+                    </a>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex gap-5">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black shrink-0">1</div>
+                        <div><h3 class="font-black text-xl mb-2">Upload File ke Hosting</h3><p class="text-slate-600 leading-relaxed">Upload source code iMersWAStore ke public_html atau subfolder/subdomain client.</p></div>
+                    </div>
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex gap-5">
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-600 text-white flex items-center justify-center font-black shrink-0">2</div>
+                        <div><h3 class="font-black text-xl mb-2">Buat Database MySQL</h3><p class="text-slate-600 leading-relaxed">Buat database kosong di cPanel, lalu isi nama database, user, dan password di installer.</p></div>
+                    </div>
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex gap-5">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black shrink-0">3</div>
+                        <div><h3 class="font-black text-xl mb-2">Installer Otomatis</h3><p class="text-slate-600 leading-relaxed">Installer akan import database.sql, menulis includes/db_config.php, membuat akun admin, mengunci installer, dan mengamankan folder digital.</p></div>
+                    </div>
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex gap-5">
+                        <div class="w-12 h-12 rounded-2xl bg-green-600 text-white flex items-center justify-center font-black shrink-0">4</div>
+                        <div><h3 class="font-black text-xl mb-2">Setting Toko, HPP & Mulai Jualan</h3><p class="text-slate-600 leading-relaxed">Login admin, upload logo, atur produk, isi HPP, ongkir, WA Gateway, template pesan, member area, kupon, banner, lalu mulai terima order dan pantau laporan bisnis.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="rounded-[2rem] overflow-hidden bg-slate-950 shadow-2xl grid lg:grid-cols-2">
+                <div class="p-8 md:p-12 text-white">
+                    <span class="inline-flex items-center gap-2 text-emerald-400 font-black mb-4 uppercase tracking-wider text-sm">
+                        <i data-lucide="play-circle" class="w-5 h-5"></i> Preview Aplikasi
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-black mb-5">Coba Rasakan Toko Online + Admin PHP Edition</h2>
+                    <p class="text-slate-400 leading-relaxed mb-8">Arahkan calon pembeli ke demo toko dan admin preview agar mereka paham alur checkout, POS, member, produk digital, dan dashboard toko.</p>
+
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <a href="https://bio.imersnesia.com" target="_blank" class="inline-flex items-center justify-center px-5 py-4 rounded-2xl bg-white text-slate-950 font-black hover:bg-emerald-50 transition-all">
+                            Demo Utama
+                        </a>
+                        <a href="#harga" class="inline-flex items-center justify-center px-5 py-4 rounded-2xl bg-emerald-500 text-white font-black hover:bg-emerald-600 transition-all">
+                            Beli Lisensi
+                        </a>
+                    </div>
+
+                    <p class="mt-5 text-xs text-slate-500 leading-relaxed">Link demo bisa Anda ganti sesuai domain demo terbaru yang ingin dipakai.</p>
+                </div>
+
+                <div class="relative min-h-[420px] bg-gradient-to-br from-blue-50 via-cyan-50 to-emerald-50 p-8 md:p-12 flex items-center justify-center">
+                    <img src="https://imersnesia.com/wp-content/uploads/2026/06/imerswastore-smart.webp" alt="iMersWAStore Preview" class="relative z-10 w-full max-w-lg rounded-3xl shadow-2xl border border-white object-cover animate-float">
+                    <div class="absolute w-60 h-60 rounded-full bg-emerald-300/30 blur-3xl right-8 bottom-8"></div>
+                    <div class="absolute w-60 h-60 rounded-full bg-blue-300/30 blur-3xl left-8 top-8"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="member-area" class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[.95fr_1.05fr] gap-12 items-center">
+                <div>
+                    <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">Akses Pembeli & Agency</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Member Area untuk Download, Panduan, dan Generate Lisensi</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-7">
+                        Setelah pembelian berhasil, user masuk ke member area untuk mengambil file produk, melihat panduan setup,
+                        mendapatkan update, dan khusus paket agency dapat mengelola stok lisensi untuk project/client. Untuk ProBusiness, panduan finance dan laporan bisnis juga tersedia.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://imersfireship.vercel.app/member" target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black shadow-glow hover:-translate-y-1 transition-all">
+                            <i data-lucide="log-in" class="w-5 h-5 mr-2"></i>
+                            Login Member Area
+                        </a>
+                        <a href="#harga" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-emerald-400 hover:text-emerald-600 transition-all">
+                            Pilih Paket Lisensi
+                        </a>
+                    </div>
+
+                    <div class="mt-6 rounded-3xl border border-amber-200 bg-amber-50 p-5">
+                        <div class="flex gap-3">
+                            <i data-lucide="info" class="w-6 h-6 text-amber-600 shrink-0 mt-1"></i>
+                            <p class="text-sm text-amber-900 leading-relaxed">
+                                Akses member area digunakan oleh pembeli setelah order aktif. Untuk lisensi satuan, user bisa download file dan panduan.
+                                Untuk agency, tersedia akses khusus untuk generate lisensi sesuai stok paket.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -inset-6 rounded-full bg-gradient-to-br from-blue-200/45 via-cyan-200/40 to-emerald-200/45 blur-3xl"></div>
+                    <div class="relative bg-slate-950 rounded-[2rem] p-6 md:p-8 text-white shadow-2xl overflow-hidden">
+                        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex items-center gap-3">
+                                <img src="https://imersnesia.com/wp-content/uploads/2026/06/iconimerswastore.png" alt="iMersWAStore" class="w-12 h-12 object-contain">
+                                <div>
+                                    <strong class="block text-lg">Member Area</strong>
+                                    <span class="text-xs text-slate-400">Buyer & Agency Dashboard</span>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/20 text-xs font-black">ACTIVE</span>
+                        </div>
+
+                        <div class="grid gap-4">
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                                <div class="flex gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-blue-500/15 flex items-center justify-center text-blue-300 shrink-0"><i data-lucide="download-cloud" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <h3 class="font-black mb-1">Download Produk</h3>
+                                        <p class="text-sm text-slate-400 leading-relaxed">Akses file iMersWAStore ProBusiness, database.sql, installer, dan update produk.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                                <div class="flex gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 flex items-center justify-center text-emerald-300 shrink-0"><i data-lucide="book-open-check" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <h3 class="font-black mb-1">Panduan Setup</h3>
+                                        <p class="text-sm text-slate-400 leading-relaxed">Panduan install, setting toko, RajaOngkir, WA Gateway optional, produk digital, dan checklist testing.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                                <div class="flex gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-amber-500/15 flex items-center justify-center text-amber-300 shrink-0"><i data-lucide="key-round" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <h3 class="font-black mb-1">Generate Lisensi Agency</h3>
+                                        <p class="text-sm text-slate-400 leading-relaxed">Agency Starter dan Premium punya akun tersendiri untuk membuat lisensi client sesuai stok paket.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-3xl bg-white/5 border border-white/10 p-5">
+                                <div class="flex gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 flex items-center justify-center text-cyan-300 shrink-0"><i data-lucide="history" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <h3 class="font-black mb-1">Riwayat & Update</h3>
+                                        <p class="text-sm text-slate-400 leading-relaxed">Lihat riwayat pembelian, status akses, dan informasi update produk berikutnya.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 rounded-2xl bg-gradient-to-r from-imblue/20 via-imcyan/15 to-imgreen/20 border border-white/10 p-4">
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-sm text-slate-300 font-bold">Agency quota preview</span>
+                                <span class="text-sm font-black text-emerald-300">30 / 105 lisensi</span>
+                            </div>
+                            <div class="mt-3 h-2 rounded-full bg-white/10 overflow-hidden">
+                                <div class="h-full w-[62%] rounded-full bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bonus" class="py-24 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-amber-500 font-black tracking-wider text-sm uppercase mb-2 block">Paket Launching</span>
+                <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Bukan Cuma Dapat Script, Tapi Ekosistem Jualan & Operasional</h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">Anda bisa menjual source code, membuka jasa install, atau menawarkan paket toko online siap pakai dengan fitur POS, shift kasir, dan laporan laba rugi untuk UMKM.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-soft card-hover">
+                    <img src="https://imersnesia.com/wp-content/uploads/2026/06/imerswastore-smart.webp" alt="iMersWAStore Rilis" class="w-full h-72 object-cover">
+                    <div class="p-8">
+                        <span class="inline-flex px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 font-black text-xs mb-4">BONUS STRATEGI</span>
+                        <h3 class="text-2xl font-black mb-3">Materi Launching & Promo</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">Gunakan materi promo, banner, angle copywriting, dan alur jualan untuk menawarkan iMersWAStore ke audience Anda.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-soft card-hover">
+                    <img src="https://imersnesia.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-22-2026-01_13_59-AM_convertfast.webp" alt="Jasa Install iMersWAStore" class="w-full h-72 object-cover">
+                    <div class="p-8">
+                        <span class="inline-flex px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-black text-xs mb-4">IDE CUAN</span>
+                        <h3 class="text-2xl font-black mb-3">Buka Jasa Install iMersWAStore</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">Tawarkan jasa setup subdomain/hosting, input produk awal, setting WhatsApp, dan training admin untuk client UMKM.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 rounded-[2rem] bg-slate-950 text-white p-8 md:p-10">
+                <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-8 items-center">
+                    <div>
+                        <span class="text-emerald-400 font-black uppercase tracking-wider text-sm">Model Lisensi & Agency</span>
+                        <h3 class="text-3xl font-black mt-2 mb-4">Jual per Lisensi atau Buka Jasa Terima Beres</h3>
+                        <p class="text-slate-400 leading-relaxed">Anda bisa membuka jasa instalasi atau membuat paket toko online siap pakai untuk client menggunakan stok lisensi resmi. Semua profit jasa Anda menjadi milik Anda.</p>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-400 mb-3"></i><strong class="block mb-2">Per Project Client</strong><span class="text-sm text-slate-400">Setiap toko/client memakai 1 lisensi resmi.</span></div>
+                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-400 mb-3"></i><strong class="block mb-2">Buka Jasa Install</strong><span class="text-sm text-slate-400">Pasangkan ke hosting/domain client.</span></div>
+                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-400 mb-3"></i><strong class="block mb-2">Pakai Sendiri</strong><span class="text-sm text-slate-400">Untuk jualan produk fisik, digital, jasa, dan lisensi.</span></div>
+                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-400 mb-3"></i><strong class="block mb-2">Support & Panduan</strong><span class="text-sm text-slate-400">Ada panduan sistem dan checklist testing.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="harga" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-slate-50 transform -skew-y-2 z-0"></div>
+        <div class="absolute -right-32 top-20 w-96 h-96 rounded-full bg-emerald-200/40 blur-3xl"></div>
+        <div class="absolute -left-28 bottom-16 w-96 h-96 rounded-full bg-blue-200/40 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">Pilihan Lisensi ProBusiness</span>
+                <h2 class="text-3xl md:text-5xl font-black text-slate-950 mb-5">Paket Lengkap untuk Toko yang Butuh Laporan Bisnis</h2>
+                <p class="text-lg text-slate-600">iMersWAStore ProBusiness berisi semua fitur Pro ditambah manager operasional, shift kasir, HPP, biaya operasional, laporan laba rugi, export CSV, dan print PDF.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-7 items-stretch">
+                <div class="relative rounded-[2rem] bg-white border border-slate-200 p-7 md:p-8 shadow-soft card-hover">
+                    <div class="mb-7">
+                        <span class="inline-flex px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-black text-xs uppercase tracking-widest mb-5">Personal / 1 Toko</span>
+                        <h3 class="text-2xl font-black text-slate-950 mb-3">ProBusiness Satuan</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Cocok untuk pemilik toko, UMKM, reseller, atau pengguna yang ingin 1 sistem toko online lengkap dengan laporan keuangan.</p>
+                    </div>
+
+                    <div class="mb-7 pb-7 border-b border-slate-200">
+                        <span class="text-5xl font-black text-slate-950">Rp 79.000</span>
+                        <span class="block text-emerald-600 font-bold text-sm mt-2">1 lisensi ProBusiness untuk 1 toko/project</span>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Akses paket iMersWAStore ProBusiness PHP Edition.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Installer premium, database.sql, panduan setup, dan panduan laporan bisnis.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Cocok untuk 1 domain/subdomain/toko dengan fitur finance.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Bisa dipakai untuk toko sendiri atau 1 project client yang butuh laporan.</span></li>
+                    </ul>
+
+                    <a href="https://imersfireship.vercel.app/?checkout=be167333-bac8-4fb8-8160-77aede0ed37b" target="_blank" class="block w-full py-4 px-5 bg-slate-950 text-white font-black text-center rounded-2xl hover:bg-slate-800 transition-all">
+                        Beli ProBusiness Satuan
+                    </a>
+                </div>
+
+                <div class="relative rounded-[2rem] bg-slate-950 p-7 md:p-8 shadow-2xl text-white overflow-hidden card-hover">
+                    <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-imblue via-imcyan to-imgreen"></div>
+                    <div class="absolute -top-20 -right-20 w-52 h-52 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+                    <div class="mb-7 relative z-10">
+                        <span class="inline-flex px-4 py-2 rounded-full bg-emerald-500 text-white font-black text-xs uppercase tracking-widest mb-5">Paling Pas Buat Jasa</span>
+                        <h3 class="text-2xl font-black mb-3">ProBusiness Agency Starter</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Untuk freelancer atau agency kecil yang menawarkan toko online plus POS, shift kasir, dan laporan laba rugi ke client.</p>
+                    </div>
+
+                    <div class="mb-7 pb-7 border-b border-slate-800 relative z-10">
+                        <span class="text-5xl font-black">Rp 149.000</span>
+                        <span class="block text-emerald-400 font-bold text-sm mt-2">25 lisensi ProBusiness + bonus 5 lisensi</span>
+                        <span class="block text-slate-500 text-xs mt-1">Total 30 lisensi</span>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 relative z-10">
+                        <li class="flex gap-3 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>30 lisensi ProBusiness total untuk project/client.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Akun agency tersendiri untuk generate lisensi.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Cocok untuk jual paket toko online + laporan keuangan siap pakai.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Profit jasa install tetap milik agency.</span></li>
+                    </ul>
+
+                    <a href="https://imersfireship.vercel.app/?checkout=be167333-bac8-4fb8-8160-77aede0ed37b" target="_blank" class="block w-full py-4 px-5 bg-gradient-to-r from-imblue via-imcyan to-imgreen text-white font-black text-center rounded-2xl shadow-glow hover:scale-[1.02] transition-all">
+                        Ambil ProBusiness Starter
+                    </a>
+                </div>
+
+                <div class="relative rounded-[2rem] bg-white border border-slate-200 p-7 md:p-8 shadow-soft card-hover">
+                    <div class="absolute -top-4 left-8 inline-flex px-4 py-2 rounded-full bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-widest shadow-lg">Best Value</div>
+
+                    <div class="mb-7 pt-4">
+                        <span class="inline-flex px-4 py-2 rounded-full bg-amber-100 text-amber-700 font-black text-xs uppercase tracking-widest mb-5">Skala Agency</span>
+                        <h3 class="text-2xl font-black text-slate-950 mb-3">ProBusiness Agency Premium</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Untuk agency, komunitas, atau seller yang ingin punya stok lisensi ProBusiness besar untuk banyak client.</p>
+                    </div>
+
+                    <div class="mb-7 pb-7 border-b border-slate-200">
+                        <span class="text-5xl font-black text-slate-950">Rp 249.000</span>
+                        <span class="block text-emerald-600 font-bold text-sm mt-2">100 lisensi ProBusiness + bonus 5 lisensi</span>
+                        <span class="block text-slate-500 text-xs mt-1">Total 105 lisensi</span>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>105 lisensi ProBusiness total untuk project/client.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Akun agency tersendiri untuk generate lisensi.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Lebih hemat untuk banyak pemasangan toko ProBusiness.</span></li>
+                        <li class="flex gap-3 text-sm text-slate-600"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i><span>Cocok untuk paket jasa install massal dengan fitur laporan bisnis.</span></li>
+                    </ul>
+
+                    <a href="https://imersfireship.vercel.app/?checkout=be167333-bac8-4fb8-8160-77aede0ed37b" target="_blank" class="block w-full py-4 px-5 bg-slate-950 text-white font-black text-center rounded-2xl hover:bg-slate-800 transition-all">
+                        Ambil ProBusiness Premium
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-[2rem] border border-emerald-200 bg-emerald-50 p-6">
+                <div class="flex gap-4">
+                    <i data-lucide="info" class="w-7 h-7 text-emerald-700 shrink-0 mt-1"></i>
+                    <p class="text-sm sm:text-base text-emerald-950 leading-relaxed">
+                        <strong>Catatan lisensi:</strong> 1 lisensi digunakan untuk 1 instalasi/project toko. Paket Agency bukan lisensi jual bebas tanpa batas,
+                        tetapi stok lisensi resmi untuk dipakai pada project client. Agency akan mendapatkan akun tersendiri untuk generate lisensi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-emerald-600 font-black tracking-wider text-sm uppercase mb-2 block">FAQ</span>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-950">Pertanyaan Seputar iMersWAStore PHP</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apakah ini masih versi Google Sheets / Apps Script?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Tidak. Ini sudah versi <strong>PHP + MySQL</strong>. Cocok untuk hosting standar seperti cPanel, subdomain, atau domain utama. Database berjalan di MySQL, bukan Google Sheets.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apakah perlu hosting?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Ya, versi PHP membutuhkan hosting yang mendukung PHP dan MySQL. Hosting cPanel biasa sudah cukup untuk memulai, tergantung jumlah traffic dan kebutuhan toko.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apakah bisa untuk produk digital dan lisensi?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Bisa. Produk digital bisa memakai manual delivery, upload file, link eksternal, Google Drive, Canva, atau konten member. Tipe Lisensi dipakai untuk kode lisensi/serial/redeem code yang sudah tersedia sebagai stok siap kirim.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Pulsa, token PLN, paket data, e-wallet masuk tipe apa?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Masukkan ke <strong>Produk Digital + Manual Delivery</strong>. Pembeli isi nomor HP, nomor meter, atau ID pelanggan di catatan checkout. Admin memproses manual setelah pembayaran dan mengirim token/bukti sukses via WhatsApp.
+                    </div>
+                </div>
+
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apakah wajib langganan WhatsApp Gateway?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Tidak wajib. Tanpa WA Gateway, toko online, checkout, order masuk admin, POS kasir, produk digital, lisensi, bundling, dan jasa tetap berjalan. WA Gateway hanya dibutuhkan untuk broadcast, reminder, follow up, dan notifikasi otomatis. Integrasi yang disiapkan antara lain StarSender, WAPlus, XSender, dan Fonnte. Untuk Fonnte, tersedia opsi gratis 1 bulan dengan 1000 pesan sehingga bisa dimanfaatkan untuk mulai mencoba fitur otomatisasi.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apakah bisa pakai RajaOngkir?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Bisa, sifatnya optional. Admin bisa mengaktifkan RajaOngkir/Komerce, isi API key, cari Origin ID toko, memilih kurir aktif, dan checkout akan menghitung ongkir otomatis untuk produk yang perlu dikirim.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apa bedanya Lisensi Satuan dan Agency?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Lisensi Satuan dipakai untuk 1 toko/project. Paket Agency berisi banyak lisensi untuk project client, dan agency mendapatkan akun tersendiri untuk generate lisensi. Model ini bukan lisensi jual bebas tanpa batas, tetapi sistem lisensi resmi per instalasi.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Bagaimana akses member area setelah membeli?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Setelah order aktif, pembeli login ke member area melalui link <strong>https://imersfireship.vercel.app/member</strong>. Di sana tersedia file download, panduan, update, dan khusus paket agency ada akses untuk generate lisensi client.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apa bedanya Pro dan ProBusiness?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Versi Pro fokus ke toko online, checkout, POS, produk digital, lisensi, bundle, jasa, RajaOngkir, dan WA Gateway optional. Versi <strong>ProBusiness</strong> menambahkan fitur operasional bisnis seperti manager operasional, shift kasir, HPP produk, biaya operasional, laporan shift, laporan laba rugi, export CSV, dan print/save PDF.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apakah laporan laba rugi langsung otomatis?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Laporan otomatis dihitung dari order completed/POS, HPP produk, dan biaya operasional. Admin tetap perlu mengisi HPP produk dan mencatat biaya operasional agar laporan laba bersih lebih akurat.
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden accordion-item">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left" onclick="toggleFAQ(this)">
+                        <span class="font-black text-slate-900">Apakah ada installer?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform accordion-icon shrink-0"></i>
+                    </button>
+                    <div class="accordion-content bg-slate-50 px-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Ada. Installer membantu import database.sql, membuat file konfigurasi database, membuat admin awal, mengunci installer setelah berhasil, dan membantu proteksi file sensitif.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 pt-12 pb-24 md:pb-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center justify-center gap-4 text-center">
+                <img src="https://imersnesia.com/wp-content/uploads/2026/06/logo-teks-imerswastore-1.png" alt="iMersWAStore Logo" class="h-11 w-auto object-contain brightness-0 invert opacity-90">
+                <p class="text-slate-500 text-sm">
+                    &copy; 2026 iMersWAStore ProBusiness. Toko Online, POS Kasir, Shift, HPP & Laporan Laba Rugi.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/92 backdrop-blur-lg border-t border-slate-200 shadow-[0_-4px_20px_rgba(15,23,42,.08)] safe-bottom">
+        <div class="flex justify-around items-center h-[72px] px-2">
+            <a href="#" class="flex flex-col items-center justify-center w-full h-full space-y-1.5 group">
+                <div class="p-2 rounded-2xl bg-emerald-50 group-hover:bg-emerald-100 group-hover:-translate-y-1 transition-all"><i data-lucide="home" class="w-5 h-5 text-emerald-500"></i></div>
+                <span class="text-[10px] font-black text-slate-500 group-hover:text-emerald-600">Home</span>
+            </a>
+            <a href="#fitur" class="flex flex-col items-center justify-center w-full h-full space-y-1.5 group">
+                <div class="p-2 rounded-2xl bg-blue-50 group-hover:bg-blue-100 group-hover:-translate-y-1 transition-all"><i data-lucide="sparkles" class="w-5 h-5 text-blue-500"></i></div>
+                <span class="text-[10px] font-black text-slate-500 group-hover:text-blue-600">Fitur</span>
+            </a>
+            <a href="#demo" class="flex flex-col items-center justify-center w-full h-full space-y-1.5 group">
+                <div class="p-2 rounded-2xl bg-purple-50 group-hover:bg-purple-100 group-hover:-translate-y-1 transition-all"><i data-lucide="play-circle" class="w-5 h-5 text-purple-500"></i></div>
+                <span class="text-[10px] font-black text-slate-500 group-hover:text-purple-600">Demo</span>
+            </a>
+            <a href="#harga" class="flex flex-col items-center justify-center w-full h-full space-y-1.5 group relative">
+                <span class="absolute top-1.5 right-4 flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span></span>
+                <div class="p-2 rounded-2xl bg-rose-50 group-hover:bg-rose-100 group-hover:-translate-y-1 transition-all"><i data-lucide="shopping-cart" class="w-5 h-5 text-rose-500"></i></div>
+                <span class="text-[10px] font-black text-slate-500 group-hover:text-rose-600">Beli</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        lucide.createIcons();
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar?.classList.add('shadow-md');
+            } else {
+                navbar?.classList.remove('shadow-md');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
+        });
+
+        function toggleFAQ(button) {
+            const item = button.parentElement;
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) otherItem.classList.remove('accordion-active');
+            });
+            item.classList.toggle('accordion-active');
+        }
+    </script>
+</body>
+</html>
